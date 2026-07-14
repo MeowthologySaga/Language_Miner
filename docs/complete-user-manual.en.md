@@ -4,7 +4,7 @@
 
 This tutorial-style manual is for an English learner who is not assumed to know web development, APIs, or local AI. It does more than list menus: each feature explains **where to go → why to use it → what success looks like → what to check next when it fails**.
 
-The target version is `v0.1.0-beta.1`, which is being prepared for public release. If no official Release exists yet, no official installer has been published. After publication, the notes for that version on [Language Miner GitHub Releases](https://github.com/MeowthologySaga/Language_Miner/releases) take precedence over this manual.
+This manual covers public beta [v0.1.0-beta.1](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1). Its Release page takes precedence for the exact file list, known issues, and changes.
 
 ## 1. Terms in plain language
 
@@ -37,15 +37,15 @@ Reading and listening **input** build recognition. Speaking and writing **output
 
 ## 3. Installation and first launch
 
-### 3.1 Choose a build after publication
+### 3.1 Choose a build from the official Release
 
-**Path:** GitHub Releases → Assets for the version
+**Path:** [v0.1.0-beta.1 Release](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1) → Assets
 
 **Why:** To verify the source and file before running it.
 
 **Steps**
 
-1. After publication, download the NSIS installer or portable build, `SHA256SUMS.txt`, and SBOM from the same Release.
+1. From the same Release, download `Language-Miner-Setup-0.1.0-beta.1-x64.exe` or `Language-Miner-Portable-0.1.0-beta.1-x64.exe`, `SHA256SUMS.txt`, and the SBOM.
 2. Choose the installer for normal Windows app behavior, or portable when you want to manage the executable without an installation wizard.
 3. Compare the SHA-256 value by following the [Windows installation guide](install-windows.en.md).
 4. The first beta may be unsigned, so recheck the publisher warning and file source in SmartScreen.
@@ -670,7 +670,7 @@ UGC is inspected in quarantine first. Only `ready` and `trusted_official` may ru
 
 **If it fails:** Send the block code to the creator and request a corrected version. Editing the pack yourself changes hashes and lineage assumptions.
 
-**Privacy and cost:** GitHub Releases are the recommended source of record; treat Google Drive as an unverified external link. Do not promise a Discord server that has not been created—watch the repository for future community details. To participate, publish a pack with accurate creator, source, SPDX license, and permissions on a GitHub Release, then submit the link when community intake opens.
+**Privacy and cost:** GitHub Releases are the recommended source of record; treat Google Drive as an unverified external link. The official Discord is not open yet, so do not treat an unofficial server or invitation as the project community. To participate, publish a pack with accurate creator, source, SPDX license, and permissions on a GitHub Release, then submit the link if the repository later announces a community intake route.
 
 ## 16. Glossary
 
@@ -974,7 +974,7 @@ A destructive action requires typing the exact confirmation phrase.
 
 ## 23. Manual browser extension installation and queue deletion
 
-The first public beta prepares an optional manual installation instead of the Chrome Web Store.
+`v0.1.0-beta.1` provides an optional manual-installation archive instead of a Chrome Web Store listing.
 
 ### 23.1 Exact installation sequence
 

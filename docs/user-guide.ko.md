@@ -2,7 +2,7 @@
 
 [English](user-guide.en.md) · [화면 따라 하기](https://meowthologysaga.github.io/Language_Miner/tutorial.html) · [README](../README.md) · [개인정보 안내](privacy.ko.md) · [Windows 설치](install-windows.ko.md)
 
-이 문서는 준비 중인 `v0.1.0-beta.1`을 대상으로 합니다. 아직 공식 설치 파일은 배포되지 않았으며, 공개된 버전에서는 해당 Release의 릴리스 노트가 우선합니다.
+이 문서는 공개된 `v0.1.0-beta.1`을 대상으로 합니다. 해당 공식 Release의 릴리스 노트가 우선합니다.
 
 ## 1. Language Miner가 하는 일
 
@@ -18,7 +18,7 @@ Language Miner는 문장을 발견하고, 카드로 만들고, 복습하고, 다
 
 ## 2. 설치
 
-공식 베타가 공개되면 [GitHub Releases](https://github.com/MeowthologySaga/Language_Miner/releases)에서만 받으세요.
+공식 베타는 [`v0.1.0-beta.1` GitHub Release](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1)에서만 받으세요. 이 Release는 변경 불가 설정으로 게시되어 태그와 파일을 같은 Release 안에서 바꿀 수 없습니다.
 
 1. 설치판 또는 포터블판과 체크섬 파일을 같은 Release에서 받습니다.
 2. SHA-256 값을 비교합니다.
@@ -150,7 +150,7 @@ PlayZone은 HTML 기반 게임팩을 격리된 실행 환경에서 여는 공간
 - 네트워크는 기본 거부됩니다.
 - 다이아 사용은 팩이 미리 선언한 동작과 금액만 사용자 확인 후 처리합니다.
 
-GitHub Releases를 원본으로 권장합니다. Discord와 Google Drive 링크는 발견 경로일 뿐, 공식 검증이나 저작권 보증을 뜻하지 않습니다. [UGC 정책](ugc-policy.ko.md)
+GitHub Releases를 원본으로 권장합니다. 공식 Discord는 아직 열지 않았으며, 나중에 Discord나 Google Drive 링크가 공유되더라도 발견 경로일 뿐 공식 검증이나 저작권 보증을 뜻하지 않습니다. [UGC 정책](ugc-policy.ko.md)
 
 공식 게임은 `어비스 서머너`, `드릴하트 디펜스`, `고양이 오디세이`입니다. 아직 설치하지 않은 게임에서 `설치하고 플레이`를 누르고, 용량·원본·라이선스·SHA-256·요청 권한을 확인한 뒤 `확인하고 다운로드`를 선택합니다. 검사가 끝나 실행 가능한 상태가 되면 `플레이`를 누릅니다.
 

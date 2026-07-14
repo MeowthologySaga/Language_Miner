@@ -4,7 +4,7 @@
 
 [English](README.en.md) · [화면 따라 하기](https://meowthologysaga.github.io/Language_Miner/tutorial.html) · [완전 사용 설명서](docs/complete-user-manual.ko.md) · [기능 참조](docs/user-guide.ko.md) · [개인정보 안내](docs/privacy.ko.md) · [UGC 정책](docs/ugc-policy.ko.md)
 
-> **배포 상태:** 첫 공개 베타 `v0.1.0-beta.1`을 준비하고 있습니다. 아직 공식 설치 파일은 배포되지 않았습니다. 공개 시 Windows 10/11 x64용 설치판, 포터블판, SHA-256 체크섬과 전체 소스를 [GitHub Releases](https://github.com/MeowthologySaga/Language_Miner/releases)에 함께 제공합니다.
+> **배포 상태:** 첫 공개 베타 [`v0.1.0-beta.1`](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1)을 배포했습니다. Windows 10/11 x64용 설치판, 포터블판, SHA-256 체크섬, SBOM과 전체 소스를 같은 공식 Release에서 받을 수 있습니다.
 
 ![웹 리더에서 I’m running a little late를 문장카드로 담고, 복습한 뒤 영작에서 다시 쓰는 Language Miner 화면](docs/site/assets/app-images/ko/00-learning-loop.gif)
 
@@ -36,7 +36,7 @@
 - **PlayZone**은 학습으로 얻은 로컬 보상과 표현을 게임팩 안에서 활용하는 UGC 공간입니다. 검증 상태가 `ready` 또는 `trusted_official`인 팩만 실행합니다.
 - **캐릭터챗**은 캐릭터 설정과 상황을 이용해 실제 대화처럼 표현을 시험하는 공간입니다. 클라우드 AI를 연결하면 전송되는 대화 범위를 실행 전에 확인합니다.
 
-앱 코드와 별개로 캐릭터 카드와 게임팩은 제작자가 각자의 라이선스를 표시합니다. 공식 커뮤니티가 공개되면 일반 이용가 콘텐츠만 받습니다.
+앱 코드와 별개로 캐릭터 카드와 게임팩은 제작자가 각자의 라이선스를 표시합니다. 공식 커뮤니티를 열게 되면 일반 이용가 콘텐츠만 받습니다.
 
 ## 처음 시작하는 순서
 
@@ -62,7 +62,7 @@
 
 ## 다운로드
 
-`v0.1.0-beta.1` 공개 시 다음 파일을 같은 Release에 올립니다.
+[`v0.1.0-beta.1` 공식 다운로드](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1)에서 다음 파일을 받을 수 있습니다.
 
 - Windows 10/11 x64 NSIS 설치판
 - Windows 10/11 x64 포터블 실행 파일
@@ -70,9 +70,9 @@
 - SBOM
 - 해당 버전 전체 소스
 
-첫 베타는 코드 서명이 없는 빌드입니다. 다운로드 출처와 체크섬을 확인한 뒤 실행하세요. [Windows 설치 및 SmartScreen 안내](docs/install-windows.ko.md)
+첫 베타는 코드 서명이 없는 빌드입니다. 이 Release에는 GitHub의 변경 불가(immutable) 설정이 적용되어 게시된 태그와 파일을 나중에 같은 Release 안에서 바꿀 수 없습니다. 그래도 실행 전에는 공식 태그 페이지에서 받은 `SHA256SUMS.txt`와 파일의 SHA-256을 비교하세요. [Windows 설치 및 SmartScreen 안내](docs/install-windows.ko.md)
 
-Discord 초대 링크는 공개 베타 Release와 이 README에 함께 게시할 예정입니다. 링크가 게시되기 전에는 Language Miner를 사칭하는 커뮤니티나 배포 파일을 신뢰하지 마세요.
+공식 Discord는 아직 열지 않았습니다. 이 저장소에 주소가 공지되기 전에는 Language Miner를 사칭하는 커뮤니티나 배포 파일을 신뢰하지 마세요.
 
 ## 소스에서 실행
 

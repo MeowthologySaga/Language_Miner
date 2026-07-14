@@ -2,23 +2,23 @@
 
 [English](install-windows.en.md) · [README](../README.md) · [사용자 가이드](user-guide.ko.md)
 
-대상: Windows 10/11 x64, 준비 중인 `v0.1.0-beta.1`.
+대상: Windows 10/11 x64 공개 베타 [v0.1.0-beta.1](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1).
 
-첫 공개 베타는 코드 서명이 없는 설치판과 포터블판으로 제공할 예정입니다. SmartScreen 경고를 없애는 우회 파일을 찾지 말고, 공식 출처와 SHA-256을 직접 확인하세요.
+이 공개 베타는 코드 서명이 없는 설치판과 포터블판으로 제공됩니다. SmartScreen 경고를 없애는 우회 파일을 찾지 말고, 공식 출처와 SHA-256을 직접 확인하세요.
 
 ## 1. 공식 파일 찾기
 
-공식 배포 위치는 [MeowthologySaga/Language_Miner의 GitHub Releases](https://github.com/MeowthologySaga/Language_Miner/releases)입니다.
+이 버전의 공식 배포 위치는 [v0.1.0-beta.1 Release](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1)입니다.
 
 같은 Release에서 다음을 확인합니다.
 
 - `v0.1.0-beta.1` 태그;
-- Windows x64 NSIS 설치판 또는 포터블판;
+- Windows x64 NSIS 설치판 `Language-Miner-Setup-0.1.0-beta.1-x64.exe` 또는 포터블판 `Language-Miner-Portable-0.1.0-beta.1-x64.exe`;
 - SHA-256 체크섬 파일;
 - SBOM;
 - Source code.
 
-Discord 재업로드, 단축 URL, 검색 광고, 파일 공유 사이트의 복사본은 사용하지 마세요. 공식 Discord도 파일을 다시 올리는 장소가 아니라 GitHub Release 원본을 안내하는 장소로 사용합니다.
+Discord 재업로드, 단축 URL, 검색 광고, 파일 공유 사이트의 복사본은 사용하지 마세요. 공식 Discord는 아직 열리지 않았습니다. 나중에 커뮤니티가 열리더라도 다운로드 원본은 위 GitHub Release에서만 확인하세요.
 
 ## 2. SHA-256 확인
 

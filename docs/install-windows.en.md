@@ -2,23 +2,23 @@
 
 [한국어](install-windows.ko.md) · [README](../README.en.md) · [User guide](user-guide.en.md)
 
-Target: Windows 10/11 x64, planned `v0.1.0-beta.1`.
+Target: Windows 10/11 x64 public beta [v0.1.0-beta.1](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1).
 
-The first public beta is planned as an unsigned installer and portable build. Do not look for a repack that bypasses SmartScreen; verify the official source and SHA-256 yourself.
+This public beta is provided as an unsigned installer and portable build. Do not look for a repack that bypasses SmartScreen; verify the official source and SHA-256 yourself.
 
 ## 1. Find the official files
 
-The official distribution location is [GitHub Releases for MeowthologySaga/Language_Miner](https://github.com/MeowthologySaga/Language_Miner/releases).
+The official distribution location for this version is the [v0.1.0-beta.1 Release](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1).
 
 Use files from the same Release:
 
 - the `v0.1.0-beta.1` tag;
-- Windows x64 NSIS installer or portable build;
+- Windows x64 NSIS installer `Language-Miner-Setup-0.1.0-beta.1-x64.exe` or portable build `Language-Miner-Portable-0.1.0-beta.1-x64.exe`;
 - SHA-256 checksum file;
 - SBOM;
 - source code.
 
-Do not use a Discord re-upload, shortened URL, search ad, or file-sharing mirror. The official Discord points to the GitHub Release rather than rehosting binaries.
+Do not use a Discord re-upload, shortened URL, search ad, or file-sharing mirror. The official Discord is not open yet. Even if a community opens later, verify downloads only against the GitHub Release above.
 
 ## 2. Verify SHA-256
 

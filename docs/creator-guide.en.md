@@ -2,7 +2,7 @@
 
 [한국어](creator-guide.ko.md) · [UGC policy](ugc-policy.en.md) · [Game Pack runtime contract](ugc/playzone-current-runtime-contract.md)
 
-This document describes the public contract planned for `v0.1.0-beta.1`. Publish against the template and validator shipped with the target app version.
+This document describes the UGC contract in public beta [v0.1.0-beta.1](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1). Publish against the template and validator shipped with the target app version.
 
 ## 1. Choose a content type
 

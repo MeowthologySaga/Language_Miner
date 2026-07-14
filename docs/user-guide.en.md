@@ -2,7 +2,7 @@
 
 [한국어](user-guide.ko.md) · [Visual walkthrough](https://meowthologysaga.github.io/Language_Miner/en/tutorial.html) · [README](../README.en.md) · [Privacy notice](privacy.en.md) · [Windows installation](install-windows.en.md)
 
-This guide targets the planned `v0.1.0-beta.1`. No official installer is available yet. For a published build, its Release notes take precedence.
+This guide covers the published `v0.1.0-beta.1`. Its official Release notes take precedence.
 
 ## 1. What Language Miner does
 
@@ -18,7 +18,7 @@ An isolated word can be easy to recognize but hard to turn into a sentence. Sent
 
 ## 2. Install
 
-After the beta is published, download it only from [GitHub Releases](https://github.com/MeowthologySaga/Language_Miner/releases).
+Download the beta only from the official [`v0.1.0-beta.1` GitHub Release](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1). It is published as an immutable release, so its tag and assets cannot be edited in place.
 
 1. Download the installer or portable build and checksum file from the same Release.
 2. Compare the SHA-256 value.
@@ -150,7 +150,7 @@ PlayZone opens HTML game packs in an isolated runtime.
 - Network access is denied by default.
 - Diamond spending is limited to manifest-declared actions and amounts, with user confirmation.
 
-GitHub Releases are the recommended source of record. Discord and Google Drive links are discovery paths, not a warranty of safety or copyright status. See the [UGC policy](ugc-policy.en.md).
+GitHub Releases are the recommended source of record. The official Discord is not open yet; if Discord or Google Drive links are shared later, they are discovery paths, not a warranty of safety or copyright status. See the [UGC policy](ugc-policy.en.md).
 
 The official games are `Abyss Summoner`, `Drillheart Defense`, and `Cat Odyssey`. Choose `Install and play`, review size, source, license, SHA-256, and requested permissions, then choose `Review and download`. After checks produce a runnable state, choose `Play`.
 

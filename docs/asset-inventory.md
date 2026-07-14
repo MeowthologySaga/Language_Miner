@@ -55,9 +55,9 @@ Generated icon evidence for this tree:
 - `tray-mole-miner.ico`: SHA-256 `7b694dcabf34823baf80e7e9c3ebdbafc5d37ce1d9cf79d70abce75335aef161`
 - Re-running `node scripts/generate-tray-icon.cjs` produces the same hashes.
 
-## Evidence still needed before release
+## Release evidence and continuing restrictions
 
-The following technical evidence was checked on 2026-07-13, but it does not establish authorship or redistribution rights:
+The following evidence and restrictions were carried into public beta [v0.1.0-beta.1](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1). Technical checks alone do not establish authorship or redistribution rights:
 
 - The maintainer has identified OpenAI Codex as the visual-generation tool and confirmed that no third-party photograph, game screenshot, or character image was supplied as a reference. The historical image files still lack embedded prompts or generation IDs; preserve prompt and generation records for future assets so the process is reproducible.
 - The former `public/samples/listening/onboarding-*.wav` files did not prove the exact installed voice, Windows version, or redistribution terms. They were removed. Starter cards now call the app's runtime TTS path, which generates speech from the user's installed voice and stores any cache under that user's app data rather than shipping a maintainer-generated recording.

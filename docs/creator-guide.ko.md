@@ -2,7 +2,7 @@
 
 [English](creator-guide.en.md) · [UGC 정책](ugc-policy.ko.md) · [Game Pack 런타임 계약](ugc/playzone-current-runtime-contract.md)
 
-이 문서는 준비 중인 `v0.1.0-beta.1`용 공개 계약입니다. 실제 팩은 대상 앱 버전의 템플릿과 validator 결과를 기준으로 배포하세요.
+이 문서는 공개 베타 [v0.1.0-beta.1](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1)의 UGC 계약을 설명합니다. 실제 팩은 대상 앱 버전과 함께 배포된 템플릿 및 validator 결과를 기준으로 배포하세요.
 
 ## 1. 먼저 선택할 것
 

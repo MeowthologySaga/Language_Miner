@@ -2,26 +2,26 @@
 
 [한국어](ugc-policy.ko.md) · [Creator guide](creator-guide.en.md) · [Privacy notice](privacy.en.md)
 
-- Target: planned `v0.1.0-beta.1`
-- Last updated: 2026-07-13
+- Target: public beta [v0.1.0-beta.1](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1)
+- Last updated: 2026-07-14
 
 ## 1. Scope
 
-This policy covers character packs, character cards, PlayZone Game Packs, and the UGC-sharing spaces of the planned official community once published.
+This policy covers character packs, character cards, and PlayZone Game Packs. The same standard will apply to the official community's UGC-sharing spaces if they open later.
 
 The app code is GPL-3.0-only, but that license does not automatically apply to a UGC story, image, audio file, game code, or data. Each creator must state a separate license in the manifest and distribution page.
 
 ## 2. Distribution and discovery
 
 - **Recommended source of record:** a creator-controlled GitHub Release, which can preserve versions, source, checksums, and changes.
-- **Official Discord (planned):** once published, a place to discover content and discuss it. Durable sources such as GitHub Releases are preferred over re-uploading binaries.
+- **Official Discord (not open yet):** if it opens later, it will be a place to discover content and discuss it. There is currently no official invitation link. Durable sources such as GitHub Releases are preferred over re-uploading binaries.
 - **Google Drive and other external links:** labeled as unverified external links. Their owner and content can change.
 
 A Discord post, star, reaction, or another user’s recommendation is not a project warranty of safety, quality, legality, or copyright status.
 
-## 3. Content standard after the official Discord launches
+## 3. Content standard for a future official Discord
 
-Once published, the official Discord will permit general-audience content only.
+If the official Discord opens, it will permit general-audience content only.
 
 Examples that are not allowed:
 

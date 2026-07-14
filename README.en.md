@@ -4,7 +4,7 @@ Language Miner is a local-first Windows app for turning useful English sentences
 
 [한국어](README.md) · [Visual walkthrough](https://meowthologysaga.github.io/Language_Miner/en/tutorial.html) · [Complete user manual](docs/complete-user-manual.en.md) · [Feature reference](docs/user-guide.en.md) · [Privacy notice](docs/privacy.en.md) · [UGC policy](docs/ugc-policy.en.md)
 
-> **Release status:** The first public beta, `v0.1.0-beta.1`, is being prepared. There is no official installer available yet. When published, the [GitHub Release](https://github.com/MeowthologySaga/Language_Miner/releases) will contain Windows 10/11 x64 installer and portable builds, SHA-256 checksums, and the complete source.
+> **Release status:** The first public beta, [`v0.1.0-beta.1`](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1), is available. Its official Release contains Windows 10/11 x64 installer and portable builds, SHA-256 checksums, an SBOM, and the complete source.
 
 ![Language Miner Web Reader adding I’m running a little late as a sentence card, reviewing it, and retrieving it in writing](docs/site/assets/app-images/en/00-learning-loop.gif)
 
@@ -36,7 +36,7 @@ For example, after finding `I’m running a little late.`, you can save it as a 
 - **PlayZone** is a UGC space where game packs can use local study rewards and expressions. Only packs marked `ready` or `trusted_official` can run.
 - **Character Chat** lets you test expressions in situations shaped by a character and scenario. When a cloud AI is connected, the app shows what conversation context will be sent before the session starts.
 
-Character cards and game packs are licensed separately by their creators; the app’s GPL license does not automatically apply to them. Once published, the official community will accept general-audience content only.
+Character cards and game packs are licensed separately by their creators; the app’s GPL license does not automatically apply to them. If an official community opens, it will accept general-audience content only.
 
 ## A practical first-start sequence
 
@@ -62,7 +62,7 @@ See the [privacy notice](docs/privacy.en.md) for the storage and external-transf
 
 ## Download
 
-The `v0.1.0-beta.1` Release is planned to include:
+The [`v0.1.0-beta.1` official download page](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1) provides:
 
 - Windows 10/11 x64 NSIS installer
 - Windows 10/11 x64 portable executable
@@ -70,9 +70,9 @@ The `v0.1.0-beta.1` Release is planned to include:
 - SBOM
 - Complete source for that version
 
-The first beta will be unsigned. Verify the download source and checksum before choosing to run it. See [Windows installation and SmartScreen](docs/install-windows.en.md).
+The first beta is unsigned. This Release uses GitHub immutable releases, so its published tag and assets cannot be edited in place. Even so, compare your file's SHA-256 with `SHA256SUMS.txt` from the official tag page before running it. See [Windows installation and SmartScreen](docs/install-windows.en.md).
 
-The official Discord invitation will be posted in the beta Release and this README. Until then, do not trust communities or binaries claiming to represent Language Miner.
+The official Discord is not open yet. Until its address is announced in this repository, do not trust communities or binaries claiming to represent Language Miner.
 
 ## Run from source
 

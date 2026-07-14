@@ -2,8 +2,8 @@
 
 [한국어](privacy.ko.md) · [README](../README.en.md) · [User guide](user-guide.en.md) · [Security reporting](../SECURITY.md)
 
-- Target: planned `v0.1.0-beta.1`
-- Last updated: 2026-07-13
+- Target: public beta [v0.1.0-beta.1](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1)
+- Last updated: 2026-07-14
 
 ## At a glance
 
@@ -148,7 +148,7 @@ Do not assume the Windows uninstaller removes all user data. Before transferring
 
 ## UGC and community links
 
-The app applies technical checks to UGC but cannot guarantee the accuracy, legality, copyright status, or content rating of everything obtained externally. If the official Discord is published, it will apply a general-audience policy. An external link is not an official endorsement.
+The app applies technical checks to UGC but cannot guarantee the accuracy, legality, copyright status, or content rating of everything obtained externally. The official Discord is not open yet; if it opens later, it will apply a general-audience policy. An external link is not an official endorsement.
 
 Creators must not put API keys, personal conversations, local paths, tracking pixels, or remote executable content in packs. See the [UGC policy](ugc-policy.en.md).
 

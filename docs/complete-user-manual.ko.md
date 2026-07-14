@@ -4,7 +4,7 @@
 
 이 설명서는 영어를 공부하지만 웹·API·로컬 AI에는 익숙하지 않은 사용자를 위한 튜토리얼형 안내서입니다. 메뉴를 나열하는 데서 끝내지 않고, **어디를 누르는지 → 왜 쓰는지 → 무엇이 보이면 성공인지 → 안 되면 무엇을 확인할지** 순서로 설명합니다.
 
-현재 목표 버전은 `v0.1.0-beta.1`이며 공개 배포를 준비하고 있습니다. 아직 공식 Release가 없다면 설치 파일도 아직 공개된 것이 아닙니다. 배포 후에는 [Language Miner GitHub Releases](https://github.com/MeowthologySaga/Language_Miner/releases)의 해당 버전 안내가 이 문서보다 우선합니다.
+이 설명서는 공개 베타 [v0.1.0-beta.1](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1)을 기준으로 합니다. 파일 목록, 알려진 문제와 변경사항은 해당 Release 안내가 이 문서보다 우선합니다.
 
 ## 1. 먼저 알아둘 말
 
@@ -37,15 +37,15 @@ Language Miner의 기본 루프는 다음과 같습니다.
 
 ## 3. 설치와 첫 실행
 
-### 3.1 배포 후 설치 파일 고르기
+### 3.1 공식 Release에서 설치 파일 고르기
 
-**경로:** GitHub Releases → 해당 버전의 Assets
+**경로:** [v0.1.0-beta.1 Release](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1) → Assets
 
 **쓰는 이유:** 출처와 파일이 맞는지 확인한 뒤 설치하기 위해서입니다.
 
 **따라 하기**
 
-1. 배포 후 같은 Release에서 NSIS 설치판, 포터블판, `SHA256SUMS.txt`, SBOM을 받습니다.
+1. 같은 Release에서 `Language-Miner-Setup-0.1.0-beta.1-x64.exe` 또는 `Language-Miner-Portable-0.1.0-beta.1-x64.exe`, `SHA256SUMS.txt`, SBOM을 받습니다.
 2. 평소 Windows 앱처럼 쓰려면 설치판, 설치 과정 없이 실행 파일을 직접 관리하려면 포터블판을 고릅니다.
 3. [Windows 설치 안내](install-windows.ko.md)에 따라 SHA-256을 비교합니다.
 4. 첫 베타는 서명되지 않을 수 있으므로 SmartScreen에 표시된 게시자와 파일 출처를 다시 확인합니다.
@@ -670,7 +670,7 @@ UGC 게임팩은 먼저 격리된 위치에서 검사합니다. `ready` 또는 `
 
 **막히면:** 차단 코드를 제작자에게 전달하고 고친 새 버전을 받습니다. 경고를 없애려고 파일을 직접 수정하면 해시와 lineage가 달라질 수 있습니다.
 
-**개인정보·비용:** GitHub Releases를 원본으로 권장합니다. Google Drive 같은 링크는 미검증 외부 링크로 봅니다. 공식 Discord는 아직 만들어지지 않았다면 있다고 가정하지 말고 저장소의 향후 공지를 확인하세요. 직접 만든 팩은 제작자·소스·SPDX 라이선스·권한을 정확히 적어 GitHub Release로 공유하고, 향후 커뮤니티 접수가 열리면 링크를 제출하세요.
+**개인정보·비용:** GitHub Releases를 원본으로 권장합니다. Google Drive 같은 링크는 미검증 외부 링크로 봅니다. 공식 Discord는 아직 열리지 않았으므로 초대 링크를 검색하거나 비공식 서버를 공식 커뮤니티로 오해하지 마세요. 직접 만든 팩은 제작자·소스·SPDX 라이선스·권한을 정확히 적어 GitHub Release로 공유하고, 향후 저장소에 커뮤니티 접수 경로가 공지되면 링크를 제출하세요.
 
 ## 16. 용어집
 
@@ -974,7 +974,7 @@ Google 번역 키는 Gemini 키와 별도입니다. 문서·PDF 텍스트를 Clo
 
 ## 23. 브라우저 확장 수동 설치와 대기열 삭제
 
-첫 공개 베타에서는 Chrome Web Store가 아니라 선택형 수동 설치를 준비합니다.
+`v0.1.0-beta.1`에서는 Chrome Web Store가 아니라 선택형 수동 설치 파일을 제공합니다.
 
 ### 23.1 정확한 설치 순서
 
