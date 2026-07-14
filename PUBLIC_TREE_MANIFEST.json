@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "appVersion": "0.1.0-beta.1",
-  "generatedAt": "2026-07-14T09:27:51.587Z",
+  "generatedAt": "2026-07-14T10:47:16.053Z",
   "source": "audited working tree (private Git history excluded)",
   "files": [
     {
@@ -2116,8 +2116,8 @@
     },
     {
       "path": "src/components/CardGenerationUsageEstimate.test.tsx",
-      "bytes": 2725,
-      "sha256": "dce3f97534b01a0bf8eedb23b3f41971f82dbf64658f5c8e60a800fe1496d176"
+      "bytes": 2727,
+      "sha256": "83055faeeb09bc40e3b5f4c3119be03c801b6a0d18aaaaafd3b766559b328a2d"
     },
     {
       "path": "src/components/CardGenerationUsageEstimate.tsx",
@@ -2126,8 +2126,8 @@
     },
     {
       "path": "src/components/CardPreview.defaultSamples.test.tsx",
-      "bytes": 8115,
-      "sha256": "2f0b6074824ede17239646c361e6e9b49155d61d05b5967710078e98e14f4543"
+      "bytes": 8226,
+      "sha256": "7afdccb7c363eaa086f8dee836b23e0aaad1f4de36edfdf27465ede8dcc1b6ec"
     },
     {
       "path": "src/components/CardPreview.i18n.test.tsx",
@@ -2136,8 +2136,8 @@
     },
     {
       "path": "src/components/CardPreview.input.test.tsx",
-      "bytes": 20236,
-      "sha256": "e16df9cf6b23383e0ea5ebe61b9c6375f5f700a6e7e732177c5e66161cc6bbeb"
+      "bytes": 20347,
+      "sha256": "f9749aa27d2d872fd0b661fb08217687127886541ea838cfed5e4702bffec6c5"
     },
     {
       "path": "src/components/CardPreview.tsx",

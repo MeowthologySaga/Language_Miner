@@ -1,5 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
+import i18n from "../i18n";
 import { CardPreview } from "./CardPreview";
 import { MockProvider } from "../services/llm/mockProvider";
 import { createStudyCardFromGenerated } from "../shared/cardFactory";
@@ -8,6 +9,10 @@ import { createInitialSrs } from "../shared/srs";
 import type { StudyCard } from "../shared/types";
 
 describe("CardPreview input reading back", () => {
+  beforeEach(async () => {
+    await i18n.changeLanguage("ko");
+  });
+
   it("keeps input listening sentence on the back while front uses the original segment prompt", () => {
     const card: StudyCard = {
       id: "input-listening-card",

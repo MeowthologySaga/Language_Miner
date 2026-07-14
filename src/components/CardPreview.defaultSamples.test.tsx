@@ -1,9 +1,14 @@
 import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
+import i18n from "../i18n";
 import { CardPreview } from "./CardPreview";
 import { createDefaultSampleCards } from "../shared/defaultSampleCards";
 
 describe("CardPreview finalized default cards", () => {
+  beforeEach(async () => {
+    await i18n.changeLanguage("ko");
+  });
+
   it("bundles exactly three finalized cards for each deck", () => {
     const cards = createDefaultSampleCards("default", new Date("2026-07-12T00:00:00.000Z"));
 

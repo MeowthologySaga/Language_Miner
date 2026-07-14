@@ -1,10 +1,10 @@
 import { renderToStaticMarkup } from "react-dom/server";
-import { afterEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import i18n from "../i18n";
 import { CardGenerationUsageEstimate } from "./CardGenerationUsageEstimate";
 
 describe("CardGenerationUsageEstimate", () => {
-  afterEach(async () => {
+  beforeEach(async () => {
     await i18n.changeLanguage("ko");
   });
 
