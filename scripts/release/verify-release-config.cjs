@@ -453,6 +453,16 @@ if (
 ) {
   failures.push("release workflow must fail closed at a tag-bound verified draft and must never publish");
 }
+if (
+  releaseWorkflow.includes("releases/tags/$env:RELEASE_TAG") ||
+  !releaseWorkflow.includes("--paginate --slurp") ||
+  !releaseWorkflow.includes("releases?per_page=100") ||
+  !releaseWorkflow.includes("tag_name -ceq $env:RELEASE_TAG")
+) {
+  failures.push(
+    "release workflow must discover drafts through the paginated release list and exact tag matching"
+  );
+}
 for (const requiredPublisherBoundary of [
   '[Version]"2.93.0"',
   "Test-Path Env:GH_TOKEN",
@@ -482,6 +492,16 @@ if (
   releasePublisherSource.includes("--clobber")
 ) {
   failures.push("local release publisher must not read Git credentials or overwrite assets");
+}
+if (
+  releasePublisherSource.includes("releases/tags/$Tag") ||
+  !releasePublisherSource.includes("--paginate --slurp") ||
+  !releasePublisherSource.includes("releases?per_page=100") ||
+  !releasePublisherSource.includes("tag_name -ceq $Tag")
+) {
+  failures.push(
+    "local release publisher must discover drafts through the paginated release list and exact tag matching"
+  );
 }
 for (const workflowSource of [ciWorkflow, pagesWorkflow, releaseWorkflow]) {
   for (const match of workflowSource.matchAll(/uses:\s+(actions\/[A-Za-z0-9_.-]+)@([^\s#]+)/g)) {

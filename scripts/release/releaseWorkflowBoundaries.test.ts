@@ -85,6 +85,10 @@ describe("public release workflow boundaries", () => {
 
     expect(workflow).toContain("--draft");
     expect(workflow).toContain("if (-not $draftRelease.draft)");
+    expect(workflow).toContain("--paginate --slurp");
+    expect(workflow).toContain("releases?per_page=100");
+    expect(workflow).toContain("tag_name -ceq $env:RELEASE_TAG");
+    expect(workflow).not.toContain("releases/tags/$env:RELEASE_TAG");
     expect(workflow).toContain("$remoteAsset.digest -ne $expectedDigest");
     expect(workflow).toContain("Get-RemoteTagCommit");
     expect(workflow).toContain("release-build-metadata.json");
@@ -103,6 +107,10 @@ describe("public release workflow boundaries", () => {
     expect(publisher).toContain('rev-parse --verify "${Tag}^{commit}"');
     expect(publisher).toContain("repos/$repository/immutable-releases");
     expect(publisher).toContain("Get-RemoteTagCommit");
+    expect(publisher).toContain("--paginate --slurp");
+    expect(publisher).toContain("releases?per_page=100");
+    expect(publisher).toContain("tag_name -ceq $Tag");
+    expect(publisher).not.toContain("releases/tags/$Tag");
     expect(publisher).toContain("Assert-DraftAssets");
     expect(publisher).toContain("Assert-BuildProvenance");
     expect(publisher).toContain("attestation verify $localFile.FullName");

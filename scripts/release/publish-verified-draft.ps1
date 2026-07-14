@@ -155,7 +155,37 @@ function Assert-RemoteTag {
 }
 
 function Get-ReleaseByTag {
-  $release = Invoke-GitHubJson -Method GET -Endpoint "repos/$repository/releases/tags/$Tag"
+  $output = & $script:ghPath api `
+    --hostname github.com `
+    --method GET `
+    -H "Accept: application/vnd.github+json" `
+    -H "X-GitHub-Api-Version: $apiVersion" `
+    --paginate --slurp `
+    "repos/$repository/releases?per_page=100" 2>$null
+  if ($LASTEXITCODE -ne 0) {
+    throw "The GitHub release list could not be verified. No release was published."
+  }
+  try {
+    $pages = ($output | Out-String) | ConvertFrom-Json -ErrorAction Stop
+  } catch {
+    throw "GitHub returned invalid release-list JSON. No release was published."
+  }
+  $matches = @()
+  foreach ($page in @($pages)) {
+    foreach ($candidate in @($page)) {
+      if ([string]$candidate.tag_name -ceq $Tag) {
+        $matches += $candidate
+      }
+    }
+  }
+  if ($matches.Count -ne 1) {
+    throw "GitHub must return exactly one release for the requested tag. No release was published."
+  }
+  $releaseId = [long]$matches[0].id
+  if ($releaseId -le 0) {
+    throw "GitHub returned an invalid release identifier. No release was published."
+  }
+  $release = Invoke-GitHubJson -Method GET -Endpoint "repos/$repository/releases/$releaseId"
   if ([string]$release.tag_name -cne $Tag) {
     throw "GitHub returned a release for a different tag."
   }

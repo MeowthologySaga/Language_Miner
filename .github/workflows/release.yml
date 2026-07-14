@@ -48,23 +48,44 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          $response = & gh api --method GET `
-            -H "Accept: application/vnd.github+json" `
-            -H "X-GitHub-Api-Version: 2026-03-10" `
-            "repos/$env:RELEASE_REPOSITORY/releases/tags/$env:RELEASE_TAG" 2>&1
-          $status = $LASTEXITCODE
-          $responseText = $response | Out-String
-          if ($status -eq 0) {
-            $existingRelease = $responseText | ConvertFrom-Json
+          function Find-ReleaseByTag {
+            $response = & gh api --hostname github.com --method GET `
+              -H "Accept: application/vnd.github+json" `
+              -H "X-GitHub-Api-Version: 2026-03-10" `
+              --paginate --slurp `
+              "repos/$env:RELEASE_REPOSITORY/releases?per_page=100" 2>&1
+            if ($LASTEXITCODE -ne 0) {
+              throw "Could not list releases during the read-only preflight; failing closed."
+            }
+            try {
+              $pages = ($response | Out-String) | ConvertFrom-Json -ErrorAction Stop
+            } catch {
+              throw "GitHub returned invalid release-list JSON; failing closed."
+            }
+            $matches = @()
+            foreach ($page in @($pages)) {
+              foreach ($release in @($page)) {
+                if ([string]$release.tag_name -ceq $env:RELEASE_TAG) {
+                  $matches += $release
+                }
+              }
+            }
+            if ($matches.Count -gt 1) {
+              throw "GitHub returned more than one release for the exact tag; failing closed."
+            }
+            if ($matches.Count -eq 0) { return $null }
+            return $matches[0]
+          }
+
+          $existingRelease = Find-ReleaseByTag
+          if ($null -ne $existingRelease) {
             if (-not $existingRelease.draft) {
               $kind = if ($existingRelease.immutable) { "immutable" } else { "published" }
               throw "Refusing to modify the already-published $kind release $env:RELEASE_TAG. Publish a new version tag instead."
             }
             Write-Host "A draft release already exists and may be safely resumed after its assets are verified."
-          } elseif ($responseText -match "HTTP 404") {
-            Write-Host "No existing release was found for $env:RELEASE_TAG."
           } else {
-            throw "Could not determine whether the release already exists; failing closed. GitHub CLI response: $responseText"
+            Write-Host "No published release is visible to this read-only preflight token. A hidden draft, if any, will be re-checked by the write-scoped draft job."
           }
 
       - name: Set up Node.js
@@ -312,6 +333,35 @@ jobs:
             return ($json | ConvertFrom-Json)
           }
 
+          function Find-ReleaseByTag {
+            $response = & gh api --hostname github.com --method GET `
+              -H "Accept: application/vnd.github+json" `
+              -H "X-GitHub-Api-Version: 2026-03-10" `
+              --paginate --slurp `
+              "repos/$env:RELEASE_REPOSITORY/releases?per_page=100" 2>&1
+            if ($LASTEXITCODE -ne 0) {
+              throw "Could not list releases while preparing the draft; failing closed."
+            }
+            try {
+              $pages = ($response | Out-String) | ConvertFrom-Json -ErrorAction Stop
+            } catch {
+              throw "GitHub returned invalid release-list JSON; failing closed."
+            }
+            $matches = @()
+            foreach ($page in @($pages)) {
+              foreach ($release in @($page)) {
+                if ([string]$release.tag_name -ceq $env:RELEASE_TAG) {
+                  $matches += $release
+                }
+              }
+            }
+            if ($matches.Count -gt 1) {
+              throw "GitHub returned more than one release for the exact tag; failing closed."
+            }
+            if ($matches.Count -eq 0) { return $null }
+            return $matches[0]
+          }
+
           function Get-RemoteTagCommit {
             $tagRef = Invoke-GitHubJson "repos/$env:RELEASE_REPOSITORY/git/ref/tags/$env:RELEASE_TAG"
             $objectType = [string]$tagRef.object.type
@@ -352,15 +402,8 @@ jobs:
             throw "The remote release tag no longer points to the attested build commit."
           }
 
-          $releaseEndpoint = "repos/$env:RELEASE_REPOSITORY/releases/tags/$env:RELEASE_TAG"
-          $response = & gh api --method GET `
-            -H "Accept: application/vnd.github+json" `
-            -H "X-GitHub-Api-Version: 2026-03-10" `
-            $releaseEndpoint 2>&1
-          $status = $LASTEXITCODE
-          $responseText = $response | Out-String
-          if ($status -eq 0) {
-            $draftRelease = $responseText | ConvertFrom-Json
+          $draftRelease = Find-ReleaseByTag
+          if ($null -ne $draftRelease) {
             if (-not $draftRelease.draft) {
               throw "Refusing to modify an already-published release. Publish a new version tag instead."
             }
@@ -369,7 +412,7 @@ jobs:
               --title "Language Miner $env:RELEASE_TAG" `
               --notes-file "artifacts/release-notes.md"
             if ($LASTEXITCODE -ne 0) { throw "Could not refresh the draft release notes." }
-          } elseif ($responseText -match "HTTP 404") {
+          } else {
             & gh release create $env:RELEASE_TAG `
               --repo $env:RELEASE_REPOSITORY `
               --verify-tag `
@@ -377,14 +420,17 @@ jobs:
               --title "Language Miner $env:RELEASE_TAG" `
               --notes-file "artifacts/release-notes.md"
             if ($LASTEXITCODE -ne 0) { throw "Could not create the draft release." }
-          } else {
-            throw "Could not determine whether the draft release exists; failing closed."
           }
 
-          $draftRelease = Invoke-GitHubJson $releaseEndpoint
-          if (-not $draftRelease.draft) {
+          $draftRelease = Find-ReleaseByTag
+          if ($null -eq $draftRelease -or -not $draftRelease.draft) {
             throw "Refusing to upload to a release that is no longer a draft."
           }
+          $releaseId = [long]$draftRelease.id
+          if ($releaseId -le 0) {
+            throw "The draft release does not have a valid numeric identifier."
+          }
+          $releaseEndpoint = "repos/$env:RELEASE_REPOSITORY/releases/$releaseId"
           $localAssets = @(Get-ChildItem -LiteralPath "artifacts/release" -File)
           if ($localAssets.Count -eq 0) {
             throw "No local release assets were found."
@@ -419,7 +465,9 @@ jobs:
           }
 
           $verifiedDraft = Invoke-GitHubJson $releaseEndpoint
-          if (-not $verifiedDraft.draft -or @($verifiedDraft.assets).Count -ne $localAssets.Count) {
+          if ([string]$verifiedDraft.tag_name -cne $env:RELEASE_TAG -or `
+              -not $verifiedDraft.draft -or `
+              @($verifiedDraft.assets).Count -ne $localAssets.Count) {
             throw "The release stopped being a complete draft before verification finished."
           }
           foreach ($localAsset in $localAssets) {
