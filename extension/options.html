@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="optionsTitle">Language Miner Web Capture settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow" data-i18n="extensionName">Language Miner Web Capture</p>
+      <h1 data-i18n="optionsHeading">Offline pending items</h1>
+      <p data-i18n="optionsDescription">
+        Captures wait here while the app is closed. They expire after 7 days, and all pending queues
+        together are limited to 5 MiB.
+      </p>
+      <section aria-live="polite" id="queue-status" class="status" data-i18n="optionsChecking">
+        Checking pending items…
+      </section>
+      <button id="refresh" type="button" data-i18n="optionsRefresh">Refresh</button>
+      <button id="clear" class="danger" type="button" data-i18n="optionsClearAll">
+        Delete all pending items
+      </button>
+      <p id="result" role="status" aria-live="polite"></p>
+    </main>
+    <dialog id="clear-dialog" aria-labelledby="clear-dialog-title" aria-describedby="clear-dialog-description">
+      <form method="dialog">
+        <h2 id="clear-dialog-title" data-i18n="optionsClearAll">Delete all pending items</h2>
+        <p id="clear-dialog-description" data-i18n="optionsClearConfirm">
+          Delete every pending item from this extension?
+        </p>
+        <div class="dialog-actions">
+          <button value="cancel" type="submit" data-i18n="actionCancel">Cancel</button>
+          <button class="danger" value="confirm" type="submit" data-i18n="actionDelete">Delete</button>
+        </div>
+      </form>
+    </dialog>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

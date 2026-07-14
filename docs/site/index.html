@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="발견한 영어 문장을 카드로 만들고 읽기·듣기에서 말하기·영작으로 이어 주는 로컬 우선 Windows 학습 앱 Language Miner.">
+    <meta name="theme-color" content="#08111f">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <title>Language Miner — 외운 영어를 내가 쓸 수 있는 문장으로</title>
+    <link rel="stylesheet" href="assets/site.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Language Miner 홈">
+          <span class="brand-mark" aria-hidden="true">LM</span>
+          <span>Language Miner</span>
+        </a>
+        <nav class="site-nav" aria-label="주요 메뉴">
+          <a href="tutorial.html">화면 사용법</a>
+          <a href="#loop">학습 루프</a>
+          <a href="#play">PlayZone</a>
+          <a href="#safety">개인정보·안전</a>
+          <a href="#start">시작하기</a>
+          <a class="language-link" href="en/index.html" lang="en">English</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="page">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Windows 공개 베타 준비 중 · v0.1.0-beta.1</p>
+          <h1 id="hero-title">외운 영어를,<br>내가 쓸 수 있는 문장으로.</h1>
+          <p>책·웹·영상에서 발견한 표현을 문장 카드로 만들고, 읽기와 듣기에서 얻은 영어를 말하기·영작·캐릭터 대화로 다시 꺼내 보세요.</p>
+          <div class="hero-actions">
+            <a class="button" href="https://github.com/MeowthologySaga/Language_Miner/releases">출시 상태 확인</a>
+            <a class="button secondary" href="tutorial.html">10분 화면 따라 하기</a>
+          </div>
+          <p class="release-note">공개되면 설치판·포터블판·브라우저 확장·SHA-256·SBOM·전체 소스를 같은 Release에서 제공합니다. 미서명 베타이므로 설치 전 SmartScreen 안내를 확인하세요.</p>
+        </div>
+
+        <div class="demo-card" aria-label="한 문장이 학습과 사용으로 이어지는 예시">
+          <div class="demo-topline">
+            <span>오늘의 실제 문장</span>
+            <span>AI 연결 불필요</span>
+          </div>
+          <p class="demo-sentence" lang="en">I’m running a little late.</p>
+          <p class="demo-meaning">조금 늦을 것 같아요.</p>
+          <div class="demo-flow" aria-label="학습 단계">
+            <div class="demo-step active"><span>01</span><strong>발견</strong></div>
+            <div class="demo-step"><span>02</span><strong>카드</strong></div>
+            <div class="demo-step"><span>03</span><strong>복습</strong></div>
+            <div class="demo-step"><span>04</span><strong>대화</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="problem-title">
+        <div class="section-heading">
+          <div class="section-number">01 · THE GAP</div>
+          <div>
+            <h2 id="problem-title">뜻은 아는데, 필요한 순간에는 왜 말이 안 나올까요?</h2>
+            <p class="section-lead">단어를 알아보는 기억과 문장을 직접 꺼내는 기억은 다릅니다. Language Miner는 공부를 “봤다”에서 끝내지 않습니다.</p>
+          </div>
+        </div>
+        <div class="two-column">
+          <article class="panel">
+            <span class="panel-label">단어만 외울 때</span>
+            <h3>의미는 알아도 문장이 흩어집니다</h3>
+            <p>어떤 전치사와 동사가 자연스러운지, 실제 상황에서 어떤 말투를 쓰는지 함께 남지 않습니다.</p>
+          </article>
+          <article class="panel accent-blue">
+            <span class="panel-label">문장으로 외울 때</span>
+            <h3>어휘·문법·상황이 한 덩어리로 남습니다</h3>
+            <p>내가 발견한 실제 문장을 카드로 만들면 다음 대화에서 꺼낼 단위가 생깁니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="loop" class="section" aria-labelledby="balance-title">
+        <div class="section-heading">
+          <div class="section-number">02–03 · BALANCE</div>
+          <div>
+            <h2 id="balance-title">인풋으로 발견하고, 아웃풋으로 내 것으로.</h2>
+            <p class="section-lead">많이 읽고 듣는 것과 직접 말하고 쓰는 것을 같은 문장으로 연결합니다.</p>
+          </div>
+        </div>
+        <div class="two-column">
+          <article class="panel accent-blue">
+            <span class="panel-label">읽고 듣기 · Input</span>
+            <h3>자연스러운 영어를 알아보는 힘</h3>
+            <p>PDF, 웹, 듣기, 영상에서 내가 정말 쓰고 싶은 표현을 발견합니다. 읽기 카드와 듣기 카드로 형태와 소리에 익숙해집니다.</p>
+          </article>
+          <article class="panel accent-mint">
+            <span class="panel-label">말하고 쓰기 · Output</span>
+            <h3>필요한 순간에 꺼내는 힘</h3>
+            <p>말하기 카드, 영작, 캐릭터챗에서 뜻과 상황만 보고 영어를 만들어 봅니다. 틀린 부분은 다음 복습의 힌트가 됩니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="example-title">
+        <div class="section-heading">
+          <div class="section-number">04 · ONE SENTENCE</div>
+          <div>
+            <h2 id="example-title">한 문장이 실제 사용까지 가는 길</h2>
+            <p class="section-lead"><span lang="en">I’m running a little late.</span> 하나로 학습 루프를 끝까지 돌아봅니다.</p>
+          </div>
+        </div>
+        <div class="timeline">
+          <article><h3>발견</h3><p>읽던 글에서 약속에 늦을 때 쓰고 싶은 문장을 선택합니다.</p></article>
+          <article><h3>카드</h3><p>먼저 웹 리더에서 읽기 카드를 만듭니다. 필요하면 듣기 카드와 말하기 카드는 각각 듣기·Life Mining 화면에서 더합니다.</p></article>
+          <article><h3>복습</h3><p>영어를 알아본 뒤, “조금 늦을 것 같아요”를 보고 직접 문장을 말합니다.</p></article>
+          <article><h3>사용</h3><p>영작이나 약속 상황의 캐릭터 대화에서 같은 표현을 다시 씁니다.</p></article>
+        </div>
+      </section>
+
+      <section id="play" class="section" aria-labelledby="play-title">
+        <div class="section-heading">
+          <div class="section-number">05 · PRACTICE WORLDS</div>
+          <div>
+            <h2 id="play-title">카드 밖에서도 영어를 쓰고 싶게 만드는 공간</h2>
+            <p class="section-lead">캐릭터챗은 상황을 만들고, PlayZone은 학습과 놀이를 연결합니다.</p>
+          </div>
+        </div>
+        <div class="two-column">
+          <article class="panel">
+            <span class="panel-label">Character Chat</span>
+            <h3>대화 상대와 상황을 골라 연습</h3>
+            <p>배운 표현을 캐릭터와의 약속, 여행, 일상 대화 안에서 사용합니다. 클라우드 AI를 연결하면 전송할 캐릭터 설정과 최근 대화 범위를 먼저 확인합니다.</p>
+          </article>
+          <article class="panel">
+            <span class="panel-label">PlayZone</span>
+            <h3>학습 보상과 표현을 사용하는 UGC 게임</h3>
+            <p>어비스 서머너, 드릴하트 디펜스, 고양이 오디세이 같은 공식 게임과 사용자 게임팩을 기술 검사 후 격리해 실행합니다. 실행 가능한 상태의 팩만 열리고 네트워크는 기본 거부됩니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="start" class="section" aria-labelledby="start-title">
+        <div class="section-heading">
+          <div class="section-number">06 · FIRST START</div>
+          <div>
+            <h2 id="start-title">AI 설정 없이 따라 하는 10분 시작 순서</h2>
+            <p class="section-lead">새 설치의 기본값은 AI 미연결입니다. 카드와 복습을 먼저 경험하고 필요한 기능만 나중에 연결하세요.</p>
+          </div>
+        </div>
+        <ol class="steps">
+          <li><div><strong>웹 리더의 내장 연습 글을 엽니다.</strong><br>외부 접속 없이 고정 예문으로 실제 카드 저장을 연습합니다.</div></li>
+          <li><div><strong>읽기 카드의 원문·뜻·문맥을 확인합니다.</strong><br>내가 기억할 상황에 맞게 직접 고칩니다.</div></li>
+          <li><div><strong>저장하고 첫 복습을 합니다.</strong><br><span>답 보기</span>를 누르기 전에 먼저 떠올립니다.</div></li>
+          <li><div><strong>짧은 영작에서 다시 꺼냅니다.</strong><br>같은 뜻을 보고 영어 문장을 직접 입력합니다.</div></li>
+          <li><div><strong>필요할 때만 AI를 연결합니다.</strong><br>로컬 Ollama를 먼저 살펴보고, 클라우드는 전송 내용과 비용을 확인합니다.</div></li>
+        </ol>
+      </section>
+
+      <section id="safety" class="section" aria-labelledby="safety-title">
+        <div class="section-heading">
+          <div class="section-number">07 · YOUR BOUNDARY</div>
+          <div>
+            <h2 id="safety-title">내 데이터, 내 키, 내가 고르는 연결.</h2>
+            <p class="section-lead">“로컬”과 “무료”를 막연하게 말하지 않고 실제 저장·전송·비용 경계를 보여 줍니다.</p>
+          </div>
+        </div>
+        <ul class="safety-list">
+          <li><strong>로컬 저장</strong>카드와 대화는 기본적으로 이 PC에 저장됩니다. API 키 외 학습 데이터는 평문일 수 있습니다.</li>
+          <li><strong>AI 미연결 기본값</strong>동의 전 Gemini·Google AI 요청은 없습니다. loopback Ollama만 로컬로 표시합니다.</li>
+          <li><strong>BYOK 클라우드</strong>본인의 키를 쓰고, 공급자·전송 내용·호출 수·비용 범위를 작업 전에 확인합니다.</li>
+          <li><strong>비용 가드의 한계</strong>앱 수치는 로컬 예상 사용량 가드입니다. 공급자 청구를 막으려면 quota와 예산 알림이 필요합니다.</li>
+          <li><strong>UGC 실행 제한</strong>해시·권한·CSP·압축 구조를 검사하고 준비 상태가 아닌 팩은 실행하지 않습니다.</li>
+          <li><strong>중앙 추적 없음</strong>개발자 소유 광고, 분석, 텔레메트리 서버를 사용하지 않습니다.</li>
+        </ul>
+        <ul class="link-list" aria-label="안전 문서">
+          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/privacy.ko.md">개인정보 안내</a></li>
+          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/ugc-policy.ko.md">UGC 정책</a></li>
+          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/SECURITY.md">보안 신고</a></li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="download-title">
+        <div class="callout">
+          <div>
+            <p class="eyebrow">08 · DOWNLOAD & COMMUNITY</p>
+            <h2 id="download-title">첫 공개 베타를 준비하고 있습니다.</h2>
+            <p>공개 시 Windows 10/11 x64 설치판과 포터블판, SHA-256, SBOM, 전체 소스를 같은 GitHub Release에서 제공합니다. 공식 Discord 초대 링크도 공개되면 Release와 README에 함께 게시합니다.</p>
+          </div>
+          <div class="hero-actions">
+            <span class="button disabled" aria-disabled="true">v0.1.0-beta.1 준비 중</span>
+            <a class="button secondary" href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/install-windows.ko.md">설치·SmartScreen 안내</a>
+          </div>
+        </div>
+        <ul class="link-list" aria-label="전체 문서">
+          <li><a href="tutorial.html">스크린샷 사용법</a></li>
+          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/complete-user-manual.ko.md">완전 사용 설명서</a></li>
+          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/user-guide.ko.md">짧은 기능 참조</a></li>
+          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/creator-guide.ko.md">UGC 제작자 가이드</a></li>
+          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/project-background.ko.md">프로젝트 배경</a></li>
+          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/LICENSE">GPL-3.0 라이선스</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>Language Miner · Local-first sentence learning</p>
+        <p>정적 GitHub Pages · 서버·DB·공용 API 키 없음</p>
+      </div>
+    </footer>
+  </body>
+</html>

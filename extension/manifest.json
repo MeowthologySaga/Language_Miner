@@ -1,0 +1,76 @@
+{
+  "manifest_version": 3,
+  "default_locale": "en",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoavpYqceusTOa2l5dsRsEiTIZk6HyIXiu7mX7MK6l7q4jNvvV8cBcfQym/49d6GrFvdvTWK/SZPHS/iD9I7Lxxh8QOSMRMbfqfLcJl98aMMRYMTIpgxKagO4iVUAOj4XPhIg2RoStN1arFN6uJbIYCIyUr96hJlo0xTp8FYIstikw9rfkNyipF5JJZdH11Cr9f2B6YBbuHZ7iLOidt3qeXM2rkSqT+MNbaMVotAtxo84linoOTlo18AX1tQ+5+NU12Y/el4KBXVLTtBifWCQlVE2XHnGW138PDWhZcOt1aoNQ4eoTQy8d6MeA1wTMBuiqrvNBQeEaK2CG7RNP+P+SQIDAQAB",
+  "name": "__MSG_extensionName__",
+  "short_name": "__MSG_extensionShortName__",
+  "version": "0.2.0",
+  "description": "__MSG_extensionDescription__",
+  "permissions": ["storage", "alarms", "scripting"],
+  "host_permissions": [
+    "http://127.0.0.1:17345/*",
+    "https://discord.com/*",
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*",
+    "https://claude.ai/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["https://discord.com/*"],
+      "js": [
+        "src/shared/i18n.js",
+        "src/shared/maskSensitiveText.js",
+        "src/shared/filterLifeLogText.js",
+        "src/content/adapters/discord.js",
+        "src/content/index.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
+      "js": [
+        "src/shared/i18n.js",
+        "src/shared/maskSensitiveText.js",
+        "src/shared/filterLifeLogText.js",
+        "src/content/adapters/chatgpt.js",
+        "src/content/index.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": [
+        "src/shared/i18n.js",
+        "src/shared/maskSensitiveText.js",
+        "src/shared/filterLifeLogText.js",
+        "src/content/adapters/claude.js",
+        "src/content/index.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "exclude_matches": ["http://127.0.0.1/*", "http://localhost/*"],
+      "js": [
+        "src/shared/i18n.js",
+        "src/shared/geminiPricing.js",
+        "src/content/selectionCards.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.youtube.com/*", "https://m.youtube.com/*"],
+      "js": [
+        "src/shared/i18n.js",
+        "src/content/youtubeDualSubtitles.js",
+        "src/content/youtubeWatchCollector.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+LicenseRef-Meowthology-Official-Builtin
+
+Copyright (c) 2026 MeowthologySaga contributors, to the extent copyright or
+other transferable rights exist in the covered media.
+
+Permission is granted, without fee, to copy and redistribute the covered
+images, audio, video, names, and other media without modification when they
+are included as part of:
+
+1. a source or binary distribution of Language Miner; or
+2. the corresponding official Language Miner game pack identified by the
+   asset notice that accompanies the media.
+
+The following conditions apply:
+
+- this license text and the pack's asset notice must remain with the files;
+- the media may not be sold, relicensed, or redistributed as a standalone
+  stock-asset collection;
+- no trademark right, endorsement, or right to use the MeowthologySaga or
+  Language Miner names outside identification of the covered work is granted;
+- modification and derivative-media rights are not granted unless a separate
+  notice expressly permits them; and
+- third-party inputs, if any, remain governed by their own terms.
+
+Application and game code identified by the accompanying notice is not
+covered by this LicenseRef and remains under GPL-3.0-only. AI-service output
+may not qualify for copyright protection in every jurisdiction; this notice
+does not create rights that do not otherwise exist.

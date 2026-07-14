@@ -1,0 +1,42 @@
+name: Feature request
+description: Propose a user problem to solve after checking the release scope.
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        New learning features are frozen until the first public beta. Proposals are still welcome, but release safety, accessibility, backup, localization, and UGC security take priority.
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem
+      description: What is difficult today, and who encounters it?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe the result without prescribing a specific implementation if possible.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Current workaround or alternatives
+  - type: textarea
+    id: safety
+    attributes:
+      label: Privacy, cost, accessibility, or UGC impact
+      description: Note any external data transfer, API cost, new permission, keyboard interaction, or content-safety concern.
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and the post-beta candidates in README.
+          required: true
+        - label: I did not include private study data or credentials.
+          required: true

@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Language Miner를 처음 실행해 문장카드 저장, 첫 복습, 영작, 캐릭터챗, PlayZone, AI 연결과 백업까지 화면 순서대로 따라 하는 한국어 가이드.">
+    <meta name="theme-color" content="#08111f">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <title>Language Miner 화면 따라 하기 — 첫 문장부터 PlayZone까지</title>
+    <link rel="stylesheet" href="assets/site.css">
+  </head>
+  <body class="guide-page">
+    <a class="skip-link" href="#guide-main">본문으로 건너뛰기</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Language Miner 소개 페이지">
+          <span class="brand-mark" aria-hidden="true">LM</span>
+          <span>Language Miner</span>
+        </a>
+        <nav class="site-nav" aria-label="가이드 메뉴">
+          <a href="index.html">소개</a>
+          <a href="#first-loop">시작 순서</a>
+          <a href="#playzone">PlayZone</a>
+          <a href="#ai">AI</a>
+          <a href="#data">데이터</a>
+          <a class="language-link" href="en/tutorial.html" lang="en">English</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="guide-main" class="page guide-shell">
+      <section class="guide-hero" aria-labelledby="guide-title">
+        <p class="eyebrow">처음부터 차근차근 · 화면 사용법</p>
+        <h1 id="guide-title">한 문장을 발견해서<br>내가 직접 쓰기까지</h1>
+        <p class="guide-lead">이 가이드는 <span lang="en">I’m running a little late.</span> 한 문장으로 카드 저장, 첫 복습, 영작을 끝내는 길을 먼저 보여 줍니다. AI 연결, 듣기 카드, 캐릭터챗과 PlayZone은 그다음에 필요한 만큼만 따라 하세요.</p>
+        <div class="hero-actions">
+          <a class="button" href="#first-loop">첫 학습 루프 시작</a>
+          <a class="button secondary" href="https://github.com/MeowthologySaga/Language_Miner/releases">공식 다운로드 확인</a>
+        </div>
+        <div class="sentence-focus" aria-label="튜토리얼에서 계속 사용할 문장">
+          <span>이 가이드의 한 문장</span>
+          <strong lang="en">I’m running a little late.</strong>
+          <p>조금 늦을 것 같아요.</p>
+        </div>
+      </section>
+
+      <div class="guide-layout">
+        <aside class="guide-toc" aria-label="이 페이지 목차">
+          <strong>화면 순서</strong>
+          <ol>
+            <li><a href="#install">설치와 첫 실행</a></li>
+            <li><a href="#first-loop">첫 학습 루프</a></li>
+            <li><a href="#card-types">카드 세 종류</a></li>
+            <li><a href="#more-input">내 자료로 학습</a></li>
+            <li><a href="#playzone">PlayZone</a></li>
+            <li><a href="#ai">AI 연결</a></li>
+            <li><a href="#data">백업과 삭제</a></li>
+            <li><a href="#extension">브라우저 확장</a></li>
+            <li><a href="#troubleshooting">문제 해결</a></li>
+          </ol>
+        </aside>
+
+        <div class="guide-content">
+          <section id="install" class="guide-section" aria-labelledby="install-title">
+            <p class="section-number">01 · 설치와 첫 실행</p>
+            <h2 id="install-title">처음에는 언어만 정하고, AI는 건너뛰어도 됩니다.</h2>
+            <ol class="instruction-list">
+              <li><a href="https://github.com/MeowthologySaga/Language_Miner/releases">공식 GitHub Release</a>에서 설치판 또는 포터블판과 같은 버전의 SHA-256 파일을 받습니다.</li>
+              <li>계속 사용할 PC라면 설치판을, 설치 과정 없이 시험하려면 포터블판을 고릅니다. 포터블판도 학습 데이터는 Windows 사용자 데이터 위치에 저장할 수 있습니다.</li>
+              <li>첫 실행 화면에서 <b>앱 언어: 한국어</b>, <b>모국어: 한국어</b>, <b>학습 언어: English</b>를 고르고 <span class="ui-label">다음</span>을 누릅니다.</li>
+              <li>문장 카드와 인풋·아웃풋 안내를 읽습니다. 마지막 AI 화면에서는 <span class="ui-label">앱 둘러보기</span>를 선택합니다.</li>
+            </ol>
+            <div class="note"><strong>왜 언어가 세 개인가요?</strong> 앱 언어는 버튼과 메뉴, 모국어는 뜻과 설명, 학습 언어는 카드와 연습에 사용할 언어입니다. 설정에서 나중에 바꿀 수 있습니다.</div>
+            <figure class="shot-slot" data-shot="01" data-file="assets/app-images/ko/01-onboarding-language.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/01-onboarding-language.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/01-onboarding-language.webp" alt="첫 실행 화면에서 앱 언어 한국어, 모국어 한국어, 학습 언어 English가 선택된 모습" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+              <figcaption><b>그림 1.</b> 한국어로 영어를 공부할 때의 첫 실행 설정. <span class="ui-label">다음</span>을 눌러 계속합니다.</figcaption>
+            </figure>
+          </section>
+
+          <section class="guide-section" aria-labelledby="why-title">
+            <p class="section-number">02 · 문장으로 기억하기</p>
+            <h2 id="why-title">단어 뜻이 아니라, 실제로 꺼낼 한 덩어리를 남깁니다.</h2>
+            <div class="compare-grid">
+              <article><span class="panel-label">단어만 외우기</span><h3><span lang="en">late</span> = 늦은</h3><p>뜻은 알지만 어떤 동사와 말투로 친구에게 알려야 할지는 남지 않을 수 있습니다.</p></article>
+              <article><span class="panel-label">문장으로 기억하기</span><h3 lang="en">I’m running a little late.</h3><p><span lang="en">run late</span>라는 표현, 진행 중인 상황과 자연스러운 말투를 함께 기억합니다.</p></article>
+            </div>
+            <p>읽기와 듣기는 자연스러운 영어를 <b>알아보는 힘</b>을 만들고, 말하기와 영작은 뜻과 상황에서 영어를 <b>직접 꺼내는 힘</b>을 만듭니다. 같은 문장을 양쪽에서 연습하면 “본 적 있는 표현”이 “내가 쓸 수 있는 표현”으로 이어집니다.</p>
+          </section>
+
+          <section id="first-loop" class="guide-section" aria-labelledby="loop-title">
+            <p class="section-number">03 · 첫 학습 루프</p>
+            <h2 id="loop-title">문장카드 → 카드 담기 → 복습 → 영작</h2>
+            <p>왼쪽 메뉴에서 아래 네 곳만 기억하면 첫 학습 루프를 끝낼 수 있습니다.</p>
+            <p class="ui-path"><b>읽고 듣기 · Input</b> → <b>웹 리더</b> → <b>복습</b> → <b>말하고 쓰기 · Output</b> → <b>영작 훈련</b></p>
+
+            <div class="note"><strong>조작만 먼저 익히고 싶다면</strong> <b>관리 → 튜토리얼 → 읽기 카드 → 웹 리더</b>의 샌드박스를 사용하세요. 튜토리얼 진행률만 기록되고 실제 카드 목록은 바뀌지 않습니다.</div>
+
+            <h3>1) 웹 리더에서 문장 발견하기</h3>
+            <ol class="instruction-list">
+              <li><b>읽고 듣기 · Input → 웹 리더</b>를 엽니다.</li>
+              <li>홈의 <b>Language Miner 연습 글</b>을 엽니다. 앱에 내장된 글이라 외부 웹사이트에 접속하지 않습니다.</li>
+              <li><span lang="en">running a little late</span>를 드래그하고 선택 도구의 <span class="ui-label">문장카드</span>를 누릅니다.</li>
+            </ol>
+            <figure class="shot-slot" data-shot="06" data-file="assets/app-images/ko/06-web-reader-select.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/06-web-reader-select.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/06-web-reader-select.webp" alt="웹 리더에서 running a little late가 선택되고 문장카드 버튼이 열린 모습" width="1000" height="704" loading="lazy" decoding="async">
+              </a>
+              <figcaption><b>그림 2.</b> 원문을 읽던 자리에서 표현을 선택하고 <span class="ui-label">문장카드</span>를 누릅니다.</figcaption>
+            </figure>
+
+            <h3>2) 읽기 카드 확인하고 담기</h3>
+            <p>미리보기에서 원문, 자연스러운 뜻, 선택 표현과 가까운 문맥을 확인합니다. 자동으로 채워진 내용도 직접 고칠 수 있습니다. 사람 이름, 연락처, 업무 내용처럼 남기고 싶지 않은 정보는 지운 뒤 <span class="ui-label">카드 담기</span>를 누르세요.</p>
+            <figure class="shot-slot" data-shot="07" data-file="assets/app-images/ko/07-reading-card-preview.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/07-reading-card-preview.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/07-reading-card-preview.webp" alt="읽기 카드 미리보기에 I’m running a little late 문장, 조금 늦을 것 같아요 뜻, 문맥과 카드 담기 버튼이 보이는 모습" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+              <figcaption><b>그림 3.</b> 내 의도에 맞게 내용을 고친 뒤 <span class="ui-label">카드 담기</span>를 누릅니다.</figcaption>
+            </figure>
+            <div class="note"><strong>기본 샘플과 같은 문장입니다.</strong> 새 프로필에 같은 문장의 샘플 카드가 있을 수 있어, 연습 글에서 저장하면 유사한 카드가 둘 보일 수 있습니다. 흐름을 확인한 뒤 필요 없는 하나를 숨기거나 삭제하세요.</div>
+
+            <h3>3) 첫 복습에서 먼저 떠올리기</h3>
+            <ol class="instruction-list">
+              <li><b>복습</b>을 열고 읽기 카드 덱의 <span class="ui-label">복습 시작</span>을 누릅니다.</li>
+              <li>앞면을 보고 뜻과 상황을 먼저 떠올립니다.</li>
+              <li><span class="ui-label">답 보기</span>를 누른 뒤 실제 기억 상태에 맞게 <span class="ui-label">다시</span>, <span class="ui-label">어려움</span>, <span class="ui-label">좋음</span>, <span class="ui-label">쉬움</span> 중 하나를 고릅니다.</li>
+            </ol>
+            <div class="note"><strong>평가는 점수가 아닙니다.</strong> 다음에 언제 다시 볼지 정하는 신호입니다. 답을 보고 나서 기억났다면 낮은 평가가 더 도움이 될 수 있습니다.</div>
+            <div class="shot-pair">
+              <figure class="shot-slot compact" data-shot="09" data-file="assets/app-images/ko/09-review-front.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/09-review-front.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/09-review-front.webp" alt="첫 복습 카드의 앞면과 답 보기 버튼이 보이는 모습" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+                <figcaption><b>그림 4.</b> <span class="ui-label">답 보기</span> 전의 회상 단계.</figcaption>
+              </figure>
+              <figure class="shot-slot compact" data-shot="10" data-file="assets/app-images/ko/10-review-answer.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/10-review-answer.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/10-review-answer.webp" alt="첫 복습 카드의 정답과 다시, 어려움, 좋음, 쉬움 평가 버튼이 보이는 모습" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+                <figcaption><b>그림 5.</b> 정답 확인과 다음 간격 선택.</figcaption>
+              </figure>
+            </div>
+
+            <h3>4) 같은 뜻을 보고 영어로 직접 쓰기</h3>
+            <ol class="instruction-list">
+              <li><b>말하고 쓰기 · Output → 영작 훈련</b>을 엽니다.</li>
+              <li>“친구에게 조금 늦는다고 알려 주세요”라는 상황을 보고 <span lang="en">I’m running a little late.</span>를 직접 입력합니다.</li>
+              <li><span class="ui-label">답 보기</span>로 내 답안과 추천 답안을 비교합니다. 다시 해 보고 싶으면 <span class="ui-label">다시 쓰기</span>를 누릅니다.</li>
+            </ol>
+            <figure class="shot-slot" data-shot="12" data-file="assets/app-images/ko/12-writing-result.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/12-writing-result.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/12-writing-result.webp" alt="영작 훈련에서 내 답안 I’m running a little late와 추천 답안, 표현 체크, 다시 쓰기 버튼이 보이는 모습" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+              <figcaption><b>그림 6.</b> 정답 하나를 맞히는 시험보다, 필요한 표현을 스스로 꺼냈는지 확인합니다.</figcaption>
+            </figure>
+
+            <h3>5) 캐릭터 대화에서 써 보기 — 선택</h3>
+            <p>캐릭터챗은 AI 연결이 필요한 선택 기능입니다. <b>말하고 쓰기 · Output → 캐릭터챗</b>에서 캐릭터와 <span class="ui-label">학습 언어로 실전 연습</span>을 고른 뒤 같은 문장을 보내 보세요. 클라우드 AI라면 시작 전에 캐릭터 설정, 최근 대화, 내 메시지와 카드 힌트가 외부로 전송될 수 있다는 안내를 확인합니다.</p>
+            <figure class="shot-slot" data-shot="14" data-file="assets/app-images/ko/14-character-chat.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/14-character-chat.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/14-character-chat.webp" alt="캐릭터챗에서 I’m running a little late를 보내고 캐릭터가 답한 학습 대화 화면" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+              <figcaption><b>그림 7.</b> 복습한 표현을 상황 속 대화로 옮깁니다. 민감한 실명·연락처·회사·의료·금융 정보는 입력하지 마세요.</figcaption>
+            </figure>
+          </section>
+
+          <section id="card-types" class="guide-section" aria-labelledby="cards-title">
+            <p class="section-number">04 · 카드 세 종류</p>
+            <h2 id="cards-title">막혔던 방식에 맞는 카드만 만들면 됩니다.</h2>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>카드</th><th>만드는 곳</th><th>앞면에서 하는 일</th></tr></thead>
+                <tbody>
+                  <tr><th>읽기 카드</th><td>웹 리더, 문서 리더기</td><td>영어를 보고 뜻과 구조 떠올리기</td></tr>
+                  <tr><th>듣기 카드</th><td>듣기 루프, 영상 리더</td><td>원본 소리나 구간을 듣고 문장 알아보기</td></tr>
+                  <tr><th>말하기 카드</th><td>라이프 마이닝</td><td>모국어 상황에서 학습 언어로 표현 꺼내기</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>세 종류를 한 화면에서 동시에 만드는 구조가 아닙니다. 글로 보면 아는데 소리에서 놓쳤다면 듣기 카드, 평소 자주 하는 말을 영어로 바로 꺼내고 싶다면 말하기 카드를 추가하세요.</p>
+          </section>
+
+          <section id="more-input" class="guide-section" aria-labelledby="input-title">
+            <p class="section-number">05 · 내 자료로 확장</p>
+            <h2 id="input-title">읽던 문서와 듣던 소리에서 바로 재료를 고릅니다.</h2>
+            <div class="feature-grid">
+              <article><h3>문서 리더기</h3><p>PDF나 지원 문서를 열고 표현을 선택해 읽기 카드로 만듭니다. 북마크와 최근 문서에서 다시 이어 봅니다.</p></article>
+              <article><h3>듣기 루프</h3><p>자막 구간을 반복하고 잘 안 들리는 소리 덩어리를 표시해 듣기 카드로 저장합니다.</p></article>
+              <article><h3>영상 리더</h3><p>자막 또는 전사 구간과 반복 범위를 확인한 뒤 현재 구간을 듣기 카드로 저장합니다.</p></article>
+              <article><h3>라이프 마이닝</h3><p>실제로 말하고 싶었던 모국어 표현을 말하기 카드 후보로 모읍니다. 자동 수집은 기본적으로 꺼져 있습니다.</p></article>
+            </div>
+            <figure class="shot-slot" data-shot="16" data-file="assets/app-images/ko/16-listening-loop.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/16-listening-loop.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/16-listening-loop.webp" alt="듣기 루프에서 I’m running a little late 자막 구간이 반복되고 현재 문장 저장 동작이 보이는 화면" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+              <figcaption><b>그림 8.</b> 글로 아는 문장을 실제 소리에서도 알아듣도록 구간을 반복합니다.</figcaption>
+            </figure>
+            <div class="warning"><strong>미디어 백업 범위</strong> 카드와 전사 기록은 백업할 수 있지만 원본 PDF·오디오·영상과 로컬 파일 경로는 포함되지 않습니다. 다른 PC에서 복원하면 원본을 다시 선택해야 할 수 있습니다.</div>
+          </section>
+
+          <section id="playzone" class="guide-section" aria-labelledby="playzone-title">
+            <p class="section-number">06 · PlayZone</p>
+            <h2 id="playzone-title">학습 뒤에 다시 돌아오고 싶게 만드는 놀이 공간입니다.</h2>
+            <p>캐릭터챗이 표현을 대화에서 시험하는 곳이라면, PlayZone은 학습으로 얻은 로컬 보상과 표현을 게임에 연결하는 곳입니다. 공식 게임도 앱 용량을 줄이기 위해 처음 사용할 때 내려받을 수 있습니다.</p>
+            <ol class="instruction-list">
+              <li><b>플레이존</b>에서 <b>어비스 서머너</b>, <b>드릴하트 디펜스</b>, <b>고양이 오디세이</b> 중 하나를 고릅니다.</li>
+              <li><span class="ui-label">설치하고 플레이</span>를 누릅니다.</li>
+              <li>다운로드 용량, 제작자, 버전, 원본, 라이선스, SHA-256과 저장·네트워크·다이아 권한을 확인합니다.</li>
+              <li><span class="ui-label">확인하고 다운로드</span>를 누릅니다. 기술 검사가 끝나 실행 가능한 상태가 되면 <span class="ui-label">플레이</span>를 누릅니다.</li>
+            </ol>
+            <div class="shot-pair">
+              <figure class="shot-slot compact" data-shot="18" data-file="assets/app-images/ko/18-playzone-official-library.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/18-playzone-official-library.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/18-playzone-official-library.webp" alt="PlayZone 공식 목록에 어비스 서머너, 드릴하트 디펜스, 고양이 오디세이 세 게임만 보이는 화면" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+                <figcaption><b>그림 9.</b> Language Miner 개발자 공식 게임 세 종류.</figcaption>
+              </figure>
+              <figure class="shot-slot compact" data-shot="19" data-file="assets/app-images/ko/19-playzone-install-confirm.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/19-playzone-install-confirm.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/19-playzone-install-confirm.webp" alt="공식 게임 설치 전 확인 창에 용량, SHA-256, 제작자, 라이선스와 권한이 보이는 화면" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+                <figcaption><b>그림 10.</b> 다운로드 전에 파일과 요청 권한을 확인합니다.</figcaption>
+              </figure>
+            </div>
+            <figure class="shot-slot" data-shot="21" data-file="assets/app-images/ko/21-playzone-gameplay.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/21-playzone-gameplay.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/21-playzone-gameplay.webp" alt="Language Miner PlayZone의 공식 게임이 실행되고 학습 보상과 게임 화면이 함께 보이는 모습" width="1264" height="781" loading="lazy" decoding="async">
+              </a>
+              <figcaption><b>그림 11.</b> 다이아는 학습 활동으로 얻고 게임 기능에 쓰는 로컬 보상이며, 현금이나 환전 가능한 자산이 아닙니다.</figcaption>
+            </figure>
+            <div class="warning"><strong>외부 UGC의 범위</strong> 앱은 파일 구조, 무결성과 요청 권한을 기술적으로 검사합니다. 콘텐츠의 적절성, 저작권이나 제작자 주장까지 보증하지는 않으므로 출처와 라이선스를 직접 확인하세요.</div>
+          </section>
+
+          <section id="ai" class="guide-section" aria-labelledby="ai-title">
+            <p class="section-number">07 · AI 연결</p>
+            <h2 id="ai-title">필요한 기능에만, 경계를 확인하고 연결합니다.</h2>
+            <p class="ui-path"><b>관리 → 설정 → AI · 음성 → 카드 생성</b></p>
+            <div class="feature-grid">
+              <article><h3>AI 미연결</h3><p>새 설치의 기본 상태입니다. 카드 관리와 복습 등 AI가 필요 없는 기능부터 사용할 수 있습니다.</p></article>
+              <article><h3>Ollama</h3><p>별도로 설치한 로컬 모델을 사용합니다. <span lang="en">localhost</span>, <span lang="en">127.0.0.1</span>, <span lang="en">::1</span> 같은 loopback 주소만 로컬로 표시됩니다.</p></article>
+              <article><h3>Gemini · Google</h3><p>본인의 키를 사용하는 BYOK 방식입니다. 공급자, 모델, 전송 내용, 예상 호출과 비용을 확인한 뒤 실행합니다.</p></article>
+              <article><h3>ChatGPT 웹</h3><p>프롬프트를 직접 복사하고 결과 JSON을 붙여넣는 수동 방식입니다. 앱은 로그인 쿠키나 ChatGPT 페이지를 읽지 않습니다.</p></article>
+            </div>
+            <div class="shot-pair">
+              <figure class="shot-slot compact" data-shot="22" data-file="assets/app-images/ko/22-ai-options.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/22-ai-options.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/22-ai-options.webp" alt="설정의 카드 생성에서 AI 미연결, Ollama, Gemini와 ChatGPT 웹 선택지가 보이는 화면" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+                <figcaption><b>그림 12.</b> 새 설치는 AI 미연결로 시작합니다.</figcaption>
+              </figure>
+              <figure class="shot-slot compact" data-shot="23" data-file="assets/app-images/ko/23-ollama-not-ready.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/23-ollama-not-ready.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/23-ollama-not-ready.webp" alt="Ollama가 꺼져 있거나 모델이 없어 실행 또는 준비 방법을 안내하는 연결 상태 화면" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+                <figcaption><b>그림 13.</b> 연결 실패가 앱 문제인지 Ollama 실행·모델 준비 문제인지 구분합니다.</figcaption>
+              </figure>
+            </div>
+            <figure class="shot-slot" data-shot="24" data-file="assets/app-images/ko/24-cloud-connection-consent.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/24-cloud-connection-consent.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/24-cloud-connection-consent.webp" alt="Gemini 첫 연결 동의 화면에 외부 전송 범위, API 키 저장 위치와 비용 경고가 보이는 모습" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+              <figcaption><b>그림 14.</b> 첫 연결 동의 화면입니다. 실제 클라우드 작업 전에는 전송 내용·호출·예상 비용을 확인하는 사전 확인이 따로 나타납니다.</figcaption>
+            </figure>
+          </section>
+
+          <section id="data" class="guide-section" aria-labelledby="data-title">
+            <p class="section-number">08 · 백업과 데이터 삭제</p>
+            <h2 id="data-title">백업에는 학습 기록을, 키와 원본 파일은 제외합니다.</h2>
+            <p class="ui-path"><b>관리 → 설정 → 동기화 · 데이터 → 전체 백업·복원</b></p>
+            <ul>
+              <li><b>포함:</b> 카드, 복습, 프로필, Life Mining, 듣기 기록, 캐릭터 대화, 루틴·미션, PlayZone 저장 등</li>
+              <li><b>제외:</b> API 키, 로그인 쿠키, 로컬 원본 경로, 로그, 캐시, 모델, 원본 PDF·오디오·영상</li>
+            </ul>
+            <p><span class="ui-label">백업 파일 만들기</span>로 <span class="file-label">.lembackup</span> 파일을 저장합니다. 복원할 때는 체크섬과 버전, 충돌을 확인한 뒤 <span class="ui-label">새 프로필로 복원</span>, <span class="ui-label">겹치지 않는 데이터 합치기</span>, <span class="ui-label">현재 데이터 교체</span> 중 결과를 미리 보고 고릅니다.</p>
+            <div class="shot-pair">
+              <figure class="shot-slot compact" data-shot="25" data-file="assets/app-images/ko/25-backup-create.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/25-backup-create.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/25-backup-create.webp" alt="전체 백업 만들기 화면에 포함 데이터와 제외 데이터, lembackup 저장 버튼이 보이는 모습" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+                <figcaption><b>그림 15.</b> 백업 파일에는 대화와 학습 기록이 평문으로 들어갈 수 있습니다.</figcaption>
+              </figure>
+              <figure class="shot-slot compact" data-shot="26" data-file="assets/app-images/ko/26-restore-preview.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/26-restore-preview.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/26-restore-preview.webp" alt="백업 복원 미리보기에서 새 프로필, 병합, 교체 결과와 충돌 안내가 보이는 모습" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+                <figcaption><b>그림 16.</b> 교체 복원 전에는 안전 백업이 만들어지는지 확인합니다.</figcaption>
+              </figure>
+            </div>
+            <figure class="shot-slot" data-shot="27" data-file="assets/app-images/ko/27-privacy-delete.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/27-privacy-delete.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/27-privacy-delete.webp" alt="개인정보 로컬 데이터 삭제 화면에 API 키, 웹 리더 쿠키, 확장 대기 큐, 캐시, 전체 데이터 삭제가 구분되어 보이는 모습" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+              <figcaption><b>그림 17.</b> 앱 제거만으로 사용자 데이터가 모두 지워진다고 가정하지 말고, PC를 넘기기 전 앱 안에서 전체 삭제를 먼저 실행하세요.</figcaption>
+            </figure>
+          </section>
+
+          <section id="extension" class="guide-section" aria-labelledby="extension-title">
+            <p class="section-number">09 · 브라우저 확장 베타</p>
+            <h2 id="extension-title">허용할 사이트와 문맥 범위를 먼저 줄입니다.</h2>
+            <p>첫 공개 베타의 확장은 Chrome Web Store가 아닌 선택형 수동 설치입니다. 공식 Release에서 <span class="file-label">Language-Miner-Extension-&lt;version&gt;.zip</span>과 <span class="file-label">SHA256SUMS.txt</span>를 받아 해시를 확인하고 압축을 푸세요. Chrome의 <span class="file-label">chrome://extensions</span>에서 개발자 모드를 켜고 <b>압축 해제된 확장 프로그램을 로드</b>한 뒤, <span class="file-label">manifest.json</span>이 바로 보이는 폴더를 선택합니다.</p>
+            <ul>
+              <li>허용 사이트와 본인 메시지만 수집할지 선택합니다.</li>
+              <li>앞뒤 문맥, 최대 길이와 마스킹 규칙을 정합니다.</li>
+              <li>텍스트를 드래그하는 것만으로는 전송하지 않습니다. 문장 카드 동작을 실행한 뒤에만 선택 표현과 가까운 문맥을 로컬 앱으로 보냅니다.</li>
+              <li>전달 실패 항목은 오프라인 대기 큐에서 확인하고 모두 지울 수 있습니다.</li>
+            </ul>
+            <figure class="shot-slot" data-shot="28" data-file="assets/app-images/ko/28-app-capture-privacy.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/28-app-capture-privacy.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/28-app-capture-privacy.webp" alt="앱 캡처 설정에 허용 사이트, 본인 메시지만 수집, 앞뒤 문맥, 최대 길이와 마스킹 범위가 보이는 화면" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+              <figcaption><b>그림 18.</b> 대기 항목 전체 삭제는 Chrome 확장 옵션에서 합니다. 필요하지 않다면 확장을 설치하지 않아도 됩니다.</figcaption>
+            </figure>
+            <figure class="shot-slot" data-shot="29" data-file="assets/app-images/ko/29-extension-queue-clear.webp">
+              <a class="tutorial-shot-link" href="assets/app-images/ko/29-extension-queue-clear.webp">
+                <img class="tutorial-shot" src="assets/app-images/ko/29-extension-queue-clear.webp" alt="Chrome 확장 옵션의 오프라인 대기 항목 수와 대기 항목 모두 삭제 버튼" width="1224" height="755" loading="lazy" decoding="async">
+              </a>
+              <figcaption><b>그림 19.</b> 빈 대기열에서는 삭제 버튼이 비활성화됩니다. 항목이 쌓였을 때 같은 위치에서 모두 삭제합니다.</figcaption>
+            </figure>
+          </section>
+
+          <section id="troubleshooting" class="guide-section" aria-labelledby="trouble-title">
+            <p class="section-number">10 · 막혔을 때</p>
+            <h2 id="trouble-title">오류 문구보다 먼저 상태와 다음 행동을 확인하세요.</h2>
+            <dl class="trouble-list">
+              <div><dt>Ollama가 연결되지 않음</dt><dd>Ollama 설치·실행 상태, 내려받은 모델명, loopback 주소를 확인한 뒤 <span class="ui-label">Ollama 실행 및 연결</span>을 다시 누릅니다.</dd></div>
+              <div><dt>게임팩을 계속 불러오는 중</dt><dd>공식 게임의 설치 상태와 실행 전 보안 리포트를 확인합니다. 기술 세부 정보는 펼쳤을 때만 복사해 이슈에 첨부하세요.</dd></div>
+              <div><dt>복원 뒤 미디어가 열리지 않음</dt><dd>원본 PDF·오디오·영상과 경로는 백업되지 않습니다. 원본 파일을 다시 선택하세요.</dd></div>
+              <div><dt>SmartScreen 경고</dt><dd>공식 Release와 SHA-256을 모두 확인하지 못했다면 실행하지 마세요.</dd></div>
+            </dl>
+            <div class="next-actions">
+              <div><h3>이제 무엇을 해 볼까요?</h3><p>읽기 카드 하나를 더 만들거나, 소리에서 놓친 문장을 듣기 카드로 저장해 보세요. 학습 재료는 많을 필요보다 실제로 다시 쓸 수 있는지가 중요합니다.</p></div>
+              <div class="hero-actions"><a class="button" href="https://github.com/MeowthologySaga/Language_Miner/releases">다운로드 확인</a><a class="button secondary" href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/complete-user-manual.ko.md">완전 사용 설명서</a></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner"><p>Language Miner · 한 문장을 발견해서 실제로 쓰기까지</p><p><a href="index.html">소개</a> · <a href="en/tutorial.html" lang="en">English guide</a></p></div>
+    </footer>
+  </body>
+</html>

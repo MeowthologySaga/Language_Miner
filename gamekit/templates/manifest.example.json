@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "contentType": "game_pack",
+  "id": "creator.example-game",
+  "lineageId": "1ecaf85e-e1b4-4ae5-8dea-bb547d8ed251",
+  "version": "1.0.0",
+  "minPlayZoneVersion": "0.1.0-beta.1",
+  "title": "Example Game",
+  "description": "A short-session action game.",
+  "releaseNotes": "First release.",
+  "creator": {
+    "name": "Example Creator"
+  },
+  "license": "MIT",
+  "sourceUrl": "https://github.com/example/example-game/releases/tag/v1.0.0",
+  "tags": ["action", "roguelite"],
+  "thumbnail": "assets/thumbnail.png",
+  "entry": {
+    "type": "html",
+    "path": "game/index.html"
+  },
+  "permissions": {
+    "walletSpend": true,
+    "storage": true,
+    "network": false,
+    "externalLinks": false,
+    "cardRead": false
+  },
+  "save": {
+    "schemaVersion": 1
+  },
+  "economy": {
+    "diamondActions": [
+      {
+        "id": "revive-once",
+        "amount": 30,
+        "reason": "Revive once",
+        "repeatable": true
+      }
+    ]
+  },
+  "integrity": {
+    "files": {
+      "README.md": "0000000000000000000000000000000000000000000000000000000000000000",
+      "security-report.md": "0000000000000000000000000000000000000000000000000000000000000000",
+      "game/index.html": "0000000000000000000000000000000000000000000000000000000000000000",
+      "game/main.js": "0000000000000000000000000000000000000000000000000000000000000000",
+      "game/styles.css": "0000000000000000000000000000000000000000000000000000000000000000",
+      "game/host-adapter.js": "0000000000000000000000000000000000000000000000000000000000000000",
+      "game/mock-host.js": "0000000000000000000000000000000000000000000000000000000000000000",
+      "assets/thumbnail.png": "0000000000000000000000000000000000000000000000000000000000000000",
+      "assets/icon.png": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  }
+}

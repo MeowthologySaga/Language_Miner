@@ -1,0 +1,139 @@
+{
+  "name": "language-miner",
+  "version": "0.1.0-beta.1",
+  "private": true,
+  "author": "Language Miner Contributors",
+  "license": "GPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MeowthologySaga/Language_Miner.git"
+  },
+  "homepage": "https://meowthologysaga.github.io/Language_Miner/",
+  "bugs": {
+    "url": "https://github.com/MeowthologySaga/Language_Miner/issues"
+  },
+  "description": "Local-first language mining desktop app built with Electron, React, TypeScript, and SQLite.",
+  "main": "dist-electron/electron/main.js",
+  "scripts": {
+    "predev": "node scripts/release/package-gamekit.cjs",
+    "dev": "concurrently -k \"vite --host 127.0.0.1\" \"npm:dev:electron\"",
+    "dev:electron": "wait-on http://127.0.0.1:5173 && tsc -p electron/tsconfig.json && node scripts/generate-tray-icon.cjs && node scripts/copy-electron-assets.cjs && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 electron dist-electron/electron/main.js",
+    "prebuild": "node scripts/release/package-gamekit.cjs",
+    "build": "node scripts/clean-dist.cjs && tsc -p electron/tsconfig.json && node scripts/generate-tray-icon.cjs && node scripts/copy-electron-assets.cjs && tsc -b tsconfig.json && vite build",
+    "dist": "npm run dist:installer",
+    "dist:installer": "npm run build && electron-builder --win nsis --x64",
+    "dist:portable": "npm run build && electron-builder --win portable --x64",
+    "dist:windows": "npm run build && electron-builder --win nsis --x64 --publish never && electron-builder --win portable --x64 --publish never",
+    "pack": "npm run build && electron-builder --dir --x64",
+    "preview": "vite preview --host 127.0.0.1",
+    "qa:book-maker": "node scripts/qa-book-maker-electron.cjs",
+    "qa:app-smoke": "node scripts/qa-app-smoke-electron.cjs",
+    "qa:docs-screenshots": "node scripts/qa-docs-screenshots-electron.cjs",
+    "qa:manual-screenshots": "node scripts/qa-manual-screenshots-electron.cjs",
+    "qa:extension-options-screenshots": "node scripts/qa-extension-options-screenshots.cjs",
+    "qa:bridge-smoke": "node scripts/qa-life-miner-bridge-electron.cjs",
+    "typecheck": "tsc -p electron/tsconfig.json --noEmit && tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.node.json --noEmit",
+    "test": "vitest run",
+    "guard:client-secrets": "node scripts/client-secret-guard.cjs",
+    "guard:client-secrets:self-test": "node scripts/client-secret-guard.cjs --self-test",
+    "audit:public": "node scripts/release/audit-public-tree.cjs",
+    "audit:history": "node scripts/release/audit-git-history.cjs",
+    "audit:artifacts": "node scripts/release/scan-build-artifacts.cjs",
+    "compliance": "node scripts/release/generate-compliance.cjs",
+    "extension:package": "node scripts/release/package-extension.cjs",
+    "gamekit:package": "node scripts/release/package-gamekit.cjs",
+    "games:package-official": "node scripts/release/package-official-games.cjs",
+    "games:hydrate-official": "node scripts/release/hydrate-official-games.cjs",
+    "games:integrity": "node scripts/release/sync-bundled-game-integrity.cjs",
+    "games:integrity:check": "node scripts/release/sync-bundled-game-integrity.cjs --check",
+    "games:images:check": "node scripts/release/optimize-bundled-game-images.cjs",
+    "pages:validate": "node scripts/release/validate-pages.cjs docs/site",
+    "release:verify-tag": "node scripts/release/verify-release-tag.cjs",
+    "release:verify-config": "node scripts/release/verify-release-config.cjs",
+    "release:collect": "node scripts/release/collect-release-artifacts.cjs",
+    "release:checksums": "node scripts/release/write-checksums.cjs artifacts/release",
+    "release:notes": "node scripts/release/write-release-notes.cjs",
+    "release:stage-public": "node scripts/release/prepare-public-source.cjs"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.2.0",
+    "i18next": "^26.3.6",
+    "lucide-react": "^0.468.0",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^4.10.38",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^17.0.9",
+    "sql.js": "^1.12.0"
+  },
+  "devDependencies": {
+    "adm-zip": "^0.5.17",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@types/sql.js": "^1.4.9",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^43.1.0",
+    "electron-builder": "^26.15.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7",
+    "vitest": "^4.1.10",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "io.github.meowthologysaga.languageminer",
+    "productName": "Language Miner",
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/sql.js/dist/sql-wasm.wasm"
+    ],
+    "npmRebuild": false,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "!node_modules/**/.claude/**",
+      "!node_modules/**/.devcontainer/**",
+      "!node_modules/**/.github/**",
+      "!node_modules/**/.idea/**",
+      "!node_modules/**/.vscode/**",
+      "!node_modules/**/{__tests__,doc,docs,example,examples,test,tests}/**",
+      "!node_modules/**/*.{d.ts,md,markdown,map,ts,tsx}",
+      "!node_modules/**/onnxruntime-node/bin/**/darwin/**",
+      "!node_modules/**/onnxruntime-node/bin/**/linux/**",
+      "!node_modules/**/onnxruntime-node/bin/**/win32/arm64/**",
+      "!node_modules/sql.js/dist/*debug*",
+      "!node_modules/sql.js/dist/sql-asm*",
+      "!node_modules/sql.js/dist/worker.*",
+      "!node_modules/sql.js/dist/*browser*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "electron/assets/tray-mole-miner.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "artifactName": "${productName} Setup ${version}-${arch}.${ext}",
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Language Miner"
+    },
+    "portable": {
+      "artifactName": "${productName} Portable ${version}-${arch}.${ext}"
+    }
+  }
+}

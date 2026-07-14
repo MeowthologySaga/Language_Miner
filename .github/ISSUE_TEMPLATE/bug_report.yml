@@ -1,0 +1,68 @@
+name: Bug report
+description: Report a reproducible Language Miner problem without private data.
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not post API keys, tokens, personal conversations, local file paths, databases, or security vulnerabilities. Report security and privacy issues through the private link in SECURITY.md.
+  - type: input
+    id: version
+    attributes:
+      label: Language Miner version
+      description: Use the version shown in Settings or the GitHub Release tag.
+      placeholder: v0.1.0-beta.1
+    validations:
+      required: true
+  - type: dropdown
+    id: install
+    attributes:
+      label: Installation type
+      options:
+        - NSIS installer
+        - Portable build
+        - Development source checkout
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version and display scale
+      placeholder: Windows 11 24H2, 125%
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the problem and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Open …
+        2. Select …
+        3. Observe …
+    validations:
+      required: true
+  - type: textarea
+    id: safe_details
+    attributes:
+      label: Safe additional details
+      description: You may attach a redacted screenshot or synthetic fixture. Do not attach a user database or raw log.
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues.
+          required: true
+        - label: I removed keys, tokens, personal text, account details, and local file paths.
+          required: true
+        - label: This is not a security or privacy vulnerability.
+          required: true

@@ -1,0 +1,60 @@
+name: UGC compatibility
+description: Report a character or game pack that the validator rejects or runs incorrectly.
+title: "[UGC] "
+labels:
+  - ugc
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not upload a pack that contains copyrighted material you cannot redistribute, adult content, secrets, exploit code, or another person’s data. Security bypasses belong in a private vulnerability report.
+  - type: dropdown
+    id: content_type
+    attributes:
+      label: Content type
+      options:
+        - Character pack
+        - Game Pack
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Language Miner version
+      placeholder: v0.1.0-beta.1
+    validations:
+      required: true
+  - type: input
+    id: pack_version
+    attributes:
+      label: Pack id and version
+      placeholder: creator.example-pack 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Validator status and report codes
+      description: Copy only non-sensitive status and issue codes. Remove full paths and user data.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Public source URL
+      description: Prefer a GitHub Release. The URL must be safe for anyone to open.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Checklist
+      options:
+        - label: I have the right to share every file referenced here.
+          required: true
+        - label: This report does not disclose a validator or sandbox bypass.
+          required: true

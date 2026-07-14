@@ -1,0 +1,191 @@
+.app-dialog-portal {
+  position: relative;
+  z-index: 200;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+:where(button, a, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 3px solid rgb(23 105 224 / 52%) !important;
+  outline-offset: 2px !important;
+}
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000;
+  transform: translateY(-160%);
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  background: #0f4fb6;
+  color: #ffffff;
+  padding: 10px 14px;
+  font-weight: 850;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 24%);
+  transition: transform 120ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+.app-bootstrap-state,
+.app-route-error {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 10px;
+  min-height: min(420px, calc(100dvh - 96px));
+  margin: 16px;
+  border: 1px solid #d8e3f0;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #334155;
+  padding: 28px;
+  text-align: center;
+}
+
+.app-route-error {
+  border-color: #fecaca;
+  background: #fffafa;
+}
+
+.app-bootstrap-state h1,
+.app-route-error h2,
+.app-bootstrap-state p,
+.app-route-error p {
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  .app-shell:not(.sidebar-hidden) {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+
+  .app-shell:not(.sidebar-hidden) .app-sidebar {
+    gap: 12px;
+    padding: 14px 8px;
+  }
+
+  .app-shell:not(.sidebar-hidden) .sidebar-top {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .app-shell:not(.sidebar-hidden) .brand-block {
+    grid-template-columns: 44px;
+    justify-items: center;
+    gap: 0;
+  }
+
+  .app-shell:not(.sidebar-hidden) .brand-copy,
+  .app-shell:not(.sidebar-hidden) .nav-group-title,
+  .app-shell:not(.sidebar-hidden) .nav-section-title,
+  .app-shell:not(.sidebar-hidden) .nav-section-chevron,
+  .app-shell:not(.sidebar-hidden) .nav-subgroup-title,
+  .app-shell:not(.sidebar-hidden) .nav-item-label,
+  .app-shell:not(.sidebar-hidden) .sidebar-usage-card,
+  .app-shell:not(.sidebar-hidden) .profile-switcher label,
+  .app-shell:not(.sidebar-hidden) .profile-summary-button > span:last-child,
+  .app-shell:not(.sidebar-hidden) .sidebar-collapse-button {
+    display: none;
+  }
+
+  .app-shell:not(.sidebar-hidden) .profile-switcher {
+    justify-items: center;
+    border-color: transparent;
+    background: transparent;
+    padding: 0;
+  }
+
+  .app-shell:not(.sidebar-hidden) .profile-summary-button {
+    grid-template-columns: 34px;
+    justify-content: center;
+    width: 48px;
+    padding: 6px;
+  }
+
+  .app-shell:not(.sidebar-hidden) .tab-nav,
+  .app-shell:not(.sidebar-hidden) .nav-section-body,
+  .app-shell:not(.sidebar-hidden) .nav-subgroup {
+    gap: 6px;
+  }
+
+  .app-shell:not(.sidebar-hidden) .tab-nav button {
+    justify-content: center;
+    width: 48px;
+    min-height: 42px;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+@media (pointer: coarse) {
+  .button,
+  .icon-button,
+  .file-button,
+  .tab-nav button {
+    min-height: 44px;
+  }
+
+  .icon-button {
+    width: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :root {
+    color-scheme: light dark;
+  }
+
+  :where(button, a, input, textarea, select, summary, [tabindex]):focus-visible {
+    outline-color: Highlight !important;
+  }
+
+  .button,
+  .icon-button,
+  .file-button,
+  .panel,
+  .app-sidebar,
+  .app-dialog,
+  .inline-alert,
+  .empty-state {
+    border: 1px solid CanvasText;
+    box-shadow: none !important;
+    forced-color-adjust: auto;
+  }
+
+  .button.primary,
+  .tab-nav button.active,
+  [aria-current="page"] {
+    border-color: Highlight;
+    background: Highlight;
+    color: HighlightText;
+  }
+
+  :disabled,
+  [aria-disabled="true"] {
+    color: GrayText !important;
+  }
+}

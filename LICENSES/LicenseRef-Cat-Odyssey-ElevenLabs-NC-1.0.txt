@@ -1,0 +1,31 @@
+LicenseRef-Cat-Odyssey-ElevenLabs-NC-1.0
+
+Scope: Cat Odyssey EP1 through EP20 narration and every cutscene video that
+retains that narration. The exact paths and published titles are recorded in
+the accompanying CUTSCENE_CREDITS.md and ASSET_LICENSES.md files.
+
+Subject to the applicable ElevenLabs provider terms, permission is granted to
+download, reproduce, and redistribute the covered videos only when all of the
+following conditions are met:
+
+1. use and distribution are non-commercial and non-monetized;
+2. the videos remain part of a complete Cat Odyssey source checkout, complete
+   Cat Odyssey build, official Language Miner distribution, or Cat Odyssey
+   .lemgame package;
+3. every published episode title retains "elevenlabs.io" or "11.ai"; this
+   project uses "elevenlabs.io";
+4. CUTSCENE_CREDITS.md, ASSET_LICENSES.md, and the provider notices remain
+   with every copy; and
+5. the narration or voice is not extracted, resold, relicensed, used for voice
+   cloning, or represented as owned by or endorsed by MeowthologySaga.
+
+No right in ElevenLabs' services, models, voices, or trademarks is granted.
+The project maintainer reports ordinary Text to Speech use and no self-created
+voice clone. A future paid subscription does not retroactively commercialize
+historical free-plan output. Commercial distribution requires newly generated
+eligible narration and rebuilt dependent videos, followed by a new rights and
+checksum audit.
+
+Provider references:
+https://elevenlabs.io/terms-of-use
+https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform

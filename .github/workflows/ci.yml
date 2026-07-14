@@ -1,0 +1,106 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Verify public build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CI: "true"
+      LEM_BUILD_CANARY: "LEM-CANARY-${{ github.run_id }}-${{ github.sha }}"
+    steps:
+      - name: Check out source
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "22"
+          cache: npm
+          package-manager-cache: false
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Block client-exposed secrets
+        run: npm run guard:client-secrets
+
+      - name: Verify the client-secret guard rejects a canary key
+        run: npm run guard:client-secrets:self-test
+
+      - name: Verify beta release configuration
+        run: npm run release:verify-config
+
+      - name: Type-check Electron and renderer
+        run: npm run typecheck
+
+      - name: Run test suite
+        run: npm test
+
+      - name: Build application
+        run: npm run build
+
+      - name: Prove the artifact scanner detects the build canary
+        shell: bash
+        run: |
+          mkdir -p artifacts/canary-probe
+          printf '%s' "$LEM_BUILD_CANARY" > artifacts/canary-probe/should-fail.txt
+          set +e
+          scan_output=$(npm run audit:artifacts -- artifacts/canary-probe 2>&1)
+          scan_status=$?
+          set -e
+          printf '%s\n' "$scan_output"
+          rm -f artifacts/canary-probe/should-fail.txt
+          if [ "$scan_status" -eq 0 ]; then
+            echo "Artifact scanner failed to detect the canary probe." >&2
+            exit 1
+          fi
+          if ! printf '%s\n' "$scan_output" | grep -Fq '[build-canary]'; then
+            echo "Artifact scanner failed without proving that it detected the build canary." >&2
+            exit 1
+          fi
+
+      - name: Scan renderer and Electron build output for secrets and local paths
+        run: npm run audit:artifacts -- dist dist-electron
+
+      - name: Reject high-severity dependency advisories
+        run: npm audit --audit-level=high
+
+      - name: Audit public source tree
+        run: npm run audit:public
+
+      - name: Audit the complete public Git history
+        run: npm run audit:history
+
+      - name: Generate SBOM and dependency license report
+        run: npm run compliance
+
+      - name: Package manual-install browser extension
+        run: npm run extension:package
+
+      - name: Upload compliance and extension artifacts
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: language-miner-ci-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            artifacts/compliance/**
+            artifacts/release/Language-Miner-Extension-*.zip
+            artifacts/release/Language-Miner-GameKit-*.zip

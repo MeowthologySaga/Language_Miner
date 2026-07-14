@@ -1,0 +1,142 @@
+{
+  "extensionName": { "message": "Language Miner Web Capture" },
+  "extensionShortName": { "message": "Lang Miner" },
+  "extensionDescription": { "message": "Capture messages, selected web text, and YouTube captions in Language Miner." },
+  "optionsTitle": { "message": "Language Miner Web Capture settings" },
+  "optionsHeading": { "message": "Offline pending items" },
+  "optionsDescription": { "message": "Captures wait here while the app is closed. They expire after 7 days, and all pending queues together are limited to 5 MiB." },
+  "optionsChecking": { "message": "Checking pending items…" },
+  "optionsRefresh": { "message": "Refresh" },
+  "optionsClearAll": { "message": "Delete all pending items" },
+  "optionsClearConfirm": { "message": "Delete every pending item from this extension?" },
+  "optionsClearedAcknowledged": { "message": "Pending items were deleted, and the app confirmed the deletion." },
+  "optionsClearedPendingAcknowledgement": { "message": "Pending items were deleted. App confirmation is still pending." },
+  "optionsClearFailed": { "message": "Could not delete pending items." },
+  "optionsReadFailed": { "message": "Could not read pending-item status." },
+  "optionsQueueSummary": {
+    "message": "Pending: $COUNT$ · $SIZE$",
+    "placeholders": {
+      "count": { "content": "$1" },
+      "size": { "content": "$2" }
+    }
+  },
+  "bridgeRequestFailedStatus": {
+    "message": "The local app bridge returned status $STATUS$.",
+    "placeholders": { "status": { "content": "$1" } }
+  },
+  "appRequiredForPreview": { "message": "Open Language Miner to view the generated card." },
+  "speakerMe": { "message": "Me" },
+  "speakerOther": { "message": "Other person" },
+  "selectionCreateCard": { "message": "Sentence card" },
+  "actionCreate": { "message": "Create" },
+  "selectionMultipleTerms": { "message": "Multiple terms" },
+  "actionSelect": { "message": "Select" },
+  "actionClose": { "message": "Close" },
+  "actionCancel": { "message": "Cancel" },
+  "actionDelete": { "message": "Delete" },
+  "actionBack": { "message": "Back" },
+  "actionSave": { "message": "Save" },
+  "actionChooseAgain": { "message": "Choose again" },
+  "keyboardEscape": { "message": "Esc" },
+  "selectionCreateSentenceCard": { "message": "Create sentence card" },
+  "selectionChooseTermsHint": { "message": "Select more terms in the sentence." },
+  "selectionRemoveTermAria": {
+    "message": "Remove $TERM$",
+    "placeholders": { "term": { "content": "$1" } }
+  },
+  "selectionMaxTermsWarning": {
+    "message": "You can select up to $COUNT$ terms.",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "selectionSiteDisabled": { "message": "Web selection cards are disabled for this site." },
+  "cardSaving": { "message": "Saving card…" },
+  "cardCreating": { "message": "Creating card…" },
+  "cardQueued": { "message": "The card will be saved automatically when the app opens." },
+  "cardDuplicate": { "message": "This card has already been saved." },
+  "cardSaved": { "message": "Saved to Cards." },
+  "cardSaveFailed": { "message": "Could not save the card." },
+  "cardResult": { "message": "Generated card" },
+  "cardReviewAll": { "message": "Review the complete sentence card" },
+  "cardsLabel": { "message": "Cards" },
+  "cardFront": { "message": "Front" },
+  "cardLiteralTranslation": { "message": "Literal translation" },
+  "cardNaturalMeaning": { "message": "Natural meaning" },
+  "cardSentenceStructure": { "message": "Sentence structure" },
+  "cardSource": { "message": "Source" },
+  "cardSelectedWords": { "message": "Selected terms" },
+  "cardOneExpression": { "message": "1 expression" },
+  "cardExpressionListAria": { "message": "Expression list" },
+  "cardSelectedDetails": { "message": "Selected expression details" },
+  "cardBasicMeaning": { "message": "Basic meaning" },
+  "cardContextMeaning": { "message": "Meaning in context" },
+  "cardEtymologyStructure": { "message": "Etymology / structure" },
+  "cardUsagePatterns": { "message": "Usage patterns / collocations" },
+  "cardExamples": { "message": "Examples" },
+  "cardConfusingExpressions": { "message": "Similar expressions to distinguish" },
+  "comparisonSimilar": { "message": "Similar" },
+  "comparisonContrast": { "message": "Contrast" },
+  "comparisonNuance": { "message": "Nuance" },
+  "comparisonCollocation": { "message": "Collocation" },
+  "comparisonDefault": { "message": "Compare" },
+  "cardWritingPrompts": { "message": "Writing practice prompts" },
+  "promptSpeakFromCue": { "message": "Speak from the cue" },
+  "promptMakeSentence": { "message": "Make a sentence" },
+  "promptSituationQuestion": { "message": "Situation question" },
+  "usageEstimatedCost": { "message": "Estimated cost" },
+  "usageElectricity": { "message": "Electricity" },
+  "usageTokens": { "message": "Tokens" },
+  "usageRequests": { "message": "Requests" },
+  "usageEstimateAria": { "message": "Estimated generation usage" },
+  "usageEstimateWithCostAria": {
+    "message": "Estimated generation cost: $COST$",
+    "placeholders": { "cost": { "content": "$1" } }
+  },
+  "usageEstimatedInline": {
+    "message": "Est. $COST$",
+    "placeholders": { "cost": { "content": "$1" } }
+  },
+  "usageEstimateTitle": { "message": "Generation estimate" },
+  "usageTokenCount": {
+    "message": "$COUNT$ tokens",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "usageRequestCount": {
+    "message": "$COUNT$ requests",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "currencyKrwZero": { "message": "₩0" },
+  "currencyKrwUnderOne": { "message": "Under ₩1" },
+  "currencyKrwAmount": {
+    "message": "₩$AMOUNT$",
+    "placeholders": { "amount": { "content": "$1" } }
+  },
+  "providerGeminiPaid": { "message": "Gemini paid-tier estimate" },
+  "providerGeminiFree": { "message": "Gemini free-tier setting" },
+  "providerOllamaLocal": { "message": "Ollama local-run estimate" },
+  "providerDefault": { "message": "Basic card generation" },
+  "providerReviewBeforeSave": { "message": "Review the whole card before saving it." },
+  "providerGeneratedGemini": {
+    "message": "Generated with Gemini$MODEL$.",
+    "placeholders": { "model": { "content": "$1" } }
+  },
+  "providerGeneratedOllama": {
+    "message": "Generated with Ollama$MODEL$.",
+    "placeholders": { "model": { "content": "$1" } }
+  },
+  "providerFallbackReason": {
+    "message": "The provider failed, so a basic card was created: $REASON$",
+    "placeholders": { "reason": { "content": "$1" } }
+  },
+  "providerFallback": { "message": "The provider failed, so a basic card was created." },
+  "selectionReady": { "message": "Save the selected sentence as a card." },
+  "runtimeContextReloaded": { "message": "The extension was reloaded. Reload this page and try again." },
+  "youtubeEnableCc": { "message": "Turn on YouTube CC to show dual subtitles." },
+  "youtubeTranslating": { "message": "Translating…" },
+  "youtubeLocalMtRequired": { "message": "Open the app and make sure Local MT is ready." },
+  "youtubeSubtitlesOn": { "message": "LEM subtitles ON" },
+  "youtubeSubtitlesOff": { "message": "LEM subtitles OFF" },
+  "youtubeToggleOnAria": { "message": "Turn Language Miner dual subtitles off" },
+  "youtubeToggleOffAria": { "message": "Turn Language Miner dual subtitles on" },
+  "bridgeRequestTimedOut": { "message": "Language Miner connection timed out. Open the app and try again." },
+  "privacyDeletionInProgress": { "message": "Local data deletion is still finishing. Captures and queue writes are temporarily paused." }
+}
