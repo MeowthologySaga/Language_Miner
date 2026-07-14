@@ -195,4 +195,15 @@ describe("public release workflow boundaries", () => {
     expect(vite).toContain('"cartridges/**"');
     expect(vite).not.toContain('"scripts/release/**"');
   });
+
+  it("tests official installers with the byte-exact verified archives", () => {
+    const officialPackTests = read("electron/playZoneBundledPacks.test.ts");
+    const officialPackager = read("scripts/release/package-official-games.cjs");
+
+    expect(officialPackTests).toContain('"artifacts", "official-game-downloads"');
+    expect(officialPackTests).toContain("fs.readFileSync(");
+    expect(officialPackTests).not.toContain("createDeterministicArchive");
+    expect(officialPackager).toContain("new Date(1980, 0, 1, 9, 0, 0, 0)");
+    expect(officialPackager).not.toContain('new Date("1980-01-01T00:00:00.000Z")');
+  });
 });

@@ -42,11 +42,14 @@ const results = selectedPacks.map((pack) => {
 
   const zip = new AdmZip();
   const files = listFiles(sourceRoot);
+  // AdmZip serializes DOS timestamps through local-time getters. Use an explicit local
+  // clock value so packaging stays byte-identical in UTC and Asia/Seoul.
+  const lockedArchiveTime = new Date(1980, 0, 1, 9, 0, 0, 0);
   for (const relativePath of files) {
     const absolutePath = path.join(sourceRoot, ...relativePath.split("/"));
     zip.addFile(relativePath, fs.readFileSync(absolutePath));
     const entry = zip.getEntry(relativePath);
-    if (entry) entry.header.time = new Date("1980-01-01T00:00:00.000Z");
+    if (entry) entry.header.time = lockedArchiveTime;
   }
 
   const fileName = pack.fileName;

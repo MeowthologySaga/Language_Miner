@@ -16,11 +16,6 @@ import {
 } from "./playZoneOfficialInstaller";
 import { installPlayZoneSnapshot } from "./playZoneSnapshotStore";
 
-const AdmZip = require("adm-zip") as new () => {
-  addFile(name: string, content: Buffer): void;
-  getEntries(): Array<{ header: { time: Date } }>;
-  toBuffer(): Buffer;
-};
 const officialGameAssets = require("../scripts/release/official-game-assets.cjs") as Array<{
   id: string;
   repository: string;
@@ -41,6 +36,10 @@ const hasOfficialSources = officialSourceFolders.every((folderPath) =>
   fs.existsSync(path.join(folderPath, "manifest.json"))
 );
 const sourceIt = hasOfficialSources ? it : it.skip;
+const hasOfficialArchives = OFFICIAL_PLAY_ZONE_PACKS.every((pack) =>
+  fs.existsSync(path.join(process.cwd(), "artifacts", "official-game-downloads", pack.fileName))
+);
+const archiveIt = hasOfficialArchives ? it : it.skip;
 
 afterEach(() => {
   for (const rootPath of temporaryRoots.splice(0)) {
@@ -115,12 +114,15 @@ describe("official on-demand PlayZone games", () => {
     expect(() => writeAllSync(123, source, () => 0)).toThrow(/could not finish writing/);
   });
 
-  sourceIt.each(OFFICIAL_PLAY_ZONE_PACKS.map((pack) => [pack.id, pack] as const))(
+  archiveIt.each(OFFICIAL_PLAY_ZONE_PACKS.map((pack) => [pack.id, pack] as const))(
     "downloads, verifies, installs, and removes the temporary archive for %s",
     async (_packId, pack) => {
     const folderName = pack.fileName.replace(/-\d+\.\d+\.\d+\.lemgame$/, "");
-    const packRoot = path.join(process.cwd(), "cartridges", folderName);
-    const archive = createDeterministicArchive(packRoot);
+    // Use the byte-exact archive already verified by the hydrator. Rebuilding a ZIP from
+    // extracted files changes DOS timestamp bytes across time zones even when content is identical.
+    const archive = fs.readFileSync(
+      path.join(process.cwd(), "artifacts", "official-game-downloads", pack.fileName)
+    );
     expect(archive.length).toBe(pack.download.downloadBytes);
     expect(createHash("sha256").update(archive).digest("hex")).toBe(pack.download.archiveSha256);
 
@@ -277,17 +279,6 @@ function collectFiles(rootPath: string) {
   };
   visit(rootPath);
   return files;
-}
-
-function createDeterministicArchive(rootPath: string) {
-  const zip = new AdmZip();
-  const fixedTime = new Date("1980-01-01T00:00:00.000Z");
-  for (const filePath of collectFiles(rootPath).sort((left, right) => left.localeCompare(right))) {
-    zip.addFile(path.relative(rootPath, filePath).split(path.sep).join("/"), fs.readFileSync(filePath));
-    const entry = zip.getEntries().at(-1);
-    if (entry) entry.header.time = fixedTime;
-  }
-  return zip.toBuffer();
 }
 
 function createStrictPackFixture(rootPath: string, id: string, title: string) {

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "appVersion": "0.1.0-beta.1",
-  "generatedAt": "2026-07-14T12:32:39.020Z",
+  "generatedAt": "2026-07-14T12:50:53.223Z",
   "source": "audited working tree (private Git history excluded)",
   "files": [
     {
@@ -1066,8 +1066,8 @@
     },
     {
       "path": "electron/playZoneBundledPacks.test.ts",
-      "bytes": 14290,
-      "sha256": "72d374b398a719032a9249f1f2206c17b8561bc198ae4146dcfa7f67d82ff50f"
+      "bytes": 14063,
+      "sha256": "4b3cb4699d259115196ff31a3f5ddd5406e6c672e6dcc31b7824dbc051ef9395"
     },
     {
       "path": "electron/playZoneEntryProtocol.test.ts",
@@ -1891,8 +1891,8 @@
     },
     {
       "path": "scripts/release/package-official-games.cjs",
-      "bytes": 5540,
-      "sha256": "f7dda36bb3752dcb58c0c8b009755c95e1d777918fa12028b64578dfec3153e2"
+      "bytes": 5745,
+      "sha256": "ed976dfcd71d8ce47f6b6649f042d151d3f19d6dd3c1aee9069148f50556404f"
     },
     {
       "path": "scripts/release/packageExtensionBoundary.test.ts",
@@ -1916,8 +1916,8 @@
     },
     {
       "path": "scripts/release/releaseWorkflowBoundaries.test.ts",
-      "bytes": 9988,
-      "sha256": "3fce447250858bd761f2cb661e2af8e43a122a6b3bf0bf54b3ccafed371e261a"
+      "bytes": 10613,
+      "sha256": "9376f41f11de4d871a616f9283faa53b8a0150c71f1532f75870fb88fc630f0b"
     },
     {
       "path": "scripts/release/scan-build-artifacts.cjs",
