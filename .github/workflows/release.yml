@@ -366,6 +366,94 @@ jobs:
             return $matches[0]
           }
 
+          function Wait-ForExactDraft {
+            param(
+              [long]$ExpectedReleaseId = 0,
+              [int]$MaxAttempts = 12,
+              [int]$DelaySeconds = 5
+            )
+            for ($attempt = 1; $attempt -le $MaxAttempts; $attempt++) {
+              $candidate = Find-ReleaseByTag
+              if ($null -ne $candidate) {
+                $candidateId = [long]$candidate.id
+                if (-not $candidate.draft) {
+                  throw "The exact release tag is already published; refusing to continue."
+                }
+                if ($candidateId -le 0) {
+                  throw "GitHub returned an invalid draft release identifier."
+                }
+                if ($ExpectedReleaseId -gt 0 -and $candidateId -ne $ExpectedReleaseId) {
+                  throw "The exact release tag now refers to a different draft release identifier."
+                }
+                return $candidate
+              }
+              if ($attempt -lt $MaxAttempts) {
+                Start-Sleep -Seconds $DelaySeconds
+              }
+            }
+            throw "GitHub did not expose exactly one draft for the release tag within the bounded verification window."
+          }
+
+          function Wait-ForCompleteDraftAssets {
+            param(
+              [Parameter(Mandatory = $true)][long]$ExpectedReleaseId,
+              [Parameter(Mandatory = $true)]$LocalByName,
+              [int]$MaxAttempts = 12,
+              [int]$DelaySeconds = 5
+            )
+            $releaseEndpoint = "repos/$env:RELEASE_REPOSITORY/releases/$ExpectedReleaseId"
+            for ($attempt = 1; $attempt -le $MaxAttempts; $attempt++) {
+              $listedRelease = Find-ReleaseByTag
+              if ($null -ne $listedRelease) {
+                if (-not $listedRelease.draft) {
+                  throw "The exact release tag was published while its draft assets were being verified."
+                }
+                if ([long]$listedRelease.id -ne $ExpectedReleaseId) {
+                  throw "The exact release tag now refers to a different draft release identifier."
+                }
+
+                $candidate = Invoke-GitHubJson $releaseEndpoint
+                if ([long]$candidate.id -ne $ExpectedReleaseId -or `
+                    [string]$candidate.tag_name -cne $env:RELEASE_TAG -or `
+                    -not $candidate.draft) {
+                  throw "The expected draft release changed identity or was published during asset verification."
+                }
+
+                $remoteNames = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+                $incomplete = @($candidate.assets).Count -lt $LocalByName.Count
+                foreach ($remoteAsset in @($candidate.assets)) {
+                  $name = [string]$remoteAsset.name
+                  if (-not $remoteNames.Add($name) -or -not $LocalByName.ContainsKey($name)) {
+                    throw "The draft contains a duplicate or unexpected asset."
+                  }
+                  $localAsset = $LocalByName[$name]
+                  $expectedDigest = "sha256:$((Get-FileHash -Algorithm SHA256 -LiteralPath $localAsset.FullName).Hash.ToLowerInvariant())"
+                  $remoteDigest = [string]$remoteAsset.digest
+                  if (-not [string]::IsNullOrWhiteSpace($remoteDigest) -and $remoteDigest -cne $expectedDigest) {
+                    throw "A GitHub asset SHA-256 digest does not match the attested build."
+                  }
+                  if ([string]$remoteAsset.state -ceq "uploaded") {
+                    if ([int64]$remoteAsset.size -ne [int64]$localAsset.Length) {
+                      throw "A GitHub asset size does not match the attested build."
+                    }
+                    if ([string]::IsNullOrWhiteSpace($remoteDigest)) {
+                      $incomplete = $true
+                    }
+                  } else {
+                    $incomplete = $true
+                  }
+                }
+                if (@($candidate.assets).Count -eq $LocalByName.Count -and -not $incomplete) {
+                  return $candidate
+                }
+              }
+              if ($attempt -lt $MaxAttempts) {
+                Start-Sleep -Seconds $DelaySeconds
+              }
+            }
+            throw "GitHub did not expose the complete exact draft asset set within the bounded verification window."
+          }
+
           function Get-RemoteTagCommit {
             $tagRef = Invoke-GitHubJson "repos/$env:RELEASE_REPOSITORY/git/ref/tags/$env:RELEASE_TAG"
             $objectType = [string]$tagRef.object.type
@@ -407,9 +495,14 @@ jobs:
           }
 
           $draftRelease = Find-ReleaseByTag
+          $expectedReleaseId = 0
           if ($null -ne $draftRelease) {
             if (-not $draftRelease.draft) {
               throw "Refusing to modify an already-published release. Publish a new version tag instead."
+            }
+            $expectedReleaseId = [long]$draftRelease.id
+            if ($expectedReleaseId -le 0) {
+              throw "The existing draft release does not have a valid numeric identifier."
             }
             & gh release edit $env:RELEASE_TAG `
               --repo $env:RELEASE_REPOSITORY `
@@ -426,10 +519,7 @@ jobs:
             if ($LASTEXITCODE -ne 0) { throw "Could not create the draft release." }
           }
 
-          $draftRelease = Find-ReleaseByTag
-          if ($null -eq $draftRelease -or -not $draftRelease.draft) {
-            throw "Refusing to upload to a release that is no longer a draft."
-          }
+          $draftRelease = Wait-ForExactDraft -ExpectedReleaseId $expectedReleaseId
           $releaseId = [long]$draftRelease.id
           if ($releaseId -le 0) {
             throw "The draft release does not have a valid numeric identifier."
@@ -439,15 +529,21 @@ jobs:
           if ($localAssets.Count -eq 0) {
             throw "No local release assets were found."
           }
-          $localByName = @{}
+          $localByName = [Collections.Generic.Dictionary[string, object]]::new([StringComparer]::Ordinal)
           foreach ($asset in $localAssets) {
             if ($localByName.ContainsKey($asset.Name)) {
               throw "The local release payload contains duplicate asset names."
             }
-            $localByName[$asset.Name] = $asset
+            $localByName.Add($asset.Name, $asset)
           }
-          $remoteByName = @{}
-          foreach ($remoteAsset in @($draftRelease.assets)) {
+          $draftSnapshot = Invoke-GitHubJson $releaseEndpoint
+          if ([long]$draftSnapshot.id -ne $releaseId -or `
+              [string]$draftSnapshot.tag_name -cne $env:RELEASE_TAG -or `
+              -not $draftSnapshot.draft) {
+            throw "The expected draft changed identity or was published before upload."
+          }
+          $remoteByName = [Collections.Generic.Dictionary[string, object]]::new([StringComparer]::Ordinal)
+          foreach ($remoteAsset in @($draftSnapshot.assets)) {
             if ($remoteByName.ContainsKey($remoteAsset.name) -or -not $localByName.ContainsKey($remoteAsset.name)) {
               throw "The reusable draft contains a duplicate or unexpected asset."
             }
@@ -455,10 +551,10 @@ jobs:
             $expectedDigest = "sha256:$((Get-FileHash -Algorithm SHA256 -LiteralPath $localAsset.FullName).Hash.ToLowerInvariant())"
             if ($remoteAsset.state -ne "uploaded" -or `
                 [int64]$remoteAsset.size -ne [int64]$localAsset.Length -or `
-                $remoteAsset.digest -ne $expectedDigest) {
+                [string]$remoteAsset.digest -cne $expectedDigest) {
               throw "An existing draft asset does not match the attested build. Nothing will be overwritten."
             }
-            $remoteByName[$remoteAsset.name] = $remoteAsset
+            $remoteByName.Add([string]$remoteAsset.name, $remoteAsset)
           }
           $missingAssets = @($localAssets | Where-Object { -not $remoteByName.ContainsKey($_.Name) })
           if ($missingAssets.Count -gt 0) {
@@ -468,25 +564,9 @@ jobs:
             if ($LASTEXITCODE -ne 0) { throw "Could not upload the missing draft assets." }
           }
 
-          $verifiedDraft = Invoke-GitHubJson $releaseEndpoint
-          if ([string]$verifiedDraft.tag_name -cne $env:RELEASE_TAG -or `
-              -not $verifiedDraft.draft -or `
-              @($verifiedDraft.assets).Count -ne $localAssets.Count) {
-            throw "The release stopped being a complete draft before verification finished."
-          }
-          foreach ($localAsset in $localAssets) {
-            $matches = @($verifiedDraft.assets | Where-Object { $_.name -ceq $localAsset.Name })
-            if ($matches.Count -ne 1) {
-              throw "The draft is missing a unique expected asset."
-            }
-            $remoteAsset = $matches[0]
-            $expectedDigest = "sha256:$((Get-FileHash -Algorithm SHA256 -LiteralPath $localAsset.FullName).Hash.ToLowerInvariant())"
-            if ($remoteAsset.state -ne "uploaded" -or `
-                [int64]$remoteAsset.size -ne [int64]$localAsset.Length -or `
-                $remoteAsset.digest -ne $expectedDigest) {
-              throw "A GitHub asset digest does not match the attested build."
-            }
-          }
+          $verifiedDraft = Wait-ForCompleteDraftAssets `
+            -ExpectedReleaseId $releaseId `
+            -LocalByName $localByName
           if ((Get-RemoteTagCommit) -ne $expectedCommit) {
             throw "The remote tag changed while the verified draft was being prepared."
           }

@@ -25,13 +25,13 @@ Do not use a Discord re-upload, shortened URL, search ad, or file-sharing mirror
 Open PowerShell, move to your download folder, and use the actual filename.
 
 ```powershell
-Get-FileHash -Algorithm SHA256 -LiteralPath ".\Language Miner Setup 0.1.0-beta.1-x64.exe"
+Get-FileHash -Algorithm SHA256 -LiteralPath ".\Language-Miner-Setup-0.1.0-beta.1-x64.exe"
 ```
 
 For the portable build:
 
 ```powershell
-Get-FileHash -Algorithm SHA256 -LiteralPath ".\Language Miner Portable 0.1.0-beta.1-x64.exe"
+Get-FileHash -Algorithm SHA256 -LiteralPath ".\Language-Miner-Portable-0.1.0-beta.1-x64.exe"
 ```
 
 The `Hash` output must match the corresponding Release checksum character for character. Case does not matter. If any character differs, do not run the file; delete it and download again from the official Release.
@@ -43,7 +43,7 @@ A checksum helps detect damage or replacement, but only when the checksum file a
 With the official [GitHub CLI](https://cli.github.com/) version `2.93.0` or newer, you can verify that the downloaded file belongs to the **specific GitHub Release for this tag** and matches its signed attestation. Update first because older CLI versions have a security advisory affecting verification commands. Use the actual tag and filename.
 
 ```powershell
-gh release verify-asset v0.1.0-beta.1 ".\Language Miner Setup 0.1.0-beta.1-x64.exe" -R MeowthologySaga/Language_Miner
+gh release verify-asset v0.1.0-beta.1 ".\Language-Miner-Setup-0.1.0-beta.1-x64.exe" -R MeowthologySaga/Language_Miner
 ```
 
 Language Miner uses three layers together:

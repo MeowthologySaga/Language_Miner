@@ -155,6 +155,7 @@ function Assert-RemoteTag {
 }
 
 function Get-ReleaseByTag {
+  param([switch]$AllowMissing)
   $output = & $script:ghPath api `
     --hostname github.com `
     --method GET `
@@ -178,8 +179,12 @@ function Get-ReleaseByTag {
       }
     }
   }
-  if ($matches.Count -ne 1) {
-    throw "GitHub must return exactly one release for the requested tag. No release was published."
+  if ($matches.Count -gt 1) {
+    throw "GitHub returned more than one release for the exact tag. No release was published."
+  }
+  if ($matches.Count -eq 0) {
+    if ($AllowMissing) { return $null }
+    throw "GitHub did not return a release for the exact tag. No release was published."
   }
   $releaseId = [long]$matches[0].id
   if ($releaseId -le 0) {
@@ -253,20 +258,24 @@ function Get-LocalReleaseSet {
   return $byName
 }
 
-function Assert-DraftAssets {
+function Test-DraftAssetsComplete {
   param(
     [Parameter(Mandatory = $true)]$Release,
     [Parameter(Mandatory = $true)]$LocalByName,
     [Parameter(Mandatory = $true)][long]$ExpectedReleaseId
   )
-  if ([long]$Release.id -ne $ExpectedReleaseId -or -not $Release.draft) {
+  $releaseId = [long]$Release.id
+  if ($releaseId -le 0 -or `
+      ($ExpectedReleaseId -gt 0 -and $releaseId -ne $ExpectedReleaseId) -or `
+      [string]$Release.tag_name -cne $Tag) {
+    throw "The expected GitHub draft release changed identity."
+  }
+  if (-not $Release.draft) {
     throw "The expected GitHub draft release no longer exists in the required state."
   }
   $remoteAssets = @($Release.assets)
-  if ($remoteAssets.Count -ne $LocalByName.Count) {
-    throw "The draft asset count does not match the local release directory."
-  }
   $remoteNames = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+  $incomplete = $remoteAssets.Count -lt $LocalByName.Count
   foreach ($remoteAsset in $remoteAssets) {
     $name = [string]$remoteAsset.name
     if (-not $remoteNames.Add($name) -or -not $LocalByName.ContainsKey($name)) {
@@ -274,12 +283,58 @@ function Assert-DraftAssets {
     }
     $localFile = $LocalByName[$name]
     $expectedDigest = "sha256:$((Get-FileHash -Algorithm SHA256 -LiteralPath $localFile.FullName).Hash.ToLowerInvariant())"
-    if ($remoteAsset.state -ne "uploaded" -or `
-        [int64]$remoteAsset.size -ne [int64]$localFile.Length -or `
-        [string]$remoteAsset.digest -cne $expectedDigest) {
-      throw "A draft asset name, size, state, or SHA-256 digest does not match the local release set."
+    $remoteDigest = [string]$remoteAsset.digest
+    if (-not [string]::IsNullOrWhiteSpace($remoteDigest) -and $remoteDigest -cne $expectedDigest) {
+      throw "A draft asset SHA-256 digest does not match the local release set."
+    }
+    if ([string]$remoteAsset.state -ceq "uploaded") {
+      if ([int64]$remoteAsset.size -ne [int64]$localFile.Length) {
+        throw "A draft asset size does not match the local release set."
+      }
+      if ([string]::IsNullOrWhiteSpace($remoteDigest)) {
+        $incomplete = $true
+      }
+    } else {
+      $incomplete = $true
     }
   }
+  return ($remoteAssets.Count -eq $LocalByName.Count -and -not $incomplete)
+}
+
+function Assert-DraftAssets {
+  param(
+    [Parameter(Mandatory = $true)]$Release,
+    [Parameter(Mandatory = $true)]$LocalByName,
+    [Parameter(Mandatory = $true)][long]$ExpectedReleaseId
+  )
+  if (-not (Test-DraftAssetsComplete `
+      -Release $Release `
+      -LocalByName $LocalByName `
+      -ExpectedReleaseId $ExpectedReleaseId)) {
+    throw "The draft asset set is not yet complete."
+  }
+}
+
+function Wait-ForExactDraftAssets {
+  param(
+    [Parameter(Mandatory = $true)]$LocalByName,
+    [long]$ExpectedReleaseId = 0,
+    [int]$MaxAttempts = 10,
+    [int]$DelaySeconds = 2
+  )
+  for ($attempt = 1; $attempt -le $MaxAttempts; $attempt++) {
+    $candidate = Get-ReleaseByTag -AllowMissing
+    if ($null -ne $candidate -and (Test-DraftAssetsComplete `
+        -Release $candidate `
+        -LocalByName $LocalByName `
+        -ExpectedReleaseId $ExpectedReleaseId)) {
+      return $candidate
+    }
+    if ($attempt -lt $MaxAttempts) {
+      Start-Sleep -Seconds $DelaySeconds
+    }
+  }
+  throw "GitHub did not expose one exact draft with the complete local asset set within the bounded verification window."
 }
 
 function Assert-BuildProvenance {
@@ -303,10 +358,7 @@ Assert-LocalGitCheckout
 $localByName = Get-LocalReleaseSet
 Assert-ImmutableReleasesEnabled
 Assert-RemoteTag
-$draftRelease = Get-ReleaseByTag
-if (-not $draftRelease.draft) {
-  throw "The release is not a draft. This script never edits an already-published release."
-}
+$draftRelease = Wait-ForExactDraftAssets -LocalByName $localByName
 $releaseId = [long]$draftRelease.id
 Assert-DraftAssets -Release $draftRelease -LocalByName $localByName -ExpectedReleaseId $releaseId
 Assert-BuildProvenance -LocalByName $localByName
@@ -325,7 +377,9 @@ if (-not $PSCmdlet.ShouldProcess($target, "publish the verified draft as an immu
 Assert-LocalGitCheckout
 Assert-ImmutableReleasesEnabled
 Assert-RemoteTag
-$draftRelease = Get-ReleaseByTag
+$draftRelease = Wait-ForExactDraftAssets `
+  -LocalByName $localByName `
+  -ExpectedReleaseId $releaseId
 Assert-DraftAssets -Release $draftRelease -LocalByName $localByName -ExpectedReleaseId $releaseId
 Assert-BuildProvenance -LocalByName $localByName
 
@@ -348,10 +402,18 @@ if ($publishedRelease.draft -or $publishedRelease.prerelease -ne $Tag.Contains("
 
 $confirmedRelease = $null
 for ($attempt = 1; $attempt -le 6; $attempt++) {
-  $candidate = Get-ReleaseByTag
-  if (-not $candidate.draft -and $candidate.immutable -and [long]$candidate.id -eq $releaseId) {
-    $confirmedRelease = $candidate
-    break
+  $candidate = Get-ReleaseByTag -AllowMissing
+  if ($null -ne $candidate) {
+    if ([long]$candidate.id -ne $releaseId) {
+      throw "The exact tag resolved to a different release identifier after publication."
+    }
+    if (-not $candidate.draft -and $candidate.prerelease -ne $Tag.Contains("-")) {
+      throw "The published release has an unexpected prerelease state."
+    }
+    if (-not $candidate.draft -and $candidate.immutable) {
+      $confirmedRelease = $candidate
+      break
+    }
   }
   if ($attempt -lt 6) {
     Start-Sleep -Seconds 2

@@ -459,7 +459,7 @@ if (
   releaseWorkflow.includes('"draft=false"') ||
   releaseWorkflow.includes("--method PATCH") ||
   !releaseWorkflow.includes("Refusing to modify an already-published") ||
-  !releaseWorkflow.includes("$remoteAsset.digest -ne $expectedDigest") ||
+  !releaseWorkflow.includes("$remoteDigest -cne $expectedDigest") ||
   !releaseWorkflow.includes("Get-RemoteTagCommit") ||
   !releaseWorkflow.includes("Publication requires the local administrator-authenticated publisher script")
 ) {
@@ -475,6 +475,36 @@ if (
     "release workflow must discover drafts through the paginated release list and exact tag matching"
   );
 }
+const editDraftCall = releaseWorkflow.indexOf("& gh release edit $env:RELEASE_TAG");
+const createDraftCall = releaseWorkflow.indexOf("& gh release create $env:RELEASE_TAG");
+const waitForDraftCall = releaseWorkflow.indexOf(
+  "$draftRelease = Wait-ForExactDraft -ExpectedReleaseId $expectedReleaseId",
+  createDraftCall
+);
+const uploadDraftCall = releaseWorkflow.indexOf("& gh @uploadArguments", waitForDraftCall);
+const waitForAssetsCall = releaseWorkflow.indexOf(
+  "$verifiedDraft = Wait-ForCompleteDraftAssets",
+  uploadDraftCall
+);
+if (
+  !releaseWorkflow.includes("function Wait-ForExactDraft") ||
+  !releaseWorkflow.includes("function Wait-ForCompleteDraftAssets") ||
+  !releaseWorkflow.includes("[int]$MaxAttempts = 12") ||
+  !releaseWorkflow.includes("[long]$listedRelease.id -ne $ExpectedReleaseId") ||
+  !releaseWorkflow.includes("@($candidate.assets).Count -eq $LocalByName.Count") ||
+  !releaseWorkflow.includes("The draft contains a duplicate or unexpected asset") ||
+  !releaseWorkflow.includes("was published while its draft assets were being verified") ||
+  editDraftCall < 0 ||
+  createDraftCall < 0 ||
+  waitForDraftCall < editDraftCall ||
+  waitForDraftCall < createDraftCall ||
+  uploadDraftCall < waitForDraftCall ||
+  waitForAssetsCall < uploadDraftCall
+) {
+  failures.push(
+    "release workflow must poll boundedly after draft creation/edit and upload while failing closed on identity, publication, duplicate, and digest mismatches"
+  );
+}
 for (const requiredPublisherBoundary of [
   '[Version]"2.93.0"',
   "Test-Path Env:GH_TOKEN",
@@ -485,6 +515,13 @@ for (const requiredPublisherBoundary of [
   "Get-RemoteTagCommit",
   "SHA256SUMS.txt",
   "Assert-DraftAssets",
+  "Test-DraftAssetsComplete",
+  "Wait-ForExactDraftAssets",
+  "Get-ReleaseByTag -AllowMissing",
+  "[int]$MaxAttempts = 10",
+  "$remoteDigest -cne $expectedDigest",
+  "more than one release for the exact tag",
+  "no longer exists in the required state",
   "Assert-BuildProvenance",
   "attestation verify $localFile.FullName",
   "--signer-workflow $signerWorkflow",

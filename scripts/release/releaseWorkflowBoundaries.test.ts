@@ -68,6 +68,15 @@ describe("public release workflow boundaries", () => {
     const buildBlock = workflow.slice(workflow.indexOf("  build:"), workflow.indexOf("  attest:"));
     const attestBlock = workflow.slice(workflow.indexOf("  attest:"), workflow.indexOf("  draft:"));
     const draftBlock = workflow.slice(workflow.indexOf("  draft:"));
+    const editDraftCall = draftBlock.indexOf("& gh release edit $env:RELEASE_TAG");
+    const createDraftCall = draftBlock.indexOf("& gh release create $env:RELEASE_TAG");
+    const waitForDraftCall = draftBlock.indexOf(
+      "$draftRelease = Wait-ForExactDraft -ExpectedReleaseId $expectedReleaseId"
+    );
+    const uploadDraftCall = draftBlock.indexOf("& gh @uploadArguments");
+    const waitForAssetsCall = draftBlock.indexOf(
+      "$verifiedDraft = Wait-ForCompleteDraftAssets"
+    );
 
     expect(buildBlock).toContain("contents: read");
     expect(buildBlock).not.toContain("contents: write");
@@ -99,7 +108,22 @@ describe("public release workflow boundaries", () => {
     expect(workflow).toContain("releases?per_page=100");
     expect(workflow).toContain("tag_name -ceq $env:RELEASE_TAG");
     expect(workflow).not.toContain("releases/tags/$env:RELEASE_TAG");
-    expect(workflow).toContain("$remoteAsset.digest -ne $expectedDigest");
+    expect(draftBlock).toContain("function Wait-ForExactDraft");
+    expect(draftBlock).toContain("function Wait-ForCompleteDraftAssets");
+    expect(draftBlock).toContain("[int]$MaxAttempts = 12");
+    expect(draftBlock).toContain("Start-Sleep -Seconds $DelaySeconds");
+    expect(draftBlock).toContain("Find-ReleaseByTag");
+    expect(draftBlock).toContain("[long]$listedRelease.id -ne $ExpectedReleaseId");
+    expect(draftBlock).toContain("$remoteDigest -cne $expectedDigest");
+    expect(draftBlock).toContain("@($candidate.assets).Count -eq $LocalByName.Count");
+    expect(draftBlock).toContain("The draft contains a duplicate or unexpected asset");
+    expect(draftBlock).toContain("was published while its draft assets were being verified");
+    expect(editDraftCall).toBeGreaterThan(-1);
+    expect(createDraftCall).toBeGreaterThan(-1);
+    expect(waitForDraftCall).toBeGreaterThan(editDraftCall);
+    expect(waitForDraftCall).toBeGreaterThan(createDraftCall);
+    expect(uploadDraftCall).toBeGreaterThan(waitForDraftCall);
+    expect(waitForAssetsCall).toBeGreaterThan(uploadDraftCall);
     expect(workflow).toContain("Get-RemoteTagCommit");
     expect(workflow).toContain("release-build-metadata.json");
     expect(workflow).toContain("Refusing to modify an already-published");
@@ -122,6 +146,13 @@ describe("public release workflow boundaries", () => {
     expect(publisher).toContain("tag_name -ceq $Tag");
     expect(publisher).not.toContain("releases/tags/$Tag");
     expect(publisher).toContain("Assert-DraftAssets");
+    expect(publisher).toContain("Test-DraftAssetsComplete");
+    expect(publisher).toContain("Wait-ForExactDraftAssets");
+    expect(publisher).toContain("Get-ReleaseByTag -AllowMissing");
+    expect(publisher).toContain("[int]$MaxAttempts = 10");
+    expect(publisher).toContain("$remoteDigest -cne $expectedDigest");
+    expect(publisher).toContain("more than one release for the exact tag");
+    expect(publisher).toContain("no longer exists in the required state");
     expect(publisher).toContain("Assert-BuildProvenance");
     expect(publisher).toContain("attestation verify $localFile.FullName");
     expect(publisher).toContain("--signer-workflow $signerWorkflow");
@@ -146,10 +177,10 @@ describe("public release workflow boundaries", () => {
 
     expect(releaseNotes).toContain(verifyCommand);
     expect(installKo).toContain(
-      'gh release verify-asset v0.1.0-beta.1 ".\\Language Miner Setup 0.1.0-beta.1-x64.exe" -R MeowthologySaga/Language_Miner'
+      'gh release verify-asset v0.1.0-beta.1 ".\\Language-Miner-Setup-0.1.0-beta.1-x64.exe" -R MeowthologySaga/Language_Miner'
     );
     expect(installEn).toContain(
-      'gh release verify-asset v0.1.0-beta.1 ".\\Language Miner Setup 0.1.0-beta.1-x64.exe" -R MeowthologySaga/Language_Miner'
+      'gh release verify-asset v0.1.0-beta.1 ".\\Language-Miner-Setup-0.1.0-beta.1-x64.exe" -R MeowthologySaga/Language_Miner'
     );
     expect(installKo).toContain("변경 불가 Release");
     expect(installEn).toContain("immutable Release");
