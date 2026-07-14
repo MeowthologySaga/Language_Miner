@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "appVersion": "0.1.0-beta.1",
-  "generatedAt": "2026-07-14T10:47:16.053Z",
+  "generatedAt": "2026-07-14T10:55:41.775Z",
   "source": "audited working tree (private Git history excluded)",
   "files": [
     {
@@ -2021,13 +2021,13 @@
     },
     {
       "path": "src/appLocale.test.ts",
-      "bytes": 590,
-      "sha256": "f6b0095135752f5bc3d75e318be2db1fc750afc6d2d670832bfdd6a0f01af534"
+      "bytes": 911,
+      "sha256": "e1251502a52e56de452a674e901db9d0cd7524e187270e743f2765d86f58f3df"
     },
     {
       "path": "src/appLocale.ts",
-      "bytes": 1438,
-      "sha256": "778d6bb61b4c4934bf8fb5a18f93a56d288992fb1584e707ed624d1280442bbb"
+      "bytes": 1420,
+      "sha256": "ee9e3813d39e11b4836932dbe2d239e92f23236192ceff07dca2c642ce842dc6"
     },
     {
       "path": "src/appNavigation.ts",

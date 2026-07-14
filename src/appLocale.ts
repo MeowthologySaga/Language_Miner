@@ -30,12 +30,10 @@ export function readAppLocale(): AppLocale {
     if (stored) {
       return stored;
     }
-  }
-  if (typeof navigator !== "undefined") {
-    const languages = navigator.languages?.length
-      ? navigator.languages
-      : navigator.language
-        ? [navigator.language]
+    const languages = window.navigator.languages?.length
+      ? window.navigator.languages
+      : window.navigator.language
+        ? [window.navigator.language]
         : [];
     return detectAppLocale(languages);
   }
