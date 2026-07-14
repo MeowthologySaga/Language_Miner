@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "appVersion": "0.1.0-beta.1",
-  "generatedAt": "2026-07-14T16:20:23.038Z",
+  "generatedAt": "2026-07-14T16:33:53.633Z",
   "source": "audited working tree (private Git history excluded)",
   "files": [
     {
@@ -91,13 +91,13 @@
     },
     {
       "path": "README.en.md",
-      "bytes": 7253,
-      "sha256": "1604941d7e63b0d78eb7c26bdca22ae6bc9dad832a3355cd498aa63d513f2f38"
+      "bytes": 7342,
+      "sha256": "5ba4a31db49e789580263d90410eec2938fd62b781bac092179bf1a8b77f44a4"
     },
     {
       "path": "README.md",
-      "bytes": 8079,
-      "sha256": "d1b7a6b01b7169991e9a1d8d6ff0d02b8f4053c37f61a3999b93b61fc33c74c7"
+      "bytes": 8173,
+      "sha256": "c38242ced0215a8265c37b273f9df21e83d4f52e4bfcd10411c29d1830c462b2"
     },
     {
       "path": "SECURITY.md",

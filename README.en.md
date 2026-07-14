@@ -2,7 +2,7 @@
 
 Language Miner is a local-first Windows app for turning useful English sentences into cards and carrying expressions from reading and listening into speaking and writing.
 
-[한국어](README.md) · [Visual walkthrough](https://meowthologysaga.github.io/Language_Miner/en/tutorial.html) · [Complete user manual](docs/complete-user-manual.en.md) · [Feature reference](docs/user-guide.en.md) · [Privacy notice](docs/privacy.en.md) · [UGC policy](docs/ugc-policy.en.md)
+[Official download site](https://language-miner-guide.bunnywater1227.chatgpt.site/en) · [한국어](README.md) · [Visual walkthrough](https://meowthologysaga.github.io/Language_Miner/en/tutorial.html) · [Complete user manual](docs/complete-user-manual.en.md) · [Feature reference](docs/user-guide.en.md) · [Privacy notice](docs/privacy.en.md) · [UGC policy](docs/ugc-policy.en.md)
 
 > **Release status:** The first public beta, [`v0.1.0-beta.1`](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1), is available. Its official Release contains Windows 10/11 x64 installer and portable builds, SHA-256 checksums, an SBOM, and the complete source.
 

@@ -2,7 +2,7 @@
 
 발견한 영어 문장을 카드로 만들고, 읽기·듣기에서 얻은 표현을 말하기·영작으로 다시 꺼내 쓰는 로컬 우선 Windows 학습 앱입니다.
 
-[English](README.en.md) · [화면 따라 하기](https://meowthologysaga.github.io/Language_Miner/tutorial.html) · [완전 사용 설명서](docs/complete-user-manual.ko.md) · [기능 참조](docs/user-guide.ko.md) · [개인정보 안내](docs/privacy.ko.md) · [UGC 정책](docs/ugc-policy.ko.md)
+[공식 다운로드 사이트](https://language-miner-guide.bunnywater1227.chatgpt.site/) · [English](README.en.md) · [화면 따라 하기](https://meowthologysaga.github.io/Language_Miner/tutorial.html) · [완전 사용 설명서](docs/complete-user-manual.ko.md) · [기능 참조](docs/user-guide.ko.md) · [개인정보 안내](docs/privacy.ko.md) · [UGC 정책](docs/ugc-policy.ko.md)
 
 > **배포 상태:** 첫 공개 베타 [`v0.1.0-beta.1`](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1)을 배포했습니다. Windows 10/11 x64용 설치판, 포터블판, SHA-256 체크섬, SBOM과 전체 소스를 같은 공식 Release에서 받을 수 있습니다.
 
