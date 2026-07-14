@@ -31,7 +31,7 @@ Language Miner의 기본 루프는 다음과 같습니다.
 
 읽기·듣기 같은 **인풋**은 영어를 알아보는 힘을 만들고, 말하기·영작 같은 **아웃풋**은 필요한 순간에 영어를 꺼내는 힘을 만듭니다. 어느 한쪽만으로는 부족하기 때문에 앱도 두 방향을 한 루프로 연결합니다.
 
-[![표현 발견, 카드, 복습, 영작과 대화로 이어지는 학습 루프](site/assets/app-images…17910 tokens truncated…tension options showing the offline pending-item count and the Delete all pending items button](site/assets/app-images/en/29-extension-queue-clear.webp)
+[![표현 발견, 카드, 복습, 영작과 대화로 이어지는 학습 루프](site/assets/app-images/ko/00-learning-loop.gif)](site/assets/app-images/ko/00-learning-loop.gif)
 
 *그림 1. 같은 문장을 발견하고, 저장하고, 복습하고, 실제 상황에서 다시 쓰는 흐름입니다. GIF가 무거우면 클릭해 원본을 따로 열 수 있습니다.*
 

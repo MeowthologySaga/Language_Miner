@@ -97,6 +97,7 @@ const highConfidenceBinaryCheckKinds = new Set([
 ]);
 const unfinishedPublicDocumentPattern =
   /SCREENSHOT-ID|Editor[’']s note\s*[—-]\s*do\x20not\x20publish this note|편집자 메모\s*[—-]\s*공개본에 포함하지 않음/g;
+const truncatedToolOutputPattern = /(?:…|\.\.\.)?\s*\d+\s+tokens?\s+truncated\s*(?:…|\.\.\.)?/gi;
 
 const contentChecks = [
   {
@@ -259,7 +260,19 @@ function scanContent(normalized, text, hasReliableLineNumbers) {
         ...(hasReliableLineNumbers ? { line: lineNumberAt(text, draftMarker.index) } : {})
       });
     }
+    truncatedToolOutputPattern.lastIndex = 0;
+    const truncatedOutputMarker = truncatedToolOutputPattern.exec(text);
+    if (truncatedOutputMarker) {
+      findings.push({
+        file: normalized,
+        kind: "truncated-tool-output-marker",
+        ...(hasReliableLineNumbers
+          ? { line: lineNumberAt(text, truncatedOutputMarker.index) }
+          : {})
+      });
+    }
     scanPublicDocumentImages(normalized, text, hasReliableLineNumbers);
+    scanPublicDocumentLinks(normalized, text, hasReliableLineNumbers);
   }
   for (const check of contentChecks) {
     if (
@@ -340,6 +353,80 @@ function scanPublicDocumentImages(normalized, text, hasReliableLineNumbers) {
     } catch {
       findings.push({ ...findingBase, kind: "missing-public-document-image" });
     }
+  }
+}
+
+function scanPublicDocumentLinks(normalized, text, hasReliableLineNumbers) {
+  if (!normalized.toLowerCase().endsWith(".md")) return;
+  const withoutCodeFences = text.replace(/```[\s\S]*?```/g, "");
+  const linkPattern = /(?<!!)\[[^\]]+\]\(\s*(<[^>]+>|[^\s)]+)(?:\s+["'][^"']*["'])?\s*\)/g;
+  for (const match of withoutCodeFences.matchAll(linkPattern)) {
+    validatePublicDocumentTarget(
+      normalized,
+      match[1],
+      "link",
+      match.index ?? 0,
+      withoutCodeFences,
+      hasReliableLineNumbers
+    );
+  }
+}
+
+function validatePublicDocumentTarget(
+  normalized,
+  rawTarget,
+  kind,
+  matchIndex,
+  sourceText,
+  hasReliableLineNumbers
+) {
+  let target = rawTarget;
+  if (target.startsWith("<") && target.endsWith(">")) target = target.slice(1, -1);
+  if (!target || target.startsWith("#") || /^[a-z][a-z0-9+.-]*:/i.test(target)) return;
+  target = target.split(/[?#]/, 1)[0];
+  try {
+    target = decodeURIComponent(target);
+  } catch {
+    findings.push({
+      file: normalized,
+      kind: `invalid-public-document-${kind}`,
+      ...(hasReliableLineNumbers ? { line: lineNumberAt(sourceText, matchIndex) } : {})
+    });
+    return;
+  }
+  const absoluteTarget = path.resolve(scanRoot, path.dirname(normalized), target);
+  const relativeTarget = path.relative(scanRoot, absoluteTarget);
+  const findingBase = {
+    file: normalized,
+    ...(hasReliableLineNumbers ? { line: lineNumberAt(sourceText, matchIndex) } : {})
+  };
+  if (!relativeTarget || relativeTarget.startsWith("..") || path.isAbsolute(relativeTarget)) {
+    findings.push({ ...findingBase, kind: `unsafe-public-document-${kind}` });
+    return;
+  }
+  if (!isCaseSensitiveFile(relativeTarget)) {
+    findings.push({ ...findingBase, kind: `missing-public-document-${kind}` });
+  }
+}
+
+function isCaseSensitiveFile(relativePath) {
+  let current = scanRoot;
+  for (const segment of relativePath.split(path.sep)) {
+    let entries;
+    try {
+      entries = fs.readdirSync(current, { withFileTypes: true });
+    } catch {
+      return false;
+    }
+    const entry = entries.find((candidate) => candidate.name === segment);
+    if (!entry) return false;
+    current = path.join(current, entry.name);
+  }
+  try {
+    const stat = fs.lstatSync(current);
+    return stat.isFile() && !stat.isSymbolicLink();
+  } catch {
+    return false;
   }
 }
 

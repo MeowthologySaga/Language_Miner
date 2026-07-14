@@ -1,0 +1,98 @@
+name: UGC catalog submission
+description: Submit a public character pack or Game Pack source link for review. Do not upload the pack here.
+title: "[UGC submission] "
+labels:
+  - ugc
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit a link to a release you control; do not attach a `.lemgame`, archive, executable, key, token, private log, or user data to this issue.
+
+        A submission is not an endorsement or automatic listing. Reviewers check the public metadata and the app still applies its technical validator before installation or execution. Security bypasses belong in a private report through `SECURITY.md`.
+  - type: dropdown
+    id: content_type
+    attributes:
+      label: Content type
+      options:
+        - Game Pack
+        - Character pack
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Pack title
+      placeholder: My Sentence Adventure
+    validations:
+      required: true
+  - type: input
+    id: pack_id_version
+    attributes:
+      label: Pack id and version
+      description: Use the id and semantic version declared in the manifest.
+      placeholder: creator.my-sentence-adventure 0.1.0
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: Public source or release URL
+      description: A GitHub Release is recommended. The URL must work without signing in and remain under the creator's control.
+      placeholder: https://github.com/creator/project/releases/tag/v0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: artifact
+    attributes:
+      label: Release artifact and SHA-256
+      description: Give the exact downloadable filename and its full SHA-256. Do not paste the file itself.
+      placeholder: |
+        Filename: my-sentence-adventure-0.1.0.lemgame
+        SHA-256: 0123456789abcdef...
+    validations:
+      required: true
+  - type: input
+    id: minimum_app_version
+    attributes:
+      label: Minimum Language Miner version
+      placeholder: v0.1.0-beta.1
+    validations:
+      required: true
+  - type: textarea
+    id: author_and_license
+    attributes:
+      label: Author, sources, and license
+      description: Name the author, source URLs, SPDX license identifiers, and any assets with separate terms.
+    validations:
+      required: true
+  - type: textarea
+    id: permissions
+    attributes:
+      label: Requested permissions
+      description: List every declared network host, storage, wallet, card, or diamond action. Write "None" when the pack requests none.
+      placeholder: None
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What learners do in this pack
+      description: Briefly explain the learning activity, supported languages, and intended audience.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Safety and rights checklist
+      options:
+        - label: I have the right to redistribute every included or referenced asset and have listed any separate licenses.
+          required: true
+        - label: The public link contains no API key, token, private data, local path, private log, or hidden paid credential.
+          required: true
+        - label: I disclosed every requested permission and external network host.
+          required: true
+        - label: This submission is suitable for a general-audience official community listing.
+          required: true
+        - label: I understand that submission does not guarantee approval and that the app's validator still decides whether the pack can run.
+          required: true

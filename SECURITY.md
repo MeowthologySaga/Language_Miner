@@ -2,11 +2,11 @@
 
 ## Supported versions
 
-No public binary is supported until `v0.1.0-beta.1` is published. After publication, security fixes will target the newest `0.1.0-beta.x` release. Older prerelease builds and untagged source snapshots may not receive fixes.
+Security fixes target the newest published `0.1.0-beta.x` release. Older prerelease builds and untagged source snapshots may not receive fixes.
 
 | Version | Supported |
 | --- | --- |
-| Latest `0.1.0-beta.x` | Yes, after publication |
+| Latest `0.1.0-beta.x` | Yes |
 | Older beta builds | Upgrade first |
 | Unofficial or modified builds | No |
 
@@ -14,7 +14,7 @@ No public binary is supported until `v0.1.0-beta.1` is published. After publicat
 
 Do **not** open a public issue for a suspected vulnerability, exposed credential, privacy leak, or UGC sandbox bypass.
 
-Use [GitHub private vulnerability reporting](https://github.com/MeowthologySaga/Language_Miner/security/advisories/new). If that link is unavailable while the public repository is being prepared, wait for the official repository announcement instead of posting exploit details publicly.
+Use [GitHub private vulnerability reporting](https://github.com/MeowthologySaga/Language_Miner/security/advisories/new). If the private reporting form is temporarily unavailable, do not post exploit details publicly; try again later.
 
 Include only the information needed to reproduce the issue:
 

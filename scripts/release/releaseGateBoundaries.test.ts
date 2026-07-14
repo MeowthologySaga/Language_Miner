@@ -354,6 +354,31 @@ describe("public source audit boundaries", () => {
     expect(escaped.stderr).toContain("[unsafe-public-document-image-link]");
   });
 
+  it("rejects truncated tool output and missing local Markdown links", () => {
+    const fixtureRoot = join(workRoot, "public-document-links");
+    const docsRoot = join(fixtureRoot, "docs");
+    mkdirSync(docsRoot, { recursive: true });
+    writeFileSync(
+      join(docsRoot, "guide.md"),
+      "[Guide](missing.md)\n\n…17910 tokens truncated…\n",
+      "utf8"
+    );
+
+    const blocked = runPublicAudit(fixtureRoot);
+    expect(blocked.status).not.toBe(0);
+    expect(blocked.stderr).toContain("[missing-public-document-link]");
+    expect(blocked.stderr).toContain("[truncated-tool-output-marker]");
+
+    writeFileSync(join(docsRoot, "target.md"), "# Target\n", "utf8");
+    writeFileSync(join(docsRoot, "guide.md"), "[Guide](target.md)\n", "utf8");
+    expect(runPublicAudit(fixtureRoot).status).toBe(0);
+
+    writeFileSync(join(docsRoot, "guide.md"), "[Guide](Target.md)\n", "utf8");
+    const wrongCase = runPublicAudit(fixtureRoot);
+    expect(wrongCase.status).not.toBe(0);
+    expect(wrongCase.stderr).toContain("[missing-public-document-link]");
+  });
+
   it("allows only value-free .env example files", () => {
     const fixtureRoot = join(workRoot, "env-example-fixture");
     const fixturePath = join(fixtureRoot, ".env.production.example");
