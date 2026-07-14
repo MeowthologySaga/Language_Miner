@@ -251,6 +251,9 @@ if (!releaseWorkflow.includes("smoke-windows-artifacts.ps1")) {
     "release workflow must smoke test clean install, synthetic upgrade, repair, uninstall, and portable artifacts"
   );
 }
+if (!/\$scanStatus = \$LASTEXITCODE\s+\$global:LASTEXITCODE = 0/.test(releaseWorkflow)) {
+  failures.push("release canary proof must clear the expected native scanner failure exit code");
+}
 if (
   !releaseWorkflow.includes("--config.directories.output=release-baseline") ||
   !releaseWorkflow.includes("--config.extraMetadata.version=0.1.0-beta.0") ||
@@ -427,6 +430,15 @@ const sourceArchiveStep = releaseWorkflow.indexOf("Create complete source archiv
 const checksumStep = releaseWorkflow.indexOf("Write release notes and SHA-256 checksums");
 if (sourceArchiveStep < 0 || checksumStep < sourceArchiveStep) {
   failures.push("release checksums must be written after both complete source archives are created");
+}
+const checksumBlock = releaseWorkflow.slice(
+  checksumStep,
+  releaseWorkflow.indexOf("Write immutable build metadata")
+);
+if (
+  (checksumBlock.match(/if \(\$LASTEXITCODE -ne 0\) \{ exit \$LASTEXITCODE \}/g) ?? []).length !== 2
+) {
+  failures.push("release notes and checksum generation must each fail closed on a native exit code");
 }
 const attestationStep = releaseWorkflow.indexOf("Generate build provenance for every release file");
 const draftStep = releaseWorkflow.indexOf("Create or refresh verified draft only");

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "appVersion": "0.1.0-beta.1",
-  "generatedAt": "2026-07-14T12:50:53.223Z",
+  "generatedAt": "2026-07-14T13:23:10.363Z",
   "source": "audited working tree (private Git history excluded)",
   "files": [
     {
@@ -51,8 +51,8 @@
     },
     {
       "path": ".github/workflows/release.yml",
-      "bytes": 21327,
-      "sha256": "80974e945177b02877c04ba1d1136d6d01fba12019a10ecfc0a6280eb48673e8"
+      "bytes": 21500,
+      "sha256": "81149c4f4b32674de8a2c0a1da8355ae5d54491d8121b6bcc4935f85b875ab75"
     },
     {
       "path": ".gitignore",
@@ -1916,8 +1916,8 @@
     },
     {
       "path": "scripts/release/releaseWorkflowBoundaries.test.ts",
-      "bytes": 10613,
-      "sha256": "9376f41f11de4d871a616f9283faa53b8a0150c71f1532f75870fb88fc630f0b"
+      "bytes": 10961,
+      "sha256": "2ac4ef1ffac9e69349bc9f08eaa180fef9ad273ef1e90ec8e86ec5c17932839e"
     },
     {
       "path": "scripts/release/scan-build-artifacts.cjs",
@@ -1941,8 +1941,8 @@
     },
     {
       "path": "scripts/release/verify-release-config.cjs",
-      "bytes": 24475,
-      "sha256": "41415330a76cfd541d4eafe0605825b0c86f923c9d16ec74202a5ebfb7e34cdf"
+      "bytes": 25003,
+      "sha256": "0ac7c24fcb342388bc8c602bb9e4e56b888001f677134f1c8ce5d2508970a4de"
     },
     {
       "path": "scripts/release/verify-release-tag.cjs",

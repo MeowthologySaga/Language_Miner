@@ -59,6 +59,10 @@ describe("public release workflow boundaries", () => {
     const workflow = read(".github/workflows/release.yml");
     const publisher = read("scripts/release/publish-verified-draft.ps1");
     const checksumStep = workflow.indexOf("Write release notes and SHA-256 checksums");
+    const checksumBlock = workflow.slice(
+      checksumStep,
+      workflow.indexOf("Write immutable build metadata")
+    );
     const attestationStep = workflow.indexOf("Generate build provenance for every release file");
     const draftStep = workflow.indexOf("Create or refresh verified draft only");
     const buildBlock = workflow.slice(workflow.indexOf("  build:"), workflow.indexOf("  attest:"));
@@ -80,10 +84,16 @@ describe("public release workflow boundaries", () => {
     );
     expect(workflow).toContain("subject-path: artifacts/release/*");
     expect(checksumStep).toBeGreaterThan(-1);
+    expect(
+      checksumBlock.match(/if \(\$LASTEXITCODE -ne 0\) \{ exit \$LASTEXITCODE \}/g)
+    ).toHaveLength(2);
     expect(attestationStep).toBeGreaterThan(checksumStep);
     expect(draftStep).toBeGreaterThan(attestationStep);
 
     expect(workflow).toContain("--draft");
+    expect(workflow).toMatch(
+      /\$scanStatus = \$LASTEXITCODE\s+\$global:LASTEXITCODE = 0/
+    );
     expect(workflow).toContain("if (-not $draftRelease.draft)");
     expect(workflow).toContain("--paginate --slurp");
     expect(workflow).toContain("releases?per_page=100");
