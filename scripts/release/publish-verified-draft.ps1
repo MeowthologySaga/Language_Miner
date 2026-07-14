@@ -73,7 +73,15 @@ function Assert-LocalGitCheckout {
   if ($LASTEXITCODE -ne 0) {
     throw "Run this script from a clean checkout of the public Language Miner repository."
   }
-  $gitRoot = ([string]($gitRootOutput | Select-Object -First 1)).Trim().TrimEnd('\', '/')
+  $gitRootText = ([string]($gitRootOutput | Select-Object -First 1)).Trim()
+  if ([string]::IsNullOrWhiteSpace($gitRootText)) {
+    throw "Git did not return the public repository root."
+  }
+  try {
+    $gitRoot = (Resolve-Path -LiteralPath $gitRootText -ErrorAction Stop).Path.TrimEnd('\', '/')
+  } catch {
+    throw "Git returned a repository root that cannot be resolved safely."
+  }
   if (-not [StringComparer]::OrdinalIgnoreCase.Equals($gitRoot, $scriptRepositoryRoot)) {
     throw "The script and current Git checkout do not belong to the same repository root."
   }

@@ -137,6 +137,9 @@ describe("public release workflow boundaries", () => {
     expect(publisher).toContain('[Version]"2.93.0"');
     expect(publisher).toContain("Test-Path Env:GH_TOKEN");
     expect(publisher).toContain("Assert-LocalGitCheckout");
+    expect(publisher).toContain("$gitRootText = ([string]($gitRootOutput | Select-Object -First 1)).Trim()");
+    expect(publisher).toContain("Resolve-Path -LiteralPath $gitRootText -ErrorAction Stop");
+    expect(publisher).toContain("Git returned a repository root that cannot be resolved safely");
     expect(publisher).toContain('rev-parse --verify "HEAD^{commit}"');
     expect(publisher).toContain('rev-parse --verify "${Tag}^{commit}"');
     expect(publisher).toContain("repos/$repository/immutable-releases");
