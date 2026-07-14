@@ -24,7 +24,7 @@ The point is not to stop at reading and listening, but to retrieve the same expr
 
 ## Why the project expanded into UGC
 
-Character Chat began as a way to use learned sentences in a situation. PlayZone adds local study rewards and expressions to small games, giving the learning loop more play and a place for creators to participate.
+Character Chat began as a way to use learned sentences in a situation. PlayZone lets learners spend local study rewards in small games, adding motivation to keep studying and a place for creators to participate. It is not an in-game language-learning mode.
 
 A growing UGC community does not require one web service to own every file. Creators can keep content in their own GitHub Releases or other storage, while Discord supports discovery and conversation. The app applies the same technical checks to imported packs.
 
@@ -56,4 +56,4 @@ Anki and CSV export, a UGC catalog, Chrome Web Store distribution, automatic upd
 
 ## What the project aims to be
 
-Language Miner should not force one study method on everyone. It aims to give learners a foundation for collecting their own sentences, reviewing at their own pace, understanding safety boundaries, and reusing expressions through conversation and play. For creators, it aims to offer an open format for building characters and games and managing versions and licenses without needing permission from a central service.
+Language Miner should not force one study method on everyone. It aims to give learners a foundation for collecting their own sentences, reviewing at their own pace, understanding safety boundaries, reusing expressions in conversation, and spending study rewards in play. For creators, it aims to offer an open format for building characters and games and managing versions and licenses without needing permission from a central service.

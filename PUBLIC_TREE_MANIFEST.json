@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "appVersion": "0.1.0-beta.1",
-  "generatedAt": "2026-07-14T16:33:53.633Z",
+  "generatedAt": "2026-07-14T16:54:56.055Z",
   "source": "audited working tree (private Git history excluded)",
   "files": [
     {
@@ -91,13 +91,13 @@
     },
     {
       "path": "README.en.md",
-      "bytes": 7342,
-      "sha256": "5ba4a31db49e789580263d90410eec2938fd62b781bac092179bf1a8b77f44a4"
+      "bytes": 7446,
+      "sha256": "620fd1dd88887318db84d1b38d7f408f53121a90c6ab833277881617b46bbb0a"
     },
     {
       "path": "README.md",
-      "bytes": 8173,
-      "sha256": "c38242ced0215a8265c37b273f9df21e83d4f52e4bfcd10411c29d1830c462b2"
+      "bytes": 8279,
+      "sha256": "a0149117b10d6c2c412fe3ec300de5a02e72d7f5dd97ba27ef27b8dd139c30c9"
     },
     {
       "path": "SECURITY.md",
@@ -156,13 +156,13 @@
     },
     {
       "path": "docs/project-background.en.md",
-      "bytes": 3954,
-      "sha256": "0d05ac06846dda8e7eabcd666168b672a6d7811c6559d9860c4f35268b3d9932"
+      "bytes": 4016,
+      "sha256": "5bbfd4e9bfb35764a8b45746a2b0f1a9fafda7b04462de97159804ca82d41186"
     },
     {
       "path": "docs/project-background.ko.md",
-      "bytes": 4609,
-      "sha256": "898f06351e9f09f5fb28744b2710f53f8055bb491045f7241448ffcb5fef8858"
+      "bytes": 4713,
+      "sha256": "8b934ea29807857224bdb028ad668908a259c69625aad8f562dd475eb3589b76"
     },
     {
       "path": "docs/release-publishing.en.md",
@@ -666,23 +666,23 @@
     },
     {
       "path": "docs/site/en/index.html",
-      "bytes": 13189,
-      "sha256": "f5ee93b47f8f5206a4037cfd881bb212bf3384bb4f59f4fa3b4239e12fd0f252"
+      "bytes": 13430,
+      "sha256": "bd579f9c450b576ca96d666e55f950a2aba7041e7cd831d50831b7cf9f499db5"
     },
     {
       "path": "docs/site/en/tutorial.html",
-      "bytes": 31655,
-      "sha256": "3ec69dbf642e6f745a16de80913bad49f9578dd52fdd00236589f81c37d55017"
+      "bytes": 31889,
+      "sha256": "57310ef688132266afa3d4244bc6db29d25a14401f7217f42ae14ade0df0d5c6"
     },
     {
       "path": "docs/site/index.html",
-      "bytes": 13816,
-      "sha256": "4e951a6d47ff5a3b356b0cd0af273300a9b6488d91fbe424e06f3f37fe104f35"
+      "bytes": 14075,
+      "sha256": "878a7c41b60d29973c4fe8f1dde01f9d50ea038c66f62598dc8bbe113423eaa1"
     },
     {
       "path": "docs/site/tutorial.html",
-      "bytes": 33789,
-      "sha256": "b22192b52054d4a958eb5fe1e2517240aac7b78f6c794b3889b820b2339e40e5"
+      "bytes": 34039,
+      "sha256": "f9b3e90429d7c9af31dfa3344b3a4dbe73f9c27258c2c90a35b72a7701db6cf9"
     },
     {
       "path": "docs/ugc-policy.en.md",
@@ -701,13 +701,13 @@
     },
     {
       "path": "docs/user-guide.en.md",
-      "bytes": 16427,
-      "sha256": "1f7d758ca174e899c1b981acf33ff6f8e2c51f12474173ed2ed94be5e0c6ad84"
+      "bytes": 16515,
+      "sha256": "9812c09e57501a91eb3005cb502c1c58ee9b147ca7825cb53cad9d4da6484efa"
     },
     {
       "path": "docs/user-guide.ko.md",
-      "bytes": 19643,
-      "sha256": "c80a7df5305f37d13836bc2dca9d86736381b01747fa041a6cf65679f62c5826"
+      "bytes": 19768,
+      "sha256": "4348a55a0d34b3befb2b047e6b935b0a9cedb0370f57116c910459d31fa47185"
     },
     {
       "path": "docs/youtube-series-script.ko.md",
@@ -2456,8 +2456,8 @@
     },
     {
       "path": "src/i18n.ts",
-      "bytes": 376983,
-      "sha256": "c9d8c3a5ab331f64b3b9e903c69a42905d38e76b53e641140fda9bbe80860287"
+      "bytes": 377066,
+      "sha256": "d3ad00b0cba7e4d96957b0e9bf2015b9543e94dc4208d6e52843c462c7e1840d"
     },
     {
       "path": "src/i18next.d.ts",

@@ -12,7 +12,7 @@ Language Miner brings discovery, card creation, review, and reuse into one loop.
 - **Cards:** Save them as reading, listening, and speaking cards.
 - **Review:** Retrieve due expressions with spaced repetition.
 - **Speak & Write · Output:** Reuse them in writing and character conversations.
-- **PlayZone:** Use study rewards and expressions inside validated game packs.
+- **PlayZone:** Spend locally earned diamonds on optional features in validated game packs to reinforce study motivation. It is not an in-game language-learning mode.
 
 An isolated word can be easy to recognize but hard to turn into a sentence. Sentence cards preserve vocabulary, grammar, natural combinations, and situation together. Input builds recognition; output trains retrieval when you need the expression.
 

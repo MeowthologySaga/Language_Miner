@@ -2008,7 +2008,7 @@ const ko = {
       outputTitle: "말하고 쓰기 · Output: 직접 사용",
       outputDescription: "영작과 캐릭터챗으로 외운 표현을 직접 꺼내 봅니다.",
       playZoneTitle: "PlayZone에서 반복을 놀이로",
-      playZoneDescription: "카드와 복습 기록을 활용하는 학습 콘텐츠를 즐길 수 있습니다."
+      playZoneDescription: "학습으로 번 다이아를 공식 게임과 검증된 게임팩에서 사용해 학습 동기를 이어갈 수 있습니다."
     },
     ai: {
       localTitle: "학습 기록은 기본적으로 이 기기에 저장",
@@ -5471,7 +5471,7 @@ const en = {
       outputTitle: "Speak & Write · Output: use them yourself",
       outputDescription: "Retrieve learned expressions through writing practice and Character Chat.",
       playZoneTitle: "Make repetition playful in PlayZone",
-      playZoneDescription: "Enjoy learning content that can use your cards and review history."
+      playZoneDescription: "Spend study-earned diamonds in official and validated Game Packs to reinforce motivation to keep learning."
     },
     ai: {
       localTitle: "Learning records stay on this device by default",

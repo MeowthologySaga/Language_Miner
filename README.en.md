@@ -29,11 +29,11 @@ For example, after finding `I’m running a little late.`, you can save it as a 
 | Discover | Select an expression from a document, the web, a video, or Life Mining | Material connected to your life and interests |
 | Make cards | Save reading, listening, and speaking cards | Memory tied to sentences and context |
 | Review | Review due cards with spaced repetition | Durable recall practice |
-| Use | Reuse expressions in writing, Character Chat, and PlayZone | A bridge from recognition to production |
+| Use | Reuse expressions in writing and Character Chat | A bridge from recognition to production |
 
 ### PlayZone and Character Chat
 
-- **PlayZone** is a UGC space where game packs can use local study rewards and expressions. Only packs marked `ready` or `trusted_official` can run.
+- **PlayZone** is a UGC space where learners spend locally earned diamonds on optional features in validated game packs, reinforcing motivation to keep studying. It is not an in-game language-learning mode. Only packs marked `ready` or `trusted_official` can run.
 - **Character Chat** lets you test expressions in situations shaped by a character and scenario. When a cloud AI is connected, the app shows what conversation context will be sent before the session starts.
 
 Character cards and game packs are licensed separately by their creators; the app’s GPL license does not automatically apply to them. If an official community opens, it will accept general-audience content only.
