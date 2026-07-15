@@ -103,29 +103,32 @@ The tutorial is a **sandbox copy** of app screens. Its actions record tutorial p
 
 *The tutorial notice and practice navigation make it clear that this space does not change the real card library.*
 
-### 4.2 Select a sentence in the real built-in article
+### 4.2 Select a sentence on a real webpage
 
-**Path:** Read & Listen · Input → Reading → Web Reader → `Language Miner practice text`
+**Path:** Read & Listen · Input → Reading → Web Reader → address bar
 
-The internal address is `lem-practice://reader/getting-started`. It is bundled with the app and does not contact an external site.
+This example uses the public-domain text of *Alice’s Adventures in Wonderland* hosted by Project Gutenberg. Opening the address contacts that website and needs an internet connection.
 
-1. Drag over `running a little late`.
-2. Choose `Sentence card` in the tool that appears.
-3. Check that the full sentence and nearby context are included.
+1. Enter `https://www.gutenberg.org/files/11/11-0.txt` in the address bar.
+2. Drag over `Oh dear! I shall be late!`.
+3. Choose `Sentence card` in the tool that appears.
+4. Check that the full sentence and nearby context are included.
 
-**Success:** A reading-card preview for `I’m running a little late.` opens.
+**Success:** A reading-card preview for the selected Alice sentence opens.
 
 **If it fails:** Make sure you chose the sentence-card action after selecting text. Choose `Select again` if the range is wrong.
 
-**Privacy and cost:** Opening the practice article sends nothing externally. If Gemini or remote Ollama is the card engine, a separate transfer preflight appears before real generation.
+**Privacy and cost:** Opening a webpage does not by itself send card text to AI. If Gemini or remote Ollama is the card engine, a separate transfer preflight appears before real generation.
 
-[![Web Reader built-in practice article with running a little late selected](site/assets/app-images/en/06-web-reader-select.webp)](site/assets/app-images/en/06-web-reader-select.webp)
+[![Web Reader showing the Project Gutenberg text of Alice’s Adventures in Wonderland with a sentence selected](site/assets/app-images/en/home-web-reader-live.webp)](site/assets/app-images/en/home-web-reader-live.webp)
 
-*Figure 3. Select an expression in the real Web Reader and create a reading-card candidate.*
+*Figure 3. Select a sentence where you found it on the live webpage and create a reading-card candidate.*
 
 ### 4.3 Check the Web Reader card before saving
 
 **Path:** Web Reader reading-card preview → Save card or Select again
+
+The card previews below return to the built-in `I’m running a little late.` sample so the structure stays easy to compare. Any selected web sentence follows the same review-and-save sequence.
 
 1. Read the sentence, literal meaning, natural meaning, and study note.
 2. If the selection is wrong or contains information you do not want to keep, return with `Select again`.
@@ -346,7 +349,7 @@ A new profile may contain default sample cards. Do not expect a separate general
 
 **Privacy and cost:** The source file and path stay on this PC. Only a selected cloud translation or generation action sends text externally, after a scope and cost preflight.
 
-[![Opening a local PDF in Document Reader](site/assets/app-images/en/manual-08-document-reader.webp)](site/assets/app-images/en/manual-08-document-reader.webp)
+[![Document Reader showing a public-domain Alice’s Adventures in Wonderland PDF](site/assets/app-images/en/home-document-alice.webp)](site/assets/app-images/en/home-document-alice.webp)
 
 [![Creating a card from selected PDF text](site/assets/app-images/en/07-reading-card-preview.webp)](site/assets/app-images/en/07-reading-card-preview.webp)
 
@@ -405,7 +408,7 @@ Choose `Bookmark` on the current page. Bookmarks are saved per profile; `Open sa
 
 **Privacy and cost:** Login cookies may remain in the Web Reader’s dedicated Electron session and can be deleted in Settings. Opening a webpage and sending card text to cloud AI are separate actions.
 
-[![Selecting a sentence and choosing Sentence card in Web Reader](site/assets/app-images/en/06-web-reader-select.webp)](site/assets/app-images/en/06-web-reader-select.webp)
+[![Selecting an Alice sentence and choosing Sentence card on the Project Gutenberg page](site/assets/app-images/en/home-web-reader-live.webp)](site/assets/app-images/en/home-web-reader-live.webp)
 
 *Figure 8. Selection alone is not the transfer action; choose the card action to create a candidate.*
 
@@ -443,9 +446,9 @@ Built-in browser translation works only on supported Electron/Chrome versions an
 
 **Privacy and cost:** YouTube/RSS discovery and transcription may use the network or local compute. Original media and paths are excluded from `.lembackup`.
 
-[![Listening Loop repeating a subtitle sentence and saving it as a listening card](site/assets/app-images/en/16-listening-loop.webp)](site/assets/app-images/en/16-listening-loop.webp)
+[![Front of a listening card saved from the fictional office conversation](site/assets/app-images/en/home-listening-card-front.webp)](site/assets/app-images/en/home-listening-card-front.webp)
 
-*Figure 9. Repeat the real sound that was difficult, then keep it as a listening card.*
+*Figure 9. After repeating a short segment, review it as a listening card that starts from sound.*
 
 ### 10.2 Study your own media in Video Reader
 
@@ -464,9 +467,9 @@ Built-in browser translation works only on supported Electron/Chrome versions an
 
 **Privacy and cost:** Local Whisper computes on your PC, but the media file is not included in backup. Cloud subtitle translation sends the original subtitles externally and retries can add cost.
 
-[![Practising with a local video and subtitles](site/assets/app-images/en/manual-11-video-reader.webp)](site/assets/app-images/en/manual-11-video-reader.webp)
+[![Video Reader showing a fictional office conversation with bilingual captions](site/assets/app-images/en/home-video-reader-sitcom.webp)](site/assets/app-images/en/home-video-reader-sitcom.webp)
 
-*A rights-cleared local fixture shows subtitle looping and the listening-card workflow without exposing a personal path.*
+*Play the fictional office conversation, adjust captions, looping, and speed, then continue into a listening card.*
 
 ## 11. Life Mining
 

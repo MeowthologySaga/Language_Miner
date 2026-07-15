@@ -41,23 +41,23 @@
 
 ## 장면 3 — 튜토리얼은 연습 공간, 실제 카드는 웹 리더에서 (03:20–05:10)
 
-- **화면:** 관리 → 튜토리얼의 샌드박스 배너를 5초 보여 준 뒤 나가기, 읽고 듣기 · Input → 웹 리더 홈으로 이동합니다.
-- **클릭·입력:** 튜토리얼에서 읽기 카드 연습을 한 번 누르고 실제 카드 목록이 바뀌지 않는 것을 짧게 보여 줍니다. 이후 실제 웹 리더의 `Language Miner 연습 글`을 엽니다.
-- **내레이션:** “먼저 중요한 구분이 있습니다. 관리 메뉴의 튜토리얼은 실제 화면을 닮은 연습용 복제 공간입니다. 여기서 만든 것은 튜토리얼 진행만 기록하고 실제 카드 목록은 바꾸지 않습니다. 실제 카드를 만들 때는 튜토리얼을 나와 웹 리더를 엽니다. 연습 글의 주소는 lem-practice://reader/getting-started이고 앱에 들어 있는 글이라 외부 사이트에 접속하지 않습니다.”
-- **화면 자막:** `튜토리얼 = 샌드박스` / `실제 연습 글 = lem-practice://reader/getting-started`
+- **화면:** 관리 → 튜토리얼의 샌드박스 배너를 5초 보여 준 뒤 나가기, 읽고 듣기 · Input → 웹 리더로 이동합니다.
+- **클릭·입력:** 튜토리얼에서 읽기 카드 연습을 한 번 누르고 실제 카드 목록이 바뀌지 않는 것을 짧게 보여 줍니다. 이후 실제 웹 리더에서 Project Gutenberg의 『이상한 나라의 앨리스』 원문을 엽니다.
+- **내레이션:** “먼저 중요한 구분이 있습니다. 관리 메뉴의 튜토리얼은 실제 화면을 닮은 연습용 복제 공간입니다. 여기서 만든 것은 튜토리얼 진행만 기록하고 실제 카드 목록은 바꾸지 않습니다. 실제 카드를 만들 때는 튜토리얼을 나와 웹 리더를 엽니다. 웹 리더는 주소창으로 실제 인터넷 글을 열고, 읽던 자리에서 필요한 문장을 카드 후보로 가져올 수 있습니다.”
+- **화면 자막:** `튜토리얼 = 샌드박스` / `실제 웹페이지에서도 문장 선택`
 - **캡처 확인:** 튜토리얼 배너와 실제 앱 네비게이션의 차이가 한눈에 보이도록 같은 배율로 촬영합니다.
 - **개인정보 가림:** 없음.
-- **B-roll 매핑:** `docs/site/assets/app-images/ko/manual-01-tutorial-sandbox.webp`, `docs/site/assets/app-images/ko/06-web-reader-select.webp`.
+- **B-roll 매핑:** `docs/site/assets/app-images/ko/manual-01-tutorial-sandbox.webp`, `docs/site/assets/app-images/ko/home-web-reader-live.webp`.
 
 ## 장면 4 — 표현 선택, 읽기 카드 편집, 저장 (05:10–08:00)
 
-- **화면:** 내장 연습 글 본문, 선택 팝오버, 읽기 카드 미리보기입니다.
+- **화면:** 실제 웹페이지의 선택 팝오버를 먼저 보여 준 뒤, 카드 구조 설명에서는 내장 연습 글의 읽기 카드 미리보기로 전환합니다.
 - **클릭·입력:** `running a little late`를 드래그 → `문장카드` → `본문 편집` → 자연스러운 뜻을 확인 → 저장합니다.
 - **내레이션:** “표현만 떼어 외우지 않고, 이 표현이 들어 있는 문장 전체를 가져옵니다. 드래그만 했다고 외부로 전송되는 것은 아닙니다. 문장카드 버튼을 눌러 후보를 만들 때 현재 카드 엔진이 동작합니다. 웹 리더의 기본 흐름은 읽기 카드입니다. 듣기 카드와 말하기 카드를 동시에 만들어 주는 화면이 아닙니다. AI가 만든 직역, 자연스러운 뜻, 학습 메모는 저장 전에 직접 고칠 수 있습니다. ‘달리고 있다’처럼 문맥과 다른 번역이면 ‘나 조금 늦을 것 같아’로 바로잡은 뒤 저장합니다.”
 - **화면 자막:** `Web Reader → 읽기 카드` / `AI 결과는 저장 전에 직접 편집`
 - **캡처 확인:** 선택 범위가 정확하고 미리보기에서 영어 문장, 뜻, 편집, 저장 버튼이 동시에 보이는지 확인합니다.
-- **개인정보 가림:** 주소창은 내장 연습 주소만 보이게 합니다.
-- **B-roll 매핑:** `docs/site/assets/app-images/ko/06-web-reader-select.webp`, `docs/site/assets/app-images/ko/07-reading-card-preview.webp`.
+- **개인정보 가림:** 주소창에는 Project Gutenberg 공개 원문 주소만 보이게 합니다.
+- **B-roll 매핑:** `docs/site/assets/app-images/ko/home-web-reader-live.webp`, `docs/site/assets/app-images/ko/07-reading-card-preview.webp`.
 
 ## 장면 5 — 세 카드와 샘플 카드 정리 (08:00–10:10)
 
@@ -111,7 +111,7 @@
 - **화면 자막:** `지원: PDF / HTML` / `Ctrl+Q = 선택 문장 카드`
 - **캡처 확인:** 예제 PDF 제목과 선택 가능한 텍스트가 또렷하고, 전체 로컬 경로는 기술 세부 정보에도 노출하지 않는 테이크를 사용합니다.
 - **개인정보 가림:** 파일명은 `Language-Miner-Practice.pdf`, 경로는 전체 블러.
-- **B-roll 매핑:** `docs/site/assets/app-images/ko/manual-08-document-reader.webp`, `docs/site/assets/app-images/ko/manual-09-document-library.webp`.
+- **B-roll 매핑:** `docs/site/assets/app-images/ko/home-document-alice.webp`, `docs/site/assets/app-images/ko/manual-09-document-library.webp`.
 
 ## 장면 2 — 최근 문서와 북마크 (02:30–04:15)
 
@@ -125,13 +125,13 @@
 
 ## 장면 3 — 웹 리더와 번역의 경계 (04:15–06:25)
 
-- **화면:** 웹 리더 홈, 실제 기사 대신 내장 연습 글, 번역 버튼, 웹 로그인 삭제 위치입니다.
+- **화면:** 웹 리더 홈, Project Gutenberg의 퍼블릭 도메인 원문, 번역 버튼, 웹 로그인 삭제 위치입니다.
 - **클릭·입력:** 주소/검색 입력 예시, 선택 번역, 페이지 번역 버튼에 마우스를 올리고 실행 전 취소합니다.
 - **내레이션:** “웹 리더는 제목, URL, 가까운 문맥과 함께 읽기 카드를 만듭니다. 로그인 사이트는 각 사이트 약관을 따르고, 쿠키는 웹 리더 전용 세션에 남을 수 있습니다. 브라우저 내장 번역은 지원되는 버전과 언어 조합에서만 동작합니다. Gemini나 Google 번역을 선택했다면 선택 번역과 페이지 전체 번역은 보내는 양이 다르므로 실제 작업 전 전송 범위와 예상 호출 수를 다시 확인합니다.”
 - **화면 자막:** `웹페이지 열기 ≠ AI 전송` / `페이지 전체 번역은 전송량 확인`
-- **캡처 확인:** 외부 사이트 대신 공개 촬영이 안전한 내장 연습 글을 사용합니다.
+- **캡처 확인:** 로그인이나 개인화가 없는 Project Gutenberg의 『이상한 나라의 앨리스』 공개 원문을 사용합니다.
 - **개인정보 가림:** 로그인 상태, 쿠키 값, 개인 검색 기록.
-- **B-roll 매핑:** `docs/site/assets/app-images/ko/06-web-reader-select.webp`, `docs/site/assets/app-images/ko/manual-20-cloud-job-preflight.webp`.
+- **B-roll 매핑:** `docs/site/assets/app-images/ko/home-web-reader-live.webp`, `docs/site/assets/app-images/ko/manual-20-cloud-job-preflight.webp`.
 
 ## 장면 4 — 듣기 루프에서 실제 소리 저장 (06:25–09:05)
 
@@ -141,17 +141,17 @@
 - **화면 자막:** `원본 소리 → 안 들린 구간 표시 → 듣기 카드`
 - **캡처 확인:** 저장 뒤 ‘듣기 카드에 저장됨’과 오늘 들은 문장 수 증가가 모두 보이는지 확인합니다.
 - **개인정보 가림:** YouTube 개인 추천 목록과 계정 정보.
-- **B-roll 매핑:** `docs/site/assets/app-images/ko/16-listening-loop.webp`.
+- **B-roll 매핑:** `docs/site/assets/app-images/ko/home-video-reader-sitcom.webp`, `docs/site/assets/app-images/ko/home-listening-card-front.webp`.
 
 ## 장면 5 — 영상 리더: 자막, Whisper, 셰도잉 (09:05–12:10)
 
-- **화면:** 영상 리더 홈 → 로컬 예제 영상 → 자막 리스트와 플레이어입니다.
+- **화면:** 영상 리더 홈 → 가상의 직장 동료 대화 영상 → 자막 리스트와 플레이어입니다.
 - **클릭·입력:** 파일 열기, SRT/VTT 불러오기, 자막 가리기, 자동 일시정지, 셰도잉, 현재 구간 카드 저장을 보여 줍니다. Whisper는 짧은 QA 파일로 진행 상태와 완료 또는 실패 후 다시 실행을 보여 줍니다. 이어 자막 번역을 시작하고 `중지` 버튼으로 취소하는 장면을 따로 촬영합니다.
 - **내레이션:** “영상 리더는 MP4, MKV, WebM, MOV 또는 YouTube를 엽니다. 내장 자막, SRT/VTT, 저장된 자막, 로컬 Whisper 중 준비된 방법을 씁니다. 자막을 가리고 먼저 듣고, 문장 끝에서 멈춰 따라 말하고, 현재 구간을 듣기 카드로 저장합니다. 코덱을 바로 재생하지 못하면 앱이 재생용 MP4 준비를 시도합니다. 로컬 Whisper는 내 PC에서 계산하지만 원본 영상과 경로는 백업되지 않습니다.”
 - **화면 자막:** `자막 가리기 / 자동 일시정지 / 셰도잉` / `원본 미디어는 백업 제외`
 - **캡처 확인:** 입력창에 포커스가 있을 때 전역 단축키가 오작동하지 않는지 촬영 전 확인합니다.
 - **개인정보 가림:** 로컬 파일 경로, 영상 폴더명, YouTube 계정.
-- **B-roll 매핑:** `docs/site/assets/app-images/ko/manual-11-video-reader.webp`.
+- **B-roll 매핑:** `docs/site/assets/app-images/ko/home-video-reader-sitcom.webp`.
 
 ## 장면 6 — 용어집과 카드로 돌아가기 (12:10–13:35)
 

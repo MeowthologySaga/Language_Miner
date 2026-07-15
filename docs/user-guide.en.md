@@ -53,13 +53,13 @@ Connect it to a real situation such as a meeting, commute, or online session.
 
 First, you can rehearse the controls in **Manage → Tutorial → Reading Cards → Web Reader**. That tutorial is a sandbox copy of the app: it records tutorial progress but does not change your real card library.
 
-To create a real card, open **Read & Listen · Input → Web Reader** and choose **Language Miner practice text** on the home screen. It is built into the app and does not contact an external website. Select `running a little late`, then choose `Sentence card` to carry the source sentence and nearby context into a real card candidate.
+To create a real card, open **Read & Listen · Input → Web Reader**. You can choose `running a little late` in the built-in **Language Miner practice text**, or open a real webpage in the address bar and select a useful sentence there. Choose `Sentence card` to carry the source sentence and nearby context into a card candidate.
 
-> A new profile may already contain a default sample card with the same sentence. If you save this practice card, two similar cards may appear; hide or delete the one you do not need afterward.
+The screenshot below demonstrates real internet use by selecting `Oh dear! I shall be late!` in the public-domain Project Gutenberg text of *Alice’s Adventures in Wonderland*. Later card screenshots return to the built-in `I’m running a little late.` sample so their structure is easy to compare.
 
-![Web Reader with running a little late selected and the Sentence card action open](site/assets/app-images/en/06-web-reader-select.webp)
+![Web Reader showing an Alice’s Adventures in Wonderland sentence selected on Project Gutenberg](site/assets/app-images/en/home-web-reader-live.webp)
 
-*Figure 2. Select an expression where you found it and make a sentence card.*
+*Figure 2. Select a sentence where you found it on the live webpage and make a sentence card.*
 
 ### Step 2: Preview the reading card
 
@@ -111,9 +111,9 @@ Sites that require login remain subject to their own terms. Web-reader cookies m
 3. Preview the audio, sentence, and hint for the listening card.
 4. Remember that the original media path is not included in app backups.
 
-![Listening Loop repeating the example subtitle segment and saving the current sentence as a listening card](site/assets/app-images/en/16-listening-loop.webp)
+![Video Reader showing a fictional office conversation with bilingual captions, looping, and speed controls](site/assets/app-images/en/home-video-reader-sitcom.webp)
 
-*Figure 8. Repeat a sentence until you can recognize its real sound.*
+*Figure 8. Use a privacy-safe fictional clip to check captions, repeat the useful segment, and continue into a listening card.*
 
 ### Life Mining
 
