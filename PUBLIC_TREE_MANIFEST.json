@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "appVersion": "0.1.0-beta.1",
-  "generatedAt": "2026-07-15T03:22:23.965Z",
+  "generatedAt": "2026-07-15T06:02:53.269Z",
   "source": "audited working tree (private Git history excluded)",
   "files": [
     {
@@ -30,14 +30,24 @@
       "sha256": "3ff2dc8051b548d851af4843417aa42b8f31f09c9d6836521735b10feb7e4c49"
     },
     {
+      "path": ".github/ISSUE_TEMPLATE/ugc_character_submission.yml",
+      "bytes": 3708,
+      "sha256": "4f738b30e1e4e355bc7b05a7bc9ea5d05279f744f1881f04f675c4e5655274c4"
+    },
+    {
       "path": ".github/ISSUE_TEMPLATE/ugc_compatibility.yml",
       "bytes": 1744,
       "sha256": "ef86083d5e7c04c307b3e49b2782736d94be71f6bb7341c0fe8eacc31d141e61"
     },
     {
+      "path": ".github/ISSUE_TEMPLATE/ugc_game_submission.yml",
+      "bytes": 4912,
+      "sha256": "5306105ee85dcf4c574897d294bac44e4eec3485825a38a04e96fa07449dbb00"
+    },
+    {
       "path": ".github/ISSUE_TEMPLATE/ugc_submission.yml",
-      "bytes": 5347,
-      "sha256": "867f3b1fbf06351466d5d6ffc6ba654c1b745fcc3574c0dbed6c248189762fec"
+      "bytes": 1964,
+      "sha256": "7eb49904fb30d97c388937afd57e321200d63d34a7991bd932490b2056c7d9c8"
     },
     {
       "path": ".github/dependabot.yml",
@@ -58,6 +68,11 @@
       "path": ".github/workflows/release.yml",
       "bytes": 25574,
       "sha256": "4019eb0d0502ed599e11316e20ad4b9dbd7aec3dd120a36ad5f3ca6a48d4e4ab"
+    },
+    {
+      "path": ".github/workflows/ugc-moderation.yml",
+      "bytes": 6512,
+      "sha256": "bb886f51e70262408ce79206fb1f40654c8045e721dea97179e5f60d6ef8115c"
     },
     {
       "path": ".gitignore",
@@ -111,8 +126,8 @@
     },
     {
       "path": "docs/asset-inventory.md",
-      "bytes": 16645,
-      "sha256": "9d36fbbeb44bd67396bb8b094b80fc5bd0d745f1d0c1f9e1af77fa57cf85c9bb"
+      "bytes": 17655,
+      "sha256": "1fa7fa2b86219d038d97bd3a0282f1b5e936b54afd2179db1d78ff133fa56856"
     },
     {
       "path": "docs/complete-user-manual.en.md",
@@ -660,19 +675,39 @@
       "sha256": "8c6e91946b61bbda225e7f3c5beb0d52de17be01ac461bb4de0fc4fd64f14e9c"
     },
     {
+      "path": "docs/site/assets/community.js",
+      "bytes": 1710,
+      "sha256": "005fb316f2deda6edea074b6e038cf2263d90abb967aa31bdef98ec449b4d2ea"
+    },
+    {
+      "path": "docs/site/assets/community/abyss-summoner.webp",
+      "bytes": 61076,
+      "sha256": "7c6d40ce9b20ebcf86bee6ad6f71834e195830cc55eaeab62eacad4b5fda209a"
+    },
+    {
+      "path": "docs/site/assets/community/cat-odyssey.webp",
+      "bytes": 272802,
+      "sha256": "b69111fef39152244f380aaa68a896fbf405fe0b8b791ccbb2179a823f39177e"
+    },
+    {
+      "path": "docs/site/assets/community/drillheart-defense.png",
+      "bytes": 2668913,
+      "sha256": "da91c25ae7b65d30826297ba0db518ba7b795b5a5c038237697c5accf5e8c3fa"
+    },
+    {
       "path": "docs/site/assets/site.css",
-      "bytes": 22449,
-      "sha256": "10920573b4852c74d3fb8a370237c6fd4d85f9ab53e6aadb655791dc6bf3cb21"
+      "bytes": 32814,
+      "sha256": "5b78665122d130163787976f4dd3a2ed68675f55805746ca95f195ede8eaa519"
     },
     {
       "path": "docs/site/community.html",
-      "bytes": 9255,
-      "sha256": "b36b168a8d60ff83e85c75a64f506f36673d4ad423524d7278d93d8f86be2f66"
+      "bytes": 17951,
+      "sha256": "15a2df206d59eaa59bfa9a1a0ea05cdb56ca6e083709b59191a1042cfa925239"
     },
     {
       "path": "docs/site/en/community.html",
-      "bytes": 8057,
-      "sha256": "5c7dc518be97088f8b0280f3f5d96256f688b12e37fd38a0a8bec2c85e26ab70"
+      "bytes": 16356,
+      "sha256": "353ff79d74a70da628a37e434dc97d82eadcac363578af62e4a1c95b6b8e720b"
     },
     {
       "path": "docs/site/en/index.html",
@@ -695,14 +730,24 @@
       "sha256": "6ed971e9706a99d9e20d919f3483e58b9f72fe99285a2f694d5165d0988204d4"
     },
     {
+      "path": "docs/ugc-moderation.en.md",
+      "bytes": 4023,
+      "sha256": "12de0bc54b5f7f5c3e91c84213f1ade5877264ba7f1a9775c384015dc3d1e7a0"
+    },
+    {
+      "path": "docs/ugc-moderation.ko.md",
+      "bytes": 4627,
+      "sha256": "bf74b8f8ea1f8f67aa38c5f7ad4b2c664f95dd0b14093d73b5b4ddc580de13c8"
+    },
+    {
       "path": "docs/ugc-policy.en.md",
-      "bytes": 7103,
-      "sha256": "09942a550b68ffd90fa73684273d8bc07b61dd0994ae3399cf61edcef726c2b3"
+      "bytes": 7379,
+      "sha256": "c1a38ad5a21883acc78755c083c331cbc6f6ef21b6631aef27ad7de19e357f4f"
     },
     {
       "path": "docs/ugc-policy.ko.md",
-      "bytes": 8095,
-      "sha256": "88a6057fb73f024a4475eb5fd74f1d4e11997f5175a26ae769517d2a011da75b"
+      "bytes": 8464,
+      "sha256": "467ed46c43c017198cc5fcfd6b1139cebaee76d9917d1ca71058ce430cd6b6a9"
     },
     {
       "path": "docs/ugc/playzone-current-runtime-contract.md",
@@ -1936,8 +1981,8 @@
     },
     {
       "path": "scripts/release/releaseWorkflowBoundaries.test.ts",
-      "bytes": 13247,
-      "sha256": "326d3809065d44f2a9871c062e87715715ad49b3eb5fc01dcf3083b26d878c15"
+      "bytes": 14977,
+      "sha256": "87fe83b2db54851363ce89853277916077f28f8d42672d7ff93318a674cd2634"
     },
     {
       "path": "scripts/release/scan-build-artifacts.cjs",
@@ -1956,8 +2001,8 @@
     },
     {
       "path": "scripts/release/validate-pages.cjs",
-      "bytes": 7249,
-      "sha256": "2de9218c4f7595793ae53108d032d43161bd246d32482ce27a3ee9a2f48d55f1"
+      "bytes": 8345,
+      "sha256": "62e80ece673e7c4dc3df02c8432240b2d6fa53598d901410e363378e50d8ec99"
     },
     {
       "path": "scripts/release/verify-release-config.cjs",

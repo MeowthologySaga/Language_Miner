@@ -1,0 +1,145 @@
+name: UGC submission guard
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: ugc-submission-${{ github.event.issue.user.id }}
+  cancel-in-progress: false
+
+jobs:
+  guard:
+    if: >-
+      contains(github.event.issue.labels.*.name, 'ugc') &&
+      (github.event.action != 'edited' || contains(github.event.issue.labels.*.name, 'ugc-ready'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Check rate, duplicate links, and approval edits
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const issue = context.payload.issue;
+            const body = issue.body || "";
+            const number = issue.number;
+            const association = issue.author_association || "NONE";
+            const maintainer = ["OWNER", "MEMBER", "COLLABORATOR"].includes(association);
+            const labelNames = (issue.labels || []).map((label) =>
+              typeof label === "string" ? label : label.name
+            );
+
+            async function closeAndLock(message) {
+              await github.rest.issues.createComment({ owner, repo, issue_number: number, body: message });
+              await github.rest.issues.update({
+                owner,
+                repo,
+                issue_number: number,
+                state: "closed",
+                state_reason: "not_planned",
+              });
+              try {
+                await github.rest.issues.lock({
+                  owner,
+                  repo,
+                  issue_number: number,
+                  lock_reason: "resolved",
+                });
+              } catch (error) {
+                core.warning(`Could not lock #${number}: ${error.message}`);
+              }
+            }
+
+            if (context.payload.action === "edited") {
+              if (labelNames.includes("ugc-ready")) {
+                try {
+                  await github.rest.issues.removeLabel({
+                    owner,
+                    repo,
+                    issue_number: number,
+                    name: "ugc-ready",
+                  });
+                  await github.rest.issues.createComment({
+                    owner,
+                    repo,
+                    issue_number: number,
+                    body: "승인된 UGC 게시물이 수정되어 `ugc-ready` 표시를 제거했습니다. 변경된 링크·파일·권한을 다시 검토한 뒤 승인할 수 있습니다.\n\nThe approved submission changed, so `ugc-ready` was removed until its links, files, and permissions are reviewed again.",
+                  });
+                } catch (error) {
+                  if (error.status !== 404) throw error;
+                }
+              }
+              return;
+            }
+
+            if (maintainer) return;
+
+            const urls = [...body.matchAll(/https:\/\/[^\s<>()\[\]"']+/gi)]
+              .map((match) => match[0].replace(/[.,;:!?]+$/, ""));
+            const forbiddenScheme = /(?:javascript|data|file|vbscript):/i.test(body);
+            const executableLink = urls.some((url) => /\.(?:exe|msi|msix|bat|cmd|ps1|scr|com)(?:[?#]|$)/i.test(url));
+
+            if (forbiddenScheme || executableLink || urls.length > 12) {
+              await closeAndLock(
+                "안전을 위해 이 접수를 자동으로 닫았습니다. 실행 파일·비표준 URL 형식·과도한 링크는 UGC 접수에서 허용하지 않습니다. 캐릭터는 공개 JSON, 게임은 고정 GitHub Release의 `.lem` 또는 `.lemgame` 링크만 사용해 새로 작성해 주세요.\n\nThis submission was closed for safety. Submit a public JSON for a character or a pinned GitHub Release `.lem`/`.lemgame` for a game; executable files, non-standard URL schemes, and excessive links are not accepted."
+              );
+              return;
+            }
+
+            // Keep each run's API cost bounded even if the repository grows large.
+            const recentResponse = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              creator: issue.user.login,
+              labels: "ugc",
+              state: "all",
+              sort: "created",
+              direction: "desc",
+              per_page: 100,
+            });
+            const recent = recentResponse.data;
+            const cutoff = Date.now() - 24 * 60 * 60 * 1000;
+            const submissionsInWindow = recent.filter((item) =>
+              new Date(item.created_at).getTime() >= cutoff
+            );
+
+            if (submissionsInWindow.length > 3) {
+              await closeAndLock(
+                "도배 방지를 위해 한 계정은 24시간에 UGC 접수 3개까지만 등록할 수 있습니다. 기존 접수의 검토를 기다린 뒤 다시 시도해 주세요.\n\nTo reduce spam, one account may create up to three UGC submissions in 24 hours. Please wait for the existing submissions to be reviewed."
+              );
+              return;
+            }
+
+            const distributionUrls = urls.filter((url) =>
+              /\.(?:json|lem|lemgame)(?:[?#]|$)/i.test(url) ||
+              /github\.com\/[^/]+\/[^/]+\/releases\/download\//i.test(url) ||
+              /drive\.google\.com\/(?:file\/d\/|open\?id=)/i.test(url)
+            );
+            if (distributionUrls.length === 0) return;
+
+            const otherIssuesResponse = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              labels: "ugc",
+              state: "all",
+              sort: "created",
+              direction: "desc",
+              per_page: 100,
+            });
+            const otherIssues = otherIssuesResponse.data;
+            const duplicate = otherIssues.find((candidate) => {
+              if (candidate.number === number) return false;
+              const candidateBody = candidate.body || "";
+              return distributionUrls.some((url) => candidateBody.includes(url));
+            });
+
+            if (duplicate) {
+              await closeAndLock(
+                `같은 배포 링크가 이미 #${duplicate.number}에 등록되어 있어 중복 접수를 닫았습니다. 업데이트라면 기존 게시물에 새 버전 정보를 댓글로 남겨 주세요.\n\nThe same distribution link is already registered in #${duplicate.number}. For an update, add the new version information to the existing submission.`
+              );
+            }

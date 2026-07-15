@@ -207,9 +207,10 @@ describe("public release workflow boundaries", () => {
     const ci = read(".github/workflows/ci.yml");
     const pages = read(".github/workflows/pages.yml");
     const release = read(".github/workflows/release.yml");
+    const ugcModeration = read(".github/workflows/ugc-moderation.yml");
     const dependabot = read(".github/dependabot.yml");
 
-    for (const workflow of [ci, pages, release]) {
+    for (const workflow of [ci, pages, release, ugcModeration]) {
       const actionRefs = [...workflow.matchAll(/uses:\s+actions\/[A-Za-z0-9_.-]+@([^\s#]+)/g)];
       expect(actionRefs.length).toBeGreaterThan(0);
       for (const actionRef of actionRefs) {
@@ -230,6 +231,34 @@ describe("public release workflow boundaries", () => {
     expect(pagesDeploy).toContain("pages: write");
     expect(pagesDeploy).toContain("id-token: write");
     expect(dependabot).toContain("package-ecosystem: github-actions");
+  });
+
+  it("keeps public UGC spam checks API-only and human-approved", () => {
+    const workflow = read(".github/workflows/ugc-moderation.yml");
+    const characterForm = read(".github/ISSUE_TEMPLATE/ugc_character_submission.yml");
+    const gameForm = read(".github/ISSUE_TEMPLATE/ugc_game_submission.yml");
+    const moderationGuide = read("docs/ugc-moderation.en.md");
+
+    expect(workflow).toContain("issues: write");
+    expect(workflow).toContain("contents: read");
+    expect(workflow).not.toMatch(/^\s*run:/m);
+    expect(workflow).not.toContain("actions/checkout");
+    expect(workflow).not.toContain("github.paginate");
+    expect(workflow).toContain("actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd");
+    expect(workflow).toContain("github.event.action != 'edited'");
+    expect(workflow).toContain('if (context.payload.action === "edited")');
+    expect(workflow).toContain("submissionsInWindow.length > 3");
+    expect(workflow).toContain("candidate.number === number");
+    expect(workflow).toContain("removeLabel");
+    expect(workflow).not.toContain("addLabels");
+    expect(workflow).not.toContain("addLabel");
+    expect(characterForm).toContain("캐릭터 카드 공유");
+    expect(characterForm).toContain("공개 JSON 다운로드 링크");
+    expect(characterForm).not.toMatch(/type:\s*file/);
+    expect(gameForm).toContain(".lem 또는 .lemgame 직접 다운로드 링크");
+    expect(gameForm).not.toMatch(/type:\s*file/);
+    expect(moderationGuide).toContain("Do not grant `ugc-ready` based only on automation");
+    expect(moderationGuide).toContain("never downloads, extracts, or executes");
   });
 
   it("excludes generated audits and hydrated games without excluding release tests", () => {

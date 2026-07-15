@@ -7,18 +7,20 @@
 
 ## 1. Scope
 
-This policy covers character packs, character cards, PlayZone Game Packs, and the site's temporary UGC-sharing space.
+This policy covers character packs, character cards, PlayZone Game Packs, and the site's UGC content hub.
 
 The app code is GPL-3.0-only, but that license does not automatically apply to a UGC story, image, audio file, game code, or data. Each creator must state a separate license in the manifest and distribution page.
 
 ## 2. Distribution and discovery
 
 - **Recommended source of record:** a creator-controlled GitHub Release, which can preserve versions, source, checksums, and changes.
-- **Temporary UGC-sharing space:** the site accepts a public source link through a GitHub Issue instead of storing files. New entries remain in an unreviewed queue; only entries whose provenance, license, and technical metadata have been checked are separated into the `ugc-ready` listing.
+- **UGC content hub:** the site accepts public source links through separate character-card and PlayZone-game Issue Forms instead of storing files. Submission posts and links are public, but only entries whose provenance, licenses, and technical metadata have been reviewed and marked `ugc-ready` enter the catalog for ordinary users.
 - **Official Discord (not open yet):** if it opens later, it will be a place to discover content and discuss it. There is currently no official invitation link. Durable sources such as GitHub Releases are preferred over re-uploading binaries.
 - **Google Drive and other external links:** labeled as unverified external links. Their owner and content can change.
 
 An Issue submission, `ugc-ready` label, Discord post, star, reaction, or recommendation is not an absolute project warranty of safety, quality, legality, or copyright status. The app repeats its technical validation at import or installation time.
+
+Spam, duplicate-link, dangerous-link, and active-attack procedures are defined in the [UGC moderation and anti-spam guide](ugc-moderation.en.md). Automation never downloads or executes a submitted file and cannot grant `ugc-ready` by itself.
 
 ## 3. Content standard for a future official Discord
 

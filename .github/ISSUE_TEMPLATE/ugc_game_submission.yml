@@ -1,0 +1,107 @@
+name: PlayZone 게임 공유 / Share a PlayZone game
+description: 공개 소스와 고정 GitHub Release의 .lem 또는 .lemgame을 등록합니다.
+title: "[PlayZone 게임] "
+labels:
+  - ugc
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 실행 게임은 고정된 GitHub Release로 받습니다
+
+        소스 저장소, 태그가 고정된 Release 페이지, `.lem` 또는 `.lemgame` 직접 다운로드 링크를 준비하세요. 모르는 해시는 비워도 되지만, 검토 완료 전에는 관리자가 계산해 파일과 맞는지 확인해야 합니다.
+
+        이 게시글과 링크는 누구나 볼 수 있습니다. 파일을 Issue에 직접 첨부하지 말고, API 키·토큰·개인정보·비공개 로그를 넣지 마세요.
+  - type: input
+    id: title
+    attributes:
+      label: 게임 이름 / Game title
+      placeholder: 예) 별빛 광산 디펜스 / Starlight Mine Defense
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 어떤 게임인가요? / What kind of game is it?
+      description: 장르, 핵심 플레이, 조작법, 지원 언어를 처음 보는 사람도 이해하게 적어 주세요.
+      placeholder: 낮에는 광물을 캐고 밤에는 기지를 지키는 10분짜리 액션 디펜스입니다.
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: 공개 소스 저장소 / Public source repository
+      placeholder: https://github.com/creator/game-project
+    validations:
+      required: true
+  - type: input
+    id: release_url
+    attributes:
+      label: 고정된 GitHub Release 페이지 / Pinned GitHub Release page
+      placeholder: https://github.com/creator/game-project/releases/tag/v0.1.0
+    validations:
+      required: true
+  - type: input
+    id: game_pack_url
+    attributes:
+      label: .lem 또는 .lemgame 직접 다운로드 링크 / Direct Game Pack download
+      placeholder: https://github.com/creator/game-project/releases/download/v0.1.0/my-game-0.1.0.lemgame
+    validations:
+      required: true
+  - type: input
+    id: creator_version
+    attributes:
+      label: 제작자와 버전 / Creator and version
+      placeholder: "Creator: my-name · Version: 0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: sha256
+    attributes:
+      label: SHA-256 (모르면 비워도 됨) / SHA-256 (optional at submission)
+      description: 검토 완료 전에는 반드시 계산해 고정합니다. 모르면 비워 두세요. 무작위 값을 적지 마세요.
+      placeholder: 64자리 영문 소문자·숫자 / 64 lowercase hexadecimal characters
+  - type: textarea
+    id: rights
+    attributes:
+      label: 코드·이미지·음악 라이선스 / Code, art, and audio licenses
+      description: 내가 만든 것, 사용한 도구, 외부 자산 출처와 재배포 조건을 나눠 적어 주세요. 잘 모르겠다면 정확히 "도움 필요"라고 적습니다.
+      placeholder: |
+        Code: MIT
+        Images: created by me with ...
+        Audio: ...
+        External assets: none / source and license
+    validations:
+      required: true
+  - type: checkboxes
+    id: permissions
+    attributes:
+      label: 게임이 요청하는 기능 / Requested capabilities
+      description: 해당하는 것만 고르세요. 선택하지 않은 기능은 거부된 것으로 검토합니다.
+      options:
+        - label: 게임 전용 로컬 저장 / Pack-scoped local storage
+        - label: 다이아 사용 / Diamond spending
+        - label: 외부 인터넷 연결 / External network
+        - label: 외부 링크 열기 / Open external links
+        - label: 학습 카드 읽기 / Read study cards
+  - type: textarea
+    id: permission_details
+    attributes:
+      label: 권한 상세 / Permission details
+      description: 외부 인터넷·링크·카드 읽기·다이아 사용을 골랐다면 호스트, 목적, 동작 id와 금액을 적어 주세요. 아무 권한도 없으면 "없음"이라고 적습니다.
+      placeholder: 없음 / None
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 공개 전 확인 / Before publishing
+      options:
+        - label: 공개 소스와 배포 파일에 포함된 코드·이미지·음악·글을 재배포할 권리가 있습니다.
+          required: true
+        - label: API 키, 토큰, 이메일, 개인 대화, 로컬 경로, 비공개 로그와 숨은 유료 자격 증명이 없습니다.
+          required: true
+        - label: 공식 공유 공간의 일반 이용가 기준에 맞습니다.
+          required: true
+        - label: 게시글과 링크가 공개되며, 검토와 앱 보안 검사를 통과하기 전에는 실행 가능한 콘텐츠로 표시되지 않는다는 점을 이해합니다.
+          required: true

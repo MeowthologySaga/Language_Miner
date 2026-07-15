@@ -8,8 +8,14 @@ const siteRoot = path.resolve(repoRoot, process.argv[2] || "docs/site");
 const docsSiteRoot = path.join(repoRoot, "docs", "site");
 const installerUrl = "https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Setup-0.1.0-beta.1-x64.exe";
 const portableUrl = "https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Portable-0.1.0-beta.1-x64.exe";
-const ugcSubmissionUrl = "https://github.com/MeowthologySaga/Language_Miner/issues/new?template=ugc_submission.yml";
+const characterSubmissionUrl = "https://github.com/MeowthologySaga/Language_Miner/issues/new?template=ugc_character_submission.yml";
+const gameSubmissionUrl = "https://github.com/MeowthologySaga/Language_Miner/issues/new?template=ugc_game_submission.yml";
 const reviewedUgcUrl = "https://github.com/MeowthologySaga/Language_Miner/issues?q=is%3Aissue%20is%3Aopen%20label%3Augc-ready";
+const officialGameDownloads = [
+  "https://github.com/MeowthologySaga/abyss-summoner/releases/download/v0.1.2/abyss-summoner-0.1.2.lemgame",
+  "https://github.com/MeowthologySaga/Drillheart_Defense/releases/download/v0.2.0/drillheart-defense-0.2.0.lemgame",
+  "https://github.com/MeowthologySaga/Cat_Odyssey/releases/download/v0.1.1/cat-odyssey-0.1.1.lemgame",
+];
 const directDownloadPages = new Set(["index.html", "en/index.html", "tutorial.html", "en/tutorial.html"]);
 const communityPages = new Set(["community.html", "en/community.html"]);
 const allowedExeUrls = new Set([installerUrl, portableUrl]);
@@ -120,15 +126,23 @@ function validateScreenshotLinks(relativePath, html, output) {
 
 function validateCommunityPage(relativePath, html, output) {
   if (!communityPages.has(relativePath)) return;
-  if (!html.includes(ugcSubmissionUrl)) output.push(`${relativePath}: missing fixed UGC submission form`);
+  if (!html.includes(characterSubmissionUrl)) output.push(`${relativePath}: missing character submission form`);
+  if (!html.includes(gameSubmissionUrl)) output.push(`${relativePath}: missing Game Pack submission form`);
   if (!html.includes(reviewedUgcUrl)) output.push(`${relativePath}: missing reviewed UGC catalog`);
-  if (!/Character (?:chat )?(?:card|Chat)|캐릭터챗 카드/i.test(html)) {
+  if (!/Character (?:chat )?(?:card|Chat)|캐릭터(?:챗)?\s*카드/i.test(html)) {
     output.push(`${relativePath}: missing character-card sharing path`);
   }
-  if (!/PlayZone Game Pack|PlayZone[\s\S]{0,120}Game Pack/i.test(html)) {
+  if (!/PlayZone (?:Game Pack|게임)|PlayZone[\s\S]{0,120}(?:Game Pack|게임팩)/i.test(html)) {
     output.push(`${relativePath}: missing Game Pack sharing path`);
   }
-  if (/<(?:form|input)\b|type=["']file["']|\bfetch\s*\(/i.test(html)) {
+  for (const downloadUrl of officialGameDownloads) {
+    if (!html.includes(downloadUrl)) output.push(`${relativePath}: missing official Game Pack download (${downloadUrl})`);
+  }
+  if (!/24시간|24 hours/i.test(html)) output.push(`${relativePath}: missing submission rate-limit explanation`);
+  if (!/클릭해서 크게 보기|Open full-size image/i.test(html)) {
+    output.push(`${relativePath}: missing full-size catalog or install image links`);
+  }
+  if (/<form\b|type=["']file["']|\bfetch\s*\(/i.test(html)) {
     output.push(`${relativePath}: direct upload or runtime network behavior is forbidden`);
   }
 }

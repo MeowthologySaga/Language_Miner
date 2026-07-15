@@ -1,0 +1,82 @@
+name: 캐릭터 카드 공유 / Share a character card
+description: 앱에서 내보낸 캐릭터 JSON의 공개 링크를 등록합니다. 모르는 기술 항목은 파일에서 검토자가 확인합니다.
+title: "[캐릭터 카드] "
+labels:
+  - ugc
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 세 가지만 준비하세요
+
+        1. 캐릭터챗에서 **Language Miner 팩으로 내보내기**를 눌러 JSON을 만듭니다.
+        2. JSON을 GitHub Release 또는 공개 Google Drive에 올립니다.
+        3. 아래에 이름·설명·공개 링크를 적습니다.
+
+        이 게시글과 링크는 누구나 볼 수 있습니다. API 키, 이메일, 개인 대화, 로컬 경로, 비공개 로그를 넣지 마세요. 이 저장소에 파일을 직접 첨부하지 마세요.
+  - type: input
+    id: title
+    attributes:
+      label: 캐릭터 이름 / Character name
+      placeholder: 예) 우주 여행자 미나 / Mina the Space Traveler
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 어떤 캐릭터인가요? / What is this character like?
+      description: 성격, 대화 분위기, 지원 언어와 추천 대상을 쉬운 말로 적어 주세요.
+      placeholder: 차분하게 여행 영어를 연습해 주는 우주선 안내원입니다. 한국어와 영어를 지원합니다.
+    validations:
+      required: true
+  - type: input
+    id: public_json_url
+    attributes:
+      label: 공개 JSON 다운로드 링크 / Public JSON download link
+      description: 로그인하지 않은 사람도 열 수 있는 HTTPS 링크여야 합니다. GitHub Release 또는 공개 Google Drive를 사용할 수 있습니다.
+      placeholder: https://github.com/creator/project/releases/download/v0.1.0/mina.character.json
+    validations:
+      required: true
+  - type: input
+    id: creator
+    attributes:
+      label: 만든 사람 / Creator
+      placeholder: GitHub 이름 또는 표시할 제작자 이름
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: 다른 사람이 어디까지 써도 되나요? / License
+      description: 앱에서 내보낼 때 적은 라이선스를 쓰세요. 예) CC-BY-4.0, CC-BY-NC-4.0. 모르겠다면 "도움 필요"라고 적어도 됩니다.
+      placeholder: CC-BY-4.0 / CC-BY-NC-4.0 / 도움 필요
+    validations:
+      required: true
+  - type: dropdown
+    id: remote_images
+    attributes:
+      label: 인터넷에서 불러오는 이미지가 있나요? / Remote images
+      options:
+        - 없음 / No
+        - 있음 — 아래 추가 정보에 주소를 적겠습니다 / Yes — URLs listed below
+        - 잘 모르겠음 / Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: 추가 정보 / Extra information (optional)
+      description: 원격 이미지 주소, 원본 출처, 버전 또는 주의할 점이 있으면 적어 주세요. 팩 id나 SHA-256은 모르면 비워도 됩니다.
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 공개 전 확인 / Before publishing
+      options:
+        - label: 이 카드와 포함 이미지·글을 공개할 권리가 있습니다.
+          required: true
+        - label: API 키, 토큰, 이메일, 개인 대화, 로컬 경로와 비공개 로그가 없습니다.
+          required: true
+        - label: 공식 공유 공간의 일반 이용가 기준에 맞습니다.
+          required: true
+        - label: 게시글과 링크가 공개되며, 검토 전에는 카탈로그에 나오지 않는다는 점을 이해합니다.
+          required: true
