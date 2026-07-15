@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Language Miner 캐릭터챗 카드와 PlayZone Game Pack을 공개 링크로 나누는 임시 UGC 공유 공간.">
+    <meta name="theme-color" content="#08111f">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <title>UGC 공유 공간 (임시) — Language Miner</title>
+    <link rel="stylesheet" href="assets/site.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Language Miner 홈"><span class="brand-mark" aria-hidden="true">LM</span><span>Language Miner</span></a>
+        <nav class="site-nav" aria-label="UGC 공유 메뉴">
+          <a href="index.html">소개</a>
+          <a href="tutorial.html">화면 사용법</a>
+          <a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/creator-guide.ko.md">제작자 가이드</a>
+          <a href="https://github.com/MeowthologySaga/Language_Miner/issues?q=is%3Aissue%20is%3Aopen%20label%3Augc-ready">공개 목록</a>
+          <a class="language-link" href="en/community.html" lang="en">English</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="page community-page">
+      <section class="community-page-hero" aria-labelledby="community-title">
+        <div>
+          <p class="eyebrow">Temporary UGC community</p>
+          <h1 id="community-title">만든 캐릭터와 게임을 함께 나눠 보세요.</h1>
+          <p class="community-lead">캐릭터챗 카드와 PlayZone Game Pack의 공개 링크를 등록하는 임시 공유 공간입니다. 사이트가 파일을 대신 보관하지 않아도 사람들이 찾고 검토 상태를 확인할 수 있습니다.</p>
+          <div class="hero-actions">
+            <a class="button" href="https://github.com/MeowthologySaga/Language_Miner/issues/new?template=ugc_submission.yml">내 UGC 공유하기 ↗</a>
+            <a class="button secondary" href="https://github.com/MeowthologySaga/Language_Miner/issues?q=is%3Aissue%20is%3Aopen%20label%3Augc-ready">검토 완료 목록 보기 ↗</a>
+          </div>
+          <p class="release-note">임시 운영에는 GitHub 로그인이 필요합니다. 공개 링크와 설명만 등록하며 API 키·개인정보·비공개 로그는 올리지 마세요.</p>
+        </div>
+        <aside class="share-board" aria-label="UGC 공유 공간 운영 방식">
+          <div class="share-board-title"><span>공유 상태</span><strong>링크 기반 · 수동 검토</strong></div>
+          <div class="share-row"><span class="share-dot character" aria-hidden="true"></span><div><strong>캐릭터챗 카드</strong><small>앱에서 내보낸 데이터 전용 JSON</small></div></div>
+          <div class="share-row"><span class="share-dot game" aria-hidden="true"></span><div><strong>PlayZone Game Pack</strong><small>.lem 또는 .lemgame 배포 파일</small></div></div>
+          <div class="share-row"><span class="share-dot review" aria-hidden="true"></span><div><strong>검토 상태 분리</strong><small>접수 목록과 검토 완료 목록을 따로 표시</small></div></div>
+          <p>서버 업로드 · 데이터베이스 · 공용 API 키 없음</p>
+        </aside>
+      </section>
+
+      <section class="section" aria-labelledby="types-title">
+        <div class="section-heading"><div class="section-number">01 · WHAT TO SHARE</div><div><h2 id="types-title">현재 공유할 수 있는 콘텐츠</h2><p class="section-lead">앱이 실제로 가져올 수 있는 두 형식을 중심으로 받습니다.</p></div></div>
+        <div class="three-column share-types">
+          <article class="panel accent-mint"><span class="panel-label">Character Chat</span><h3>캐릭터챗 카드·캐릭터팩</h3><p>앱의 <b>Language Miner 팩으로 내보내기</b>로 만든 단일 JSON입니다. HTML·JavaScript 없이 캐릭터 설정과 안전한 이미지 정보만 담습니다.</p><small>권장: GitHub Release · 간편 공유: 공개 Google Drive</small></article>
+          <article class="panel accent-blue"><span class="panel-label">PlayZone</span><h3>Game Pack</h3><p>.lem 또는 .lemgame 파일입니다. 버전, SHA-256, 라이선스와 요청 권한을 함께 공개해야 하며 앱 검증기를 통과한 팩만 실행됩니다.</p><small>권장: 소스와 배포 파일을 고정한 GitHub Release</small></article>
+          <article class="panel"><span class="panel-label">Proposal</span><h3>새 호환 콘텐츠 제안</h3><p>다른 자료 형식을 공유하고 싶다면 양식에서 <b>기타 호환 형식 제안</b>을 고르세요. 앱이 아직 가져오지 못하는 형식은 지원 범위를 먼저 확인합니다.</p><small>제안은 자동으로 설치 가능한 콘텐츠가 되지 않습니다.</small></article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="steps-title">
+        <div class="section-heading"><div class="section-number">02 · THREE STEPS</div><div><h2 id="steps-title">처음 공유해도 어렵지 않게</h2><p class="section-lead">파일을 올리고, 링크를 적고, 검토 상태를 기다리면 됩니다.</p></div></div>
+        <ol class="share-steps">
+          <li><span>1</span><div><h3>내 파일을 공개 링크로 올립니다</h3><p>GitHub Release가 가장 안전하고 버전 관리가 쉽습니다. 익숙하지 않다면 Google Drive 공유 설정을 <b>링크가 있는 모든 사용자에게 보기 허용</b>으로 바꿀 수 있습니다.</p></div></li>
+          <li><span>2</span><div><h3>공유 양식에 링크와 권리를 적습니다</h3><p>콘텐츠 설명, 제작자, 라이선스와 원격 이미지·네트워크·저장·다이아 사용 같은 권한을 적습니다. Game Pack은 파일명과 SHA-256도 필요합니다.</p></div></li>
+          <li><span>3</span><div><h3>검토 상태를 확인합니다</h3><p>처음에는 미검증 접수 목록에 표시됩니다. 출처와 기술 정보를 확인한 뒤 <span class="file-label">ugc-ready</span>가 붙은 항목만 검토 완료 목록에 나타납니다.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="section" aria-labelledby="browse-title">
+        <div class="section-heading"><div class="section-number">03 · BROWSE</div><div><h2 id="browse-title">등록된 UGC 둘러보기</h2><p class="section-lead">처음에는 검토 완료 목록부터 보세요. 미검증 링크는 직접 열기 전에 출처를 확인해야 합니다.</p></div></div>
+        <div class="share-catalog">
+          <div><span class="review-badge">검토 완료</span><h3>앱이 설치할 때 기술 검사를 다시 합니다</h3><p>사이트는 제출 파일을 복사하거나 자동 실행하지 않습니다. 검토 완료도 품질·저작권·무해성을 절대 보증하는 인증은 아닙니다.</p></div>
+          <div class="catalog-buttons"><a class="button" href="https://github.com/MeowthologySaga/Language_Miner/issues?q=is%3Aissue%20is%3Aopen%20label%3Augc-ready">검토 완료 UGC ↗</a><a href="https://github.com/MeowthologySaga/Language_Miner/issues?q=is%3Aissue%20label%3Augc">미검증 접수 현황 보기 ↗</a></div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="safety-title">
+        <div class="section-heading"><div class="section-number">04 · SHARE SAFELY</div><div><h2 id="safety-title">공유 전에 꼭 확인하세요</h2><p class="section-lead">공식 공유 공간에는 일반 이용가이며 공개 권리가 확인된 콘텐츠만 등록합니다.</p></div></div>
+        <ul class="safety-list">
+          <li><strong>내 권리</strong>코드·이미지·음원·글을 공개하고 재배포할 권리가 있습니다.</li>
+          <li><strong>비밀정보 제거</strong>API 키, 토큰, 이메일, 개인 대화, 로컬 경로와 로그를 제거했습니다.</li>
+          <li><strong>권한 공개</strong>외부 연결, 저장, 카드 접근과 다이아 사용을 빠짐없이 적었습니다.</li>
+          <li><strong>외부 링크 주의</strong>Google Drive 등은 내용이 바뀔 수 있는 미검증 외부 링크로 표시됩니다.</li>
+        </ul>
+        <div class="hero-actions"><a class="button" href="https://github.com/MeowthologySaga/Language_Miner/issues/new?template=ugc_submission.yml">공유 양식 열기 ↗</a><a class="button secondary" href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/creator-guide.ko.md">제작 방법 자세히 보기 ↗</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="footer-inner"><p>Language Miner UGC · 임시 공유 공간</p><p><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/ugc-policy.ko.md">UGC 정책</a> · <a href="index.html">홈</a></p></div></footer>
+  </body>
+</html>

@@ -8,7 +8,10 @@ const siteRoot = path.resolve(repoRoot, process.argv[2] || "docs/site");
 const docsSiteRoot = path.join(repoRoot, "docs", "site");
 const installerUrl = "https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Setup-0.1.0-beta.1-x64.exe";
 const portableUrl = "https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Portable-0.1.0-beta.1-x64.exe";
+const ugcSubmissionUrl = "https://github.com/MeowthologySaga/Language_Miner/issues/new?template=ugc_submission.yml";
+const reviewedUgcUrl = "https://github.com/MeowthologySaga/Language_Miner/issues?q=is%3Aissue%20is%3Aopen%20label%3Augc-ready";
 const directDownloadPages = new Set(["index.html", "en/index.html", "tutorial.html", "en/tutorial.html"]);
+const communityPages = new Set(["community.html", "en/community.html"]);
 const allowedExeUrls = new Set([installerUrl, portableUrl]);
 const allowedExtensions = new Set([
   ".css", ".gif", ".html", ".ico", ".jpeg", ".jpg", ".js", ".json",
@@ -20,6 +23,11 @@ if (siteRoot !== docsSiteRoot) {
 }
 if (!fs.existsSync(path.join(siteRoot, "index.html"))) {
   throw new Error("docs/site/index.html is required.");
+}
+for (const communityPage of communityPages) {
+  if (!fs.existsSync(path.join(siteRoot, communityPage))) {
+    throw new Error(`docs/site/${communityPage} is required.`);
+  }
 }
 
 const files = walkFiles(siteRoot);
@@ -58,6 +66,7 @@ for (const filePath of files) {
     validateLocalReferences(filePath, text, findings);
     validateDownloadLinks(relativePath, text, findings);
     validateScreenshotLinks(relativePath, text, findings);
+    validateCommunityPage(relativePath, text, findings);
   }
 }
 
@@ -106,6 +115,21 @@ function validateScreenshotLinks(relativePath, html, output) {
   }
   for (const [, href, src] of screenshots) {
     if (href !== src) output.push(`${relativePath}: screenshot link does not open its source (${src})`);
+  }
+}
+
+function validateCommunityPage(relativePath, html, output) {
+  if (!communityPages.has(relativePath)) return;
+  if (!html.includes(ugcSubmissionUrl)) output.push(`${relativePath}: missing fixed UGC submission form`);
+  if (!html.includes(reviewedUgcUrl)) output.push(`${relativePath}: missing reviewed UGC catalog`);
+  if (!/Character (?:chat )?(?:card|Chat)|캐릭터챗 카드/i.test(html)) {
+    output.push(`${relativePath}: missing character-card sharing path`);
+  }
+  if (!/PlayZone Game Pack|PlayZone[\s\S]{0,120}Game Pack/i.test(html)) {
+    output.push(`${relativePath}: missing Game Pack sharing path`);
+  }
+  if (/<(?:form|input)\b|type=["']file["']|\bfetch\s*\(/i.test(html)) {
+    output.push(`${relativePath}: direct upload or runtime network behavior is forbidden`);
   }
 }
 

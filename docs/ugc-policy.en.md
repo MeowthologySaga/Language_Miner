@@ -3,21 +3,22 @@
 [한국어](ugc-policy.ko.md) · [Creator guide](creator-guide.en.md) · [Privacy notice](privacy.en.md)
 
 - Target: public beta [v0.1.0-beta.1](https://github.com/MeowthologySaga/Language_Miner/releases/tag/v0.1.0-beta.1)
-- Last updated: 2026-07-14
+- Last updated: 2026-07-15
 
 ## 1. Scope
 
-This policy covers character packs, character cards, and PlayZone Game Packs. The same standard will apply to the official community's UGC-sharing spaces if they open later.
+This policy covers character packs, character cards, PlayZone Game Packs, and the site's temporary UGC-sharing space.
 
 The app code is GPL-3.0-only, but that license does not automatically apply to a UGC story, image, audio file, game code, or data. Each creator must state a separate license in the manifest and distribution page.
 
 ## 2. Distribution and discovery
 
 - **Recommended source of record:** a creator-controlled GitHub Release, which can preserve versions, source, checksums, and changes.
+- **Temporary UGC-sharing space:** the site accepts a public source link through a GitHub Issue instead of storing files. New entries remain in an unreviewed queue; only entries whose provenance, license, and technical metadata have been checked are separated into the `ugc-ready` listing.
 - **Official Discord (not open yet):** if it opens later, it will be a place to discover content and discuss it. There is currently no official invitation link. Durable sources such as GitHub Releases are preferred over re-uploading binaries.
 - **Google Drive and other external links:** labeled as unverified external links. Their owner and content can change.
 
-A Discord post, star, reaction, or another user’s recommendation is not a project warranty of safety, quality, legality, or copyright status.
+An Issue submission, `ugc-ready` label, Discord post, star, reaction, or recommendation is not an absolute project warranty of safety, quality, legality, or copyright status. The app repeats its technical validation at import or installation time.
 
 ## 3. Content standard for a future official Discord
 

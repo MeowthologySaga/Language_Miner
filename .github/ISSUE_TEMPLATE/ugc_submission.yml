@@ -1,98 +1,113 @@
-name: UGC catalog submission
-description: Submit a public character pack or Game Pack source link for review. Do not upload the pack here.
-title: "[UGC submission] "
+name: UGC 공유 등록 / Share UGC
+description: 캐릭터챗 카드나 PlayZone Game Pack의 공개 링크를 임시 공유 공간에 등록합니다.
+title: "[UGC 공유] "
 labels:
   - ugc
 body:
   - type: markdown
     attributes:
       value: |
-        Submit a link to a release you control; do not attach a `.lemgame`, archive, executable, key, token, private log, or user data to this issue.
+        ## 파일 대신 공개 링크를 등록합니다 / Register a public link
 
-        A submission is not an endorsement or automatic listing. Reviewers check the public metadata and the app still applies its technical validator before installation or execution. Security bypasses belong in a private report through `SECURITY.md`.
+        이 저장소에 `.json`, `.lem`, `.lemgame`, ZIP 또는 실행 파일을 직접 첨부하지 마세요. 제작자가 관리하는 **GitHub Release를 권장**하며, Google Drive 등은 미검증 외부 링크로 표시됩니다.
+
+        Do not attach the pack, archive, executable, key, token, private log, or user data to this issue. Submission does not guarantee listing or approval. Language Miner still runs its own validator before import or execution.
+
+        보안 검사 우회나 비밀정보 노출은 이 공개 양식이 아니라 `SECURITY.md`의 비공개 신고 경로를 사용하세요.
   - type: dropdown
     id: content_type
     attributes:
-      label: Content type
+      label: 콘텐츠 종류 / Content type
       options:
-        - Game Pack
-        - Character pack
+        - 캐릭터챗 카드·캐릭터팩 / Character chat card or pack (.json)
+        - PlayZone Game Pack (.lem or .lemgame)
+        - 기타 호환 형식 제안 / Other compatible format proposal
     validations:
       required: true
   - type: input
     id: title
     attributes:
-      label: Pack title
-      placeholder: My Sentence Adventure
-    validations:
-      required: true
-  - type: input
-    id: pack_id_version
-    attributes:
-      label: Pack id and version
-      description: Use the id and semantic version declared in the manifest.
-      placeholder: creator.my-sentence-adventure 0.1.0
-    validations:
-      required: true
-  - type: input
-    id: source_url
-    attributes:
-      label: Public source or release URL
-      description: A GitHub Release is recommended. The URL must work without signing in and remain under the creator's control.
-      placeholder: https://github.com/creator/project/releases/tag/v0.1.0
-    validations:
-      required: true
-  - type: textarea
-    id: artifact
-    attributes:
-      label: Release artifact and SHA-256
-      description: Give the exact downloadable filename and its full SHA-256. Do not paste the file itself.
-      placeholder: |
-        Filename: my-sentence-adventure-0.1.0.lemgame
-        SHA-256: 0123456789abcdef...
-    validations:
-      required: true
-  - type: input
-    id: minimum_app_version
-    attributes:
-      label: Minimum Language Miner version
-      placeholder: v0.1.0-beta.1
-    validations:
-      required: true
-  - type: textarea
-    id: author_and_license
-    attributes:
-      label: Author, sources, and license
-      description: Name the author, source URLs, SPDX license identifiers, and any assets with separate terms.
-    validations:
-      required: true
-  - type: textarea
-    id: permissions
-    attributes:
-      label: Requested permissions
-      description: List every declared network host, storage, wallet, card, or diamond action. Write "None" when the pack requests none.
-      placeholder: None
+      label: 콘텐츠 이름 / Title
+      placeholder: 예) 우주 여행자 미나 / Mina the Space Traveler
     validations:
       required: true
   - type: textarea
     id: description
     attributes:
-      label: What learners do in this pack
-      description: Briefly explain the learning activity, supported languages, and intended audience.
+      label: 무엇을 할 수 있나요? / What can people do with it?
+      description: 주요 내용, 지원 언어와 권장 대상을 쉬운 말로 적어 주세요.
+      placeholder: 캐릭터의 설정과 대화 분위기, 또는 게임의 장르와 핵심 플레이를 설명해 주세요.
     validations:
       required: true
+  - type: input
+    id: public_url
+    attributes:
+      label: 공개 원본 또는 배포 링크 / Public source or release URL
+      description: 로그인 없이 열 수 있고 제작자가 관리하는 링크여야 합니다. GitHub Release를 권장합니다.
+      placeholder: https://github.com/creator/project/releases/tag/v0.1.0
+    validations:
+      required: true
+  - type: input
+    id: id_and_version
+    attributes:
+      label: 팩 id와 버전 / Pack id and version
+      description: 앱 내보내기 화면이나 manifest에 적힌 값을 사용하세요. 기타 형식 제안이면 "해당 없음"이라고 적습니다.
+      placeholder: creator.my-pack 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: artifact
+    attributes:
+      label: 배포 파일과 SHA-256 / Artifact and SHA-256
+      description: Game Pack은 정확한 파일명과 SHA-256이 필수입니다. 앱에서 내보낸 캐릭터 JSON은 내부 payload 해시가 있으므로 "캐릭터 JSON"이라고 적어도 됩니다.
+      placeholder: |
+        Filename: my-game-0.1.0.lemgame
+        SHA-256: 0123456789abcdef...
+    validations:
+      required: true
+  - type: textarea
+    id: author_and_license
+    attributes:
+      label: 제작자·출처·라이선스 / Creator, sources, and license
+      description: 제작자 이름, 원본 출처, SPDX 라이선스와 별도 조건이 있는 자산을 적어 주세요.
+      placeholder: |
+        Creator: ...
+        License: MIT / CC-BY-4.0 / ...
+        Asset sources and separate terms: ...
+    validations:
+      required: true
+  - type: textarea
+    id: permissions
+    attributes:
+      label: 요청 권한 / Requested permissions
+      description: 원격 이미지, 네트워크 호스트, 저장, 카드 접근, 다이아 사용을 모두 적습니다. 없으면 "없음 / None"이라고 적습니다.
+      placeholder: 없음 / None
+    validations:
+      required: true
+  - type: input
+    id: app_version
+    attributes:
+      label: 필요한 Language Miner 버전 / Minimum Language Miner version
+      placeholder: v0.1.0-beta.1
+    validations:
+      required: true
+  - type: textarea
+    id: preview
+    attributes:
+      label: 미리보기 링크 / Preview link (optional)
+      description: 개인정보가 보이지 않는 스크린샷이나 짧은 영상의 공개 링크가 있다면 적어 주세요. 없어도 됩니다.
   - type: checkboxes
     id: checklist
     attributes:
-      label: Safety and rights checklist
+      label: 안전·권리 확인 / Safety and rights
       options:
-        - label: I have the right to redistribute every included or referenced asset and have listed any separate licenses.
+        - label: 모든 코드·이미지·음원·글을 공개하고 재배포할 권리가 있으며 별도 라이선스도 밝혔습니다.
           required: true
-        - label: The public link contains no API key, token, private data, local path, private log, or hidden paid credential.
+        - label: 링크와 파일에 API 키, 토큰, 개인정보, 개인 대화, 로컬 경로, 비공개 로그나 숨은 유료 자격 증명이 없습니다.
           required: true
-        - label: I disclosed every requested permission and external network host.
+        - label: 요청하는 권한과 외부 호스트를 빠짐없이 밝혔습니다. Game Pack이면 파일명과 SHA-256도 적었습니다.
           required: true
-        - label: This submission is suitable for a general-audience official community listing.
+        - label: 공식 공유 공간의 일반 이용가 기준에 맞는 콘텐츠입니다.
           required: true
-        - label: I understand that submission does not guarantee approval and that the app's validator still decides whether the pack can run.
+        - label: 제출 직후에는 미검증 상태이며, 검토 완료 표시도 품질·저작권·무해성을 절대 보증하지 않고 앱 검증기가 실행 가능 여부를 다시 판단한다는 점을 이해합니다.
           required: true
