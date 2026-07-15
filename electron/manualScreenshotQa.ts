@@ -223,7 +223,7 @@ async function seedManualFixture(
   const recent = [
     {
       id: 'manual-docs-pdf', profileId,
-      title: ${JSON.stringify(input.locale === "en" ? "Everyday English Practice" : "생활 영어 연습")},
+      title: ${JSON.stringify(input.locale === "en" ? "Alice's Adventures in Wonderland" : "이상한 나라의 앨리스")},
       filePath: pdfPath, fileType: 'pdf', sourceLabel: 'English',
       translationLabel: ${JSON.stringify(input.locale === "en" ? "Korean" : "한국어")},
       pageCount: 2, source: 'reader', lastOpenedAt: now, createdAt: now
@@ -248,8 +248,8 @@ async function seedManualFixture(
   const transcript = {
     id: 'transcript:manual-docs-video', candidateId: 'local-file:' + videoPath,
     videoId: 'local:manual-docs-video.mp4',
-    title: ${JSON.stringify(input.locale === "en" ? "Running Late — Listening Practice" : "조금 늦을 때 — 듣기 연습")},
-    channelName: 'Language Miner local fixture', languageCode: 'en', status: 'ready',
+    title: ${JSON.stringify(input.locale === "en" ? "The Corner Café — Original Listening Scene" : "코너 카페 — 자체 제작 듣기 장면")},
+    channelName: ${JSON.stringify(input.locale === "en" ? "Language Miner original practice clip" : "Language Miner 자체 제작 예시")}, languageCode: 'en', status: 'ready',
     segments: [
       { id: 'segment-1', speaker: 'Alex', start: 0, end: 2.8, text: ${JSON.stringify(FIXED_SENTENCE)}, translationKo: ${JSON.stringify(FIXED_MEANING)}, noteKo: 'running late 표현을 소리 내어 따라 해 보세요.' },
       { id: 'segment-2', speaker: 'Mina', start: 2.8, end: 5.8, text: "No problem. I'll save you a seat.", translationKo: '괜찮아요. 자리를 맡아 둘게요.', noteKo: 'save someone a seat 표현도 함께 익혀 보세요.' }
@@ -297,7 +297,7 @@ async function seedManualFixture(
   if (!existingExports.some((record) => record.id === 'manual-docs-export')) {
     await api.documents.saveExportRecord({
       id: 'manual-docs-export', profileId,
-      title: ${JSON.stringify(input.locale === "en" ? "Everyday English — Bilingual Notes" : "생활 영어 — 이중언어 노트")},
+      title: ${JSON.stringify(input.locale === "en" ? "Alice — Bilingual Reading Notes" : "이상한 나라의 앨리스 — 이중언어 읽기 노트")},
       filePath: '', fileType: 'pdf', pageRange: '1-2', pageCount: 2, segmentCount: 6,
       providerLabel: 'Local fixture', sourceLanguageLabel: 'English',
       targetLanguageLabel: ${JSON.stringify(input.locale === "en" ? "Korean" : "한국어")}, createdAt: now

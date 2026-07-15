@@ -6,7 +6,7 @@ const sharp = require("sharp");
 const { createQaRedactedLogSink } = require("./qa-redacted-log-sink.cjs");
 
 const repoRoot = path.resolve(__dirname, "..");
-const docsScreenshotRoot = path.join(repoRoot, "docs", "site", "assets", "screenshots");
+const docsScreenshotRoot = path.join(repoRoot, "docs", "site", "assets", "app-images");
 const loopFrameNames = [
   "06-web-reader-select.webp",
   "07-reading-card-preview.webp",

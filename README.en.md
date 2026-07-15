@@ -33,7 +33,7 @@ For example, after finding `I’m running a little late.`, you can save it as a 
 
 ### PlayZone and Character Chat
 
-- **PlayZone** is a UGC space where learners spend locally earned diamonds on optional features in validated game packs, reinforcing motivation to keep studying. It is not an in-game language-learning mode. Only packs marked `ready` or `trusted_official` can run.
+- **PlayZone** is a UGC space where learners spend locally earned diamonds on optional game features, reinforcing motivation to keep studying. It is not an in-game language-learning mode. Only game packs that the app confirms can be installed are allowed to run.
 - **Character Chat** lets you test expressions in situations shaped by a character and scenario. When a cloud AI is connected, the app shows what conversation context will be sent before the session starts.
 
 Character cards and game packs are licensed separately by their creators; the app’s GPL license does not automatically apply to them. If an official community opens, it will accept general-audience content only.

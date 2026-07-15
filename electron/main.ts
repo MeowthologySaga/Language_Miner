@@ -164,6 +164,7 @@ import {
   type WebReaderViewState
 } from "./appSmokeQa";
 import { runDocsScreenshotQa } from "./docsScreenshotQa";
+import { runHomepageScreenshotQa } from "./homepageScreenshotQa";
 import { runManualScreenshotQa } from "./manualScreenshotQa";
 import { resolveQaDeviceScaleFactor } from "./appSmokeScale";
 import {
@@ -5823,6 +5824,20 @@ app.whenReady().then(async () => {
             path.join("debug", "qa", "docs-screenshots")
         )
       : undefined;
+  const homepageScreenshotQaReportPath =
+    process.env.LM_QA_HOMEPAGE_SCREENSHOTS === "1"
+      ? resolveFromCwd(
+          process.env.LM_QA_HOMEPAGE_SCREENSHOTS_REPORT ??
+            path.join("debug", "reports", `homepage-screenshots-${qaTimestamp()}.json`)
+        )
+      : undefined;
+  const homepageScreenshotOutputDirectory =
+    process.env.LM_QA_HOMEPAGE_SCREENSHOTS === "1"
+      ? resolveFromCwd(
+          process.env.LM_QA_HOMEPAGE_SCREENSHOTS_OUTPUT ??
+            path.join("debug", "qa", "homepage-screenshots")
+        )
+      : undefined;
   const manualScreenshotQaReportPath =
     process.env.LM_QA_MANUAL_SCREENSHOTS === "1"
       ? resolveFromCwd(
@@ -5871,7 +5886,20 @@ app.whenReady().then(async () => {
   );
   await createWindow();
 
-  if (manualScreenshotQaReportPath && manualScreenshotOutputDirectory && mainWindow) {
+  if (homepageScreenshotQaReportPath && homepageScreenshotOutputDirectory && mainWindow) {
+    const docsLocale = process.env.LM_QA_APP_LOCALE === "en" ? "en" : "ko";
+    runQaTaskAndExit({
+      reportPath: homepageScreenshotQaReportPath,
+      run: () =>
+        runHomepageScreenshotQa(
+          mainWindow as BrowserWindow,
+          homepageScreenshotQaReportPath,
+          homepageScreenshotOutputDirectory,
+          docsLocale,
+          appSmokeQaWebReaderAccess
+        )
+    });
+  } else if (manualScreenshotQaReportPath && manualScreenshotOutputDirectory && mainWindow) {
     const docsLocale = process.env.LM_QA_APP_LOCALE === "en" ? "en" : "ko";
     runQaTaskAndExit({
       reportPath: manualScreenshotQaReportPath,

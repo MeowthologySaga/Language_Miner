@@ -10,7 +10,6 @@ const installerUrl = "https://github.com/MeowthologySaga/Language_Miner/releases
 const portableUrl = "https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Portable-0.1.0-beta.1-x64.exe";
 const characterSubmissionUrl = "https://github.com/MeowthologySaga/Language_Miner/issues/new?template=ugc_character_submission.yml";
 const gameSubmissionUrl = "https://github.com/MeowthologySaga/Language_Miner/issues/new?template=ugc_game_submission.yml";
-const reviewedUgcUrl = "https://github.com/MeowthologySaga/Language_Miner/issues?q=is%3Aissue%20is%3Aopen%20label%3Augc-ready";
 const officialGameDownloads = [
   "https://github.com/MeowthologySaga/abyss-summoner/releases/download/v0.1.2/abyss-summoner-0.1.2.lemgame",
   "https://github.com/MeowthologySaga/Drillheart_Defense/releases/download/v0.2.0/drillheart-defense-0.2.0.lemgame",
@@ -23,6 +22,14 @@ const allowedExtensions = new Set([
   ".css", ".gif", ".html", ".ico", ".jpeg", ".jpg", ".js", ".json",
   ".md", ".png", ".svg", ".txt", ".webmanifest", ".webp", ".woff", ".woff2", ".xml"
 ]);
+const visitorMetaPatterns = [
+  [/SPAM\s*&amp;\s*ATTACK DEFENSE/i, "internal spam-defense copy"],
+  [/도배와 공격은 공개 목록/i, "internal spam-defense copy"],
+  [/사이트가 파일을 저장하거나 중계하지/i, "internal hosting-architecture copy"],
+  [/The site does not store or proxy content files/i, "internal hosting-architecture copy"],
+  [/정적 GitHub Pages\s*·\s*서버·DB·공용 API 키 없음/i, "internal hosting-architecture footer"],
+  [/Static GitHub Pages\s*·\s*no server, database, or shared API key/i, "internal hosting-architecture footer"],
+];
 
 if (siteRoot !== docsSiteRoot) {
   throw new Error("GitHub Pages validation is restricted to docs/site.");
@@ -69,6 +76,9 @@ for (const filePath of files) {
     if (pattern.test(text)) findings.push(`${relativePath}: ${label}`);
   }
   if (extension === ".html") {
+    for (const [pattern, label] of visitorMetaPatterns) {
+      if (pattern.test(text)) findings.push(`${relativePath}: ${label}`);
+    }
     validateLocalReferences(filePath, text, findings);
     validateDownloadLinks(relativePath, text, findings);
     validateScreenshotLinks(relativePath, text, findings);
@@ -128,7 +138,6 @@ function validateCommunityPage(relativePath, html, output) {
   if (!communityPages.has(relativePath)) return;
   if (!html.includes(characterSubmissionUrl)) output.push(`${relativePath}: missing character submission form`);
   if (!html.includes(gameSubmissionUrl)) output.push(`${relativePath}: missing Game Pack submission form`);
-  if (!html.includes(reviewedUgcUrl)) output.push(`${relativePath}: missing reviewed UGC catalog`);
   if (!/Character (?:chat )?(?:card|Chat)|캐릭터(?:챗)?\s*카드/i.test(html)) {
     output.push(`${relativePath}: missing character-card sharing path`);
   }
@@ -138,7 +147,6 @@ function validateCommunityPage(relativePath, html, output) {
   for (const downloadUrl of officialGameDownloads) {
     if (!html.includes(downloadUrl)) output.push(`${relativePath}: missing official Game Pack download (${downloadUrl})`);
   }
-  if (!/24시간|24 hours/i.test(html)) output.push(`${relativePath}: missing submission rate-limit explanation`);
   if (!/클릭해서 크게 보기|Open full-size image/i.test(html)) {
     output.push(`${relativePath}: missing full-size catalog or install image links`);
   }

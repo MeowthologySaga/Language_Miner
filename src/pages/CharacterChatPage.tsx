@@ -59,6 +59,7 @@ import {
   type CharacterPackStatus,
   type InspectedCharacterPreset
 } from "../shared/characterCards";
+import { resolveBundledAssetUrl } from "../shared/bundledAssetUrl";
 import { createCharacterChatLifeLogInput } from "../shared/characterChatLifeLog";
 import { randomId } from "../shared/ids";
 import { isRemoteOllamaUrl } from "../shared/localEndpointPolicy";
@@ -2288,7 +2289,7 @@ function getCharacterAvatarImageUrl(
   );
   return isRemoteCharacterImageUrl(imageUrl) && !approvedRemoteCharacterImageUrls.has(imageUrl)
     ? ""
-    : imageUrl;
+    : resolveBundledAssetUrl(imageUrl);
 }
 
 function getCharacterInitial(name: string | undefined) {

@@ -6,7 +6,7 @@ const sharp = require("sharp");
 const { createQaRedactedLogSink } = require("./qa-redacted-log-sink.cjs");
 
 const repoRoot = path.resolve(__dirname, "..");
-const screenshotRoot = path.join(repoRoot, "docs", "site", "assets", "screenshots");
+const screenshotRoot = path.join(repoRoot, "docs", "site", "assets", "app-images");
 const expectedNames = [
   "manual-01-tutorial-sandbox.webp",
   "manual-02-today-hub.webp",
@@ -68,7 +68,7 @@ async function main() {
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
   const runRoot = path.join(repoRoot, "debug", "qa", "manual-screenshots", timestamp);
   const fixtureRoot = path.join(runRoot, "fixtures");
-  const fixturePdfPath = path.join(fixtureRoot, "everyday-english-practice.pdf");
+  const fixturePdfPath = path.join(fixtureRoot, "alice-adventures-in-wonderland.pdf");
   const fixtureVideoPath = path.join(fixtureRoot, "manual-docs-video.mp4");
   const syncFolderPath = path.join(fixtureRoot, "card-sync-folder");
   const gameArchivePath = path.join(
@@ -82,7 +82,7 @@ async function main() {
   }
   fs.mkdirSync(syncFolderPath, { recursive: true });
   await createFixturePdf(fixturePdfPath);
-  createFixtureVideo(fixtureVideoPath);
+  await createFixtureVideo(fixtureVideoPath);
 
   const reports = [];
   for (const locale of options.locales) {
@@ -141,19 +141,19 @@ async function createFixturePdf(filePath) {
   const bold = await pdf.embedFont(StandardFonts.HelveticaBold);
   const pages = [
     {
-      title: "Everyday English Practice",
+      title: "Alice's Adventures in Wonderland",
       lines: [
-        "A: I'm running a little late.",
-        "B: No problem. I'll save you a seat.",
-        "Practice: Say the whole sentence, then change the time expression."
+        "CHAPTER I. Down the Rabbit-Hole",
+        "Alice was beginning to get very tired of sitting by her sister on the bank,",
+        "and of having nothing to do: once or twice she had peeped into the book her sister was reading."
       ]
     },
     {
-      title: "Use the sentence in context",
+      title: "A public-domain reading sample",
       lines: [
-        "A: The train is delayed, so I'm running a little late.",
-        "B: Take your time. We can begin when you arrive.",
-        "Review: Read, listen, speak, and write the same useful expression."
+        "There was nothing so very remarkable in that; nor did Alice think it so very much out of the way",
+        "to hear the Rabbit say to itself, 'Oh dear! Oh dear! I shall be late!'",
+        "Source: Project Gutenberg eBook #11 · Lewis Carroll · public domain in the United States"
       ]
     }
   ];
@@ -161,7 +161,7 @@ async function createFixturePdf(filePath) {
     const page = pdf.addPage([612, 792]);
     page.drawRectangle({ x: 0, y: 0, width: 612, height: 792, color: rgb(0.965, 0.975, 0.99) });
     page.drawText(pageData.title, { x: 54, y: 710, size: 24, font: bold, color: rgb(0.08, 0.16, 0.3) });
-    page.drawText("Language Miner local documentation fixture", {
+    page.drawText("Project Gutenberg public-domain sample · Language Miner documentation", {
       x: 54,
       y: 680,
       size: 10,
@@ -183,7 +183,57 @@ async function createFixturePdf(filePath) {
   fs.writeFileSync(filePath, await pdf.save());
 }
 
-function createFixtureVideo(filePath) {
+async function createFixtureVideo(filePath) {
+  const framePath = path.join(path.dirname(filePath), "manual-docs-video-frame.png");
+  const audioPath = path.join(path.dirname(filePath), "manual-docs-video-dialogue.wav");
+  const sceneSvg = `
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#15253b"/>
+      <stop offset="1" stop-color="#334b66"/>
+    </linearGradient>
+    <linearGradient id="window" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ef9f78"/>
+      <stop offset="1" stop-color="#5d6da6"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity=".28"/></filter>
+  </defs>
+  <rect width="960" height="540" fill="url(#wall)"/>
+  <rect x="72" y="62" width="370" height="250" rx="16" fill="url(#window)" stroke="#d7e6ef" stroke-width="9"/>
+  <path d="M72 218 C150 172 225 205 292 160 C350 121 392 136 442 112 V312 H72 Z" fill="#202c4f" opacity=".72"/>
+  <circle cx="356" cy="115" r="34" fill="#ffe3a1" opacity=".9"/>
+  <path d="M95 312 V432 M205 312 V432 M310 312 V432 M420 312 V432" stroke="#223247" stroke-width="9"/>
+  <rect x="600" y="74" width="245" height="142" rx="14" fill="#203247" stroke="#526984" stroke-width="4"/>
+  <text x="722" y="125" fill="#dce8f4" font-family="Segoe UI, sans-serif" font-size="20" text-anchor="middle">THE CORNER CAFÉ</text>
+  <text x="722" y="166" fill="#8fe1c0" font-family="Segoe UI, sans-serif" font-size="16" text-anchor="middle">A Language Miner original scene</text>
+  <ellipse cx="503" cy="463" rx="310" ry="42" fill="#101a29" opacity=".45"/>
+  <g filter="url(#shadow)">
+    <circle cx="357" cy="278" r="61" fill="#c87760"/>
+    <path d="M292 282 Q357 179 422 282 V252 Q357 182 292 252 Z" fill="#311f2d"/>
+    <path d="M280 443 Q292 328 357 328 Q422 328 438 443 Z" fill="#2b6e7b"/>
+    <circle cx="647" cy="278" r="61" fill="#d7a678"/>
+    <path d="M585 265 Q647 181 710 265 L699 226 Q647 185 592 226 Z" fill="#5a382c"/>
+    <path d="M567 443 Q580 328 647 328 Q714 328 729 443 Z" fill="#7a4e8f"/>
+    <rect x="375" y="386" width="250" height="24" rx="12" fill="#c18b55"/>
+    <rect x="413" y="408" width="18" height="83" fill="#8a5e3b"/>
+    <rect x="568" y="408" width="18" height="83" fill="#8a5e3b"/>
+    <path d="M456 347 h42 a15 15 0 0 1 0 30 h-42 z" fill="#f3f0df"/>
+    <path d="M565 347 h42 a15 15 0 0 1 0 30 h-42 z" fill="#f3f0df"/>
+  </g>
+  <rect x="36" y="28" width="190" height="38" rx="19" fill="#07111ddb"/>
+  <text x="131" y="53" fill="#ffffff" font-family="Segoe UI, sans-serif" font-size="15" text-anchor="middle">ORIGINAL PRACTICE CLIP</text>
+</svg>`;
+  await sharp(Buffer.from(sceneSvg)).png().toFile(framePath);
+  const speechScript = path.join(repoRoot, "scripts", "qa-synthesize-dialogue.ps1");
+  const speech = spawnSync(
+    "powershell.exe",
+    ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", speechScript, "-OutputPath", audioPath],
+    { cwd: repoRoot, windowsHide: true, encoding: "utf8", timeout: 60_000 }
+  );
+  if (speech.status !== 0 || !fs.existsSync(audioPath)) {
+    throw new Error(`Could not synthesize the local dialogue fixture: ${speech.stderr || speech.error || "speech synthesis failed"}`);
+  }
   const result = spawnSync(
     "ffmpeg",
     [
@@ -191,16 +241,16 @@ function createFixtureVideo(filePath) {
       "-loglevel",
       "error",
       "-y",
-      "-f",
-      "lavfi",
+      "-loop",
+      "1",
       "-i",
-      "testsrc2=size=960x540:rate=30",
-      "-f",
-      "lavfi",
+      framePath,
       "-i",
-      "anullsrc=channel_layout=stereo:sample_rate=48000",
+      audioPath,
       "-t",
-      "6",
+      "8",
+      "-r",
+      "30",
       "-c:v",
       "libx264",
       "-preset",
@@ -209,7 +259,11 @@ function createFixtureVideo(filePath) {
       "yuv420p",
       "-c:a",
       "aac",
+      "-b:a",
+      "128k",
       "-shortest",
+      "-movflags",
+      "+faststart",
       filePath
     ],
     { cwd: repoRoot, windowsHide: true, encoding: "utf8", timeout: 60_000 }

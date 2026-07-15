@@ -29,6 +29,7 @@
     "qa:book-maker": "node scripts/qa-book-maker-electron.cjs",
     "qa:app-smoke": "node scripts/qa-app-smoke-electron.cjs",
     "qa:docs-screenshots": "node scripts/qa-docs-screenshots-electron.cjs",
+    "qa:homepage-screenshots": "node scripts/qa-homepage-screenshots-electron.cjs",
     "qa:manual-screenshots": "node scripts/qa-manual-screenshots-electron.cjs",
     "qa:extension-options-screenshots": "node scripts/qa-extension-options-screenshots.cjs",
     "qa:bridge-smoke": "node scripts/qa-life-miner-bridge-electron.cjs",

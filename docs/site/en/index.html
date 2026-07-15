@@ -3,26 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Language Miner is a local-first Windows app that turns useful English sentences into cards and connects reading and listening to speaking and writing.">
+    <meta name="description" content="Language Miner is an AI-powered Windows app for generating and reviewing sentence flashcards for reading, listening, and speaking.">
     <meta name="theme-color" content="#08111f">
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
-    <title>Language Miner — turn memorized English into sentences you can use</title>
+    <title>Language Miner — AI-powered sentence flashcard generation and review</title>
     <link rel="stylesheet" href="../assets/site.css">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="index.html" aria-label="Language Miner home">
-          <span class="brand-mark" aria-hidden="true">LM</span>
-          <span>Language Miner</span>
-        </a>
+        <a class="brand" href="index.html" aria-label="Language Miner home"><span class="brand-mark" aria-hidden="true">LM</span><span>Language Miner</span></a>
         <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#cards">Three card types</a>
+          <a href="#diamonds">Diamonds & PlayZone</a>
+          <a href="#create">Create content</a>
           <a href="tutorial.html">Walkthrough</a>
-          <a href="#loop">Learning loop</a>
-          <a href="#play">PlayZone</a>
-          <a href="community.html">Share UGC</a>
-          <a href="#safety">Privacy & safety</a>
+          <a href="community.html">Content hub</a>
           <a class="language-link" href="../index.html" lang="ko">한국어</a>
         </nav>
       </div>
@@ -31,184 +28,119 @@
     <main id="main" class="page">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">Windows public beta · v0.1.0-beta.1</p>
-          <h1 id="hero-title">Turn memorized English into sentences you can use.</h1>
-          <p>Find expressions in books, websites, and video, turn them into sentence cards, and carry English from reading and listening into speaking, writing, and character conversations.</p>
+          <p class="eyebrow">AI-ASSISTED SENTENCE FLASHCARDS · WINDOWS 10/11</p>
+          <h1 id="hero-title">Generate sentence cards with AI. Review until you can use them.</h1>
+          <p><strong>Language Miner is an AI-powered sentence flashcard generation and review app.</strong> Select a real expression in a book, webpage, or video to generate a reading, listening, or speaking card draft.</p>
+          <p>AI starts disconnected, and manual entry still works. Edit drafts in Document Reader and Life Mining; in Web Reader, check the result and reselect the sentence or phrase if it is not right.</p>
+          <ul class="hero-points" aria-label="Key features"><li>Reading, listening & speaking cards</li><li>Start with AI disconnected</li><li>Study history stays on your PC</li></ul>
           <div class="hero-actions">
             <a class="button" href="https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Setup-0.1.0-beta.1-x64.exe">Download Windows installer</a>
             <a class="button secondary" href="https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Portable-0.1.0-beta.1-x64.exe">Download portable build</a>
           </div>
-          <p class="release-note">Not sure which one to choose? Use the installer. Choose portable if you want to try the app without an installation wizard. <a href="tutorial.html">Open the visual walkthrough</a></p>
+          <p class="release-note"><strong>Not sure which one to choose? Use the installer.</strong> This is the v0.1.0-beta.1 public beta. Cards and review work before you connect AI. <a href="tutorial.html">See every step from install to first card</a></p>
         </div>
-
         <div class="demo-card" aria-label="Example of one sentence moving from learning to use">
-          <div class="demo-topline">
-            <span>A real sentence for today</span>
-            <span>No AI required</span>
-          </div>
+          <div class="demo-topline"><span>Today’s real sentence</span><span>AI is optional</span></div>
           <p class="demo-sentence">I’m running a little late.</p>
-          <p class="demo-meaning">Tell a friend you will arrive a little late.</p>
-          <div class="demo-flow" aria-label="Learning stages">
-            <div class="demo-step active"><span>01</span><strong>Find</strong></div>
-            <div class="demo-step"><span>02</span><strong>Card</strong></div>
-            <div class="demo-step"><span>03</span><strong>Review</strong></div>
-            <div class="demo-step"><span>04</span><strong>Use</strong></div>
-          </div>
+          <p class="demo-meaning">Tell someone you will arrive a little late.</p>
+          <div class="demo-flow" aria-label="Learning stages"><div class="demo-step active"><span>01</span><strong>Find</strong></div><div class="demo-step"><span>02</span><strong>Card</strong></div><div class="demo-step"><span>03</span><strong>Review</strong></div><div class="demo-step"><span>04</span><strong>Use</strong></div></div>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="problem-title">
-        <div class="section-heading">
-          <div class="section-number">01 · THE GAP</div>
-          <div>
-            <h2 id="problem-title">Why can a familiar word still disappear when you need to speak?</h2>
-            <p class="section-lead">Recognizing a meaning and retrieving a sentence are different skills. Language Miner does not let study end at “I saw it.”</p>
+      <section id="loop" class="section" aria-labelledby="why-title">
+        <div class="section-heading"><div class="section-number">01 · WHY SENTENCES</div><div><h2 id="why-title">Knowing a word is not the same as retrieving a sentence.</h2><p class="section-lead">Isolated words easily lose their natural verb, preposition, tone, and situation. A real sentence keeps vocabulary, grammar, and context together. Recalling it before revealing the answer builds a route you can use when the moment arrives.</p></div></div>
+        <div class="learning-loop-grid"><article><span>01</span><h3>Find</h3><p>An expression you genuinely wanted to understand or use</p></article><article><span>02</span><h3>Make a card</h3><p>Organize meaning, context, and sound for one skill</p></article><article><span>03</span><h3>Review</h3><p>Recall before revealing the answer</p></article><article><span>04</span><h3>Use</h3><p>Adapt it in speaking, writing, or Character Chat</p></article><article><span>05</span><h3>Stay motivated</h3><p>Feed study-mission rewards into PlayZone progress</p></article></div>
+      </section>
+
+      <section id="cards" class="section card-guide" aria-labelledby="cards-title">
+        <div class="section-heading"><div class="section-number">02 · THREE CARD TYPES</div><div><h2 id="cards-title">The same sentence becomes a different card for each skill.</h2><p class="section-lead">Web Reader does not create every type at once. Make only the card you need in its reading, listening, or speaking screen. Every image below is an actual app screen; select it to open the full-size version.</p></div></div>
+
+        <article class="card-guide-item reading-card">
+          <header class="card-type-heading"><span class="card-type-number">01</span><div><p class="card-type-label">READING CARD</p><h3>See the English sentence and recognize its meaning and use.</h3><p>Select a real sentence in Document Reader or Web Reader, then check the meaning and context you wrote or AI helped draft.</p></div></header>
+          <div class="card-path"><b>Find it at</b><span>Read & Listen · Input → Document Reader / Web Reader</span></div>
+          <div class="card-screen-list">
+            <figure><figcaption><b>1. Choose a sentence from Alice in Wonderland.</b> Read the public-domain book and select a sentence. Document Reader lets you edit the source sentence and card fields before saving.</figcaption><a class="home-shot-link" href="../assets/app-images/en/home-document-alice.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size Alice in Wonderland Document Reader screen"><img src="../assets/app-images/en/home-document-alice.webp" width="1224" height="755" loading="lazy" alt="Selecting a sentence from the public-domain Alice in Wonderland text in Document Reader"></a></figure>
+            <figure><figcaption><b>2. Select an expression on a real webpage.</b> While browsing the live Project Gutenberg text, select the complete sentence and its key phrase, then choose Sentence card.</figcaption><a class="home-shot-link" href="../assets/app-images/en/home-web-reader-live.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size live Web Reader screen"><img src="../assets/app-images/en/home-web-reader-live.webp" width="1224" height="755" loading="lazy" alt="Reading a live Project Gutenberg webpage and selecting a sentence and key phrase in Web Reader"></a></figure>
+            <figure><figcaption><b>3. Reading-card front.</b> See the English sentence first and try to recall the key expression’s meaning and the sentence’s use.</figcaption><a class="home-shot-link" href="../assets/app-images/en/home-reading-card-front.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size reading-card front"><img src="../assets/app-images/en/home-reading-card-front.webp" width="1224" height="755" loading="lazy" alt="Reading-card front with an English sentence and key expression"></a></figure>
+            <figure><figcaption><b>4. Reading-card back.</b> Reveal the meaning, context, and source. If a Web Reader card is wrong, close it and select the sentence or expression again.</figcaption><a class="home-shot-link" href="../assets/app-images/en/home-reading-card-back.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size reading-card back"><img src="../assets/app-images/en/home-reading-card-back.webp" width="1224" height="755" loading="lazy" alt="Reading-card back with meaning context and source"></a></figure>
           </div>
+          <dl class="card-format-grid"><div><dt>Front</dt><dd>English sentence and key expression</dd></div><div><dt>Back</dt><dd>Meaning in your native language, context, source, and useful hints</dd></div><div><dt>Goal</dt><dd>Recognize and understand the sentence quickly while reading</dd></div><div><dt>Use it when</dt><dd>You find a sentence worth keeping in a book, PDF, article, or blog</dd></div></dl>
+        </article>
+
+        <article class="card-guide-item listening-card">
+          <header class="card-type-heading"><span class="card-type-number">02</span><div><p class="card-type-label">LISTENING CARD</p><h3>Hear the sound first and recognize the sentence in real speech.</h3><p>Repeat a short section you could not catch in Listening Loop or Video Reader, then keep its sound and transcript together.</p></div></header>
+          <div class="card-path"><b>Find it at</b><span>Read & Listen · Input → Listening Loop / Video Reader</span></div>
+          <div class="card-screen-list three-shots">
+            <figure><figcaption><b>1. Repeat a sample sitcom scene.</b> Play the short scene and rewind the section you need, learning its sound together with the situation.</figcaption><a class="home-shot-link" href="../assets/app-images/en/home-video-reader-sitcom.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size sample sitcom Video Reader"><img src="../assets/app-images/en/home-video-reader-sitcom.webp" width="1224" height="755" loading="lazy" alt="Video Reader playing a fictional sitcom scene with captions"></a></figure>
+            <figure><figcaption><b>2. Listening-card front.</b> Play the sound before revealing the line, then identify the sentence by ear.</figcaption><a class="home-shot-link" href="../assets/app-images/en/home-listening-card-front.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size listening-card front"><img src="../assets/app-images/en/home-listening-card-front.webp" width="1224" height="755" loading="lazy" alt="Listening-card front that plays the sound while the sentence stays hidden"></a></figure>
+            <figure><figcaption><b>3. Listening-card back.</b> Reveal the English line and its meaning, then check the sounds and key expression you missed.</figcaption><a class="home-shot-link" href="../assets/app-images/en/home-listening-card-back.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size listening-card back"><img src="../assets/app-images/en/home-listening-card-back.webp" width="1224" height="755" loading="lazy" alt="Listening-card back with English transcript and meaning"></a></figure>
+          </div>
+          <dl class="card-format-grid"><div><dt>Front</dt><dd>Original sound or selected short clip</dd></div><div><dt>Back</dt><dd>English transcript, meaning, missed sounds, and key expression</dd></div><div><dt>Goal</dt><dd>Catch a known sentence at natural speed and pronunciation</dd></div><div><dt>Use it when</dt><dd>A short line is still unclear without captions</dd></div></dl>
+        </article>
+
+        <article class="card-guide-item speaking-card">
+          <header class="card-type-heading"><span class="card-type-number">03</span><div><p class="card-type-label">SPEAKING CARD</p><h3>See a meaning or situation and produce the English yourself.</h3><p>Add something you genuinely wanted to say to Life Mining, then check the natural-English draft and conversation context before saving.</p></div></header>
+          <div class="card-path"><b>Find it at</b><span>Speak & Write · Output → Life Mining</span></div>
+          <div class="card-screen-list">
+            <figure><figcaption><b>1. Capture what you wanted to say.</b> Write it in your native language while the situation is still fresh.</figcaption><a class="home-shot-link" href="../assets/app-images/en/manual-12a-life-mining-add.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size Life Mining entry screen"><img src="../assets/app-images/en/manual-12a-life-mining-add.webp" width="1224" height="755" loading="lazy" alt="Adding something you wanted to say as a Life Mining candidate"></a></figure>
+            <figure><figcaption><b>2. Check the situation.</b> Edit the English and dialogue context, then save the speaking card.</figcaption><a class="home-shot-link" href="../assets/app-images/en/manual-12b-life-mining-result.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size speaking-card preview"><img src="../assets/app-images/en/manual-12b-life-mining-result.webp" width="1224" height="755" loading="lazy" alt="Speaking-card preview with a native-language situation and suggested English"></a></figure>
+            <figure><figcaption><b>3. Speaking-card front.</b> Use the situation and your turn in the dialogue to speak first, then use the recording panel to repeat the suggested line.</figcaption><a class="home-shot-link" href="../assets/app-images/en/home-speaking-card-front.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size speaking-card front"><img src="../assets/app-images/en/home-speaking-card-front.webp" width="1224" height="755" loading="lazy" alt="Speaking-card front with a dialogue situation and recording practice panel"></a></figure>
+            <figure><figcaption><b>4. Speaking-card back.</b> Check the suggested English and expression notes, then listen or record yourself for comparison.</figcaption><a class="home-shot-link" href="../assets/app-images/en/home-speaking-card-back.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size speaking-card back"><img src="../assets/app-images/en/home-speaking-card-back.webp" width="1224" height="755" loading="lazy" alt="Speaking-card back with suggested English notes and recording tools"></a></figure>
+          </div>
+          <dl class="card-format-grid"><div><dt>Front</dt><dd>Meaning in your language, speaking situation, or dialogue turn</dd></div><div><dt>Back</dt><dd>Suggested English, expression notes, playback, and recording tools</dd></div><div><dt>Goal</dt><dd>Build the English yourself from meaning and context</dd></div><div><dt>Use it when</dt><dd>You think, “That is what I wanted to say earlier”</dd></div></dl>
+        </article>
+      </section>
+
+      <section class="section review-story" aria-labelledby="review-title">
+        <div class="section-heading"><div class="section-number">03 · REVIEW & WRITING</div><div><h2 id="review-title">Recall before revealing, then retrieve it again in writing.</h2><p class="section-lead">All three card types return on a review schedule. Try to retrieve the answer, reveal it, then rate how difficult it felt to set the next review time.</p></div></div>
+        <div class="review-screen-grid">
+          <figure><figcaption><b>Front</b> Try to retrieve the sentence or meaning before choosing Show answer.</figcaption><a class="home-shot-link" href="../assets/app-images/en/09-review-front.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size review-card front"><img src="../assets/app-images/en/09-review-front.webp" width="1224" height="755" loading="lazy" alt="Front of a review card with the Show answer button"></a></figure>
+          <figure><figcaption><b>Back</b> Check the answer and hints, then choose Again, Hard, Good, or Easy.</figcaption><a class="home-shot-link" href="../assets/app-images/en/10-review-answer.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size review-card answer"><img src="../assets/app-images/en/10-review-answer.webp" width="1224" height="755" loading="lazy" alt="Review answer with difficulty rating buttons"></a></figure>
         </div>
-        <div class="two-column">
-          <article class="panel">
-            <span class="panel-label">Isolated words</span>
-            <h3>The meaning remains, but the sentence falls apart</h3>
-            <p>You lose which verb and preposition fit together, what tone sounds natural, and when a phrase is used.</p>
-          </article>
-          <article class="panel accent-blue">
-            <span class="panel-label">Sentences with context</span>
-            <h3>Vocabulary, grammar, and situation stay connected</h3>
-            <p>A real sentence you chose gives you a complete unit to retrieve in the next conversation.</p>
-          </article>
+        <div class="writing-note"><div><p class="eyebrow">WRITING IS A SEPARATE PRACTICE</p><h3>There is no separate writing-card deck.</h3><p>Far fewer general language learners need a dedicated long-form writing deck, so writing remains a flexible practice rather than a fourth card type. Produce a short sentence from the same meaning and inspect the local comparison when you need output practice.</p></div><a class="home-shot-link" href="../assets/app-images/en/12-writing-result.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size writing result"><img src="../assets/app-images/en/12-writing-result.webp" width="1224" height="755" loading="lazy" alt="Writing a short sentence with a learned expression and checking the result"></a></div>
+      </section>
+
+      <section id="diamonds" class="section diamond-story" aria-labelledby="diamonds-title">
+        <div class="section-heading"><div class="section-number">04 · STUDY REWARDS</div><div><h2 id="diamonds-title">When you want to get stronger in a game, study becomes the next option—not payment.</h2><p class="section-lead">Diamonds are not sold for money. Complete <strong>study missions and claim their rewards</strong>: make reading cards, listen, process speaking cards, review, or finish a writing check.</p></div></div>
+        <figure class="diamond-screen"><figcaption><b>Today’s missions</b> The reward button appears when your study activity reaches a goal.</figcaption><a class="home-shot-link" href="../assets/app-images/en/manual-04-daily-missions.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size daily missions screen"><img src="../assets/app-images/en/manual-04-daily-missions.webp" width="1224" height="755" loading="lazy" alt="Daily reading listening speaking and review missions with diamond rewards"></a></figure>
+        <div class="mission-examples" aria-label="Examples of study missions that reward diamonds"><article><strong>Make 5 reading cards</strong><span>15 diamonds</span></article><article><strong>Listen to 30 sentences</strong><span>20 diamonds</span></article><article><strong>Process 5 Life Mining cards</strong><span>25 diamonds</span></article><article><strong>Finish a review deck</strong><span>15 per deck</span></article></div>
+        <div class="playzone-explainer">
+          <div class="playzone-screen-stack"><a class="home-shot-link" href="../assets/app-images/en/21-playzone-gameplay.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size PlayZone game screen"><img src="../assets/app-images/en/21-playzone-gameplay.webp" width="1264" height="781" loading="lazy" alt="An official PlayZone game where study-earned diamonds can be spent"></a><a class="home-shot-link" href="../assets/app-images/en/manual-14-diamond-confirm.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size diamond confirmation"><img src="../assets/app-images/en/manual-14-diamond-confirm.webp" width="1224" height="755" loading="lazy" alt="Confirming the reason and amount before spending diamonds in a game"></a></div>
+          <div><p class="eyebrow">PLAYZONE</p><h3>The game itself does not teach expressions.</h3><p>PlayZone does not turn saved phrases into in-game quizzes. Diamonds work like game currency for equipment, entry, convenience, or other progression choices declared by the creator.</p><p>It redirects the familiar “I wish I could pay a little to get stronger” feeling toward study. The goal is not to weaken games into dull educational exercises, but to connect enjoyable games to a useful reward for learning outside them.</p><a class="button" href="community.html">Browse PlayZone games</a></div>
         </div>
       </section>
 
-      <section id="loop" class="section" aria-labelledby="balance-title">
-        <div class="section-heading">
-          <div class="section-number">02–03 · BALANCE</div>
-          <div>
-            <h2 id="balance-title">Discover through input. Make it yours through output.</h2>
-            <p class="section-lead">Connect reading and listening to speaking and writing through the same sentence.</p>
-          </div>
-        </div>
-        <div class="two-column">
-          <article class="panel accent-blue">
-            <span class="panel-label">Read & Listen · Input</span>
-            <h3>Build recognition of natural English</h3>
-            <p>Find expressions you actually want in PDFs, websites, audio, and video. Reading and listening cards make form and sound familiar.</p>
-          </article>
-          <article class="panel accent-mint">
-            <span class="panel-label">Speak & Write · Output</span>
-            <h3>Build retrieval at the moment of need</h3>
-            <p>Use speaking cards, writing practice, and Character Chat to produce English from a meaning or situation. A mistake becomes a hint for the next review.</p>
-          </article>
-        </div>
+      <section id="create" class="section creator-world" aria-labelledby="create-title">
+        <div class="section-heading"><div class="section-number">05 · EVERYONE CAN CREATE</div><div><h2 id="create-title">Move from enjoying content to making it.</h2><p class="section-lede">File-working agents such as Codex and Claude Code can help people make a small web game without years of programming study. Language Miner gives that result a place to run, a way to share it, and a connection to study rewards.</p></div></div>
+        <article class="creator-feature">
+          <div class="creator-feature-copy"><p class="eyebrow">CHARACTER CARDS</p><h3>Create, import, and share the character you want to talk to.</h3><p>Define a name, personality, speaking style, situation, and expression images. Import a character someone shared, or export yours as a file and post its public link in the content hub.</p><ol class="simple-steps"><li><span>1</span><div><b>Create</b><p>Describe the personality and conversation background.</p></div></li><li><span>2</span><div><b>Chat</b><p>Start Character Chat with the AI connection you chose.</p></div></li><li><span>3</span><div><b>Share</b><p>Export the character card and share its public link.</p></div></li></ol></div>
+          <div class="creator-screen-stack"><a class="home-shot-link" href="../assets/app-images/en/manual-13a-character-manager.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size Character Manager"><img src="../assets/app-images/en/manual-13a-character-manager.webp" width="1224" height="755" loading="lazy" alt="Character Manager fields for personality speaking style and images"></a><a class="home-shot-link" href="../assets/app-images/en/manual-13c-character-export.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size character export screen"><img src="../assets/app-images/en/manual-13c-character-export.webp" width="1224" height="755" loading="lazy" alt="Exporting a character card with creator and license information"></a><a class="home-shot-link" href="../assets/app-images/en/14-character-chat.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size Character Chat screen"><img src="../assets/app-images/en/14-character-chat.webp" width="1224" height="755" loading="lazy" alt="Character Chat with a character you created or imported"></a></div>
+        </article>
+        <article class="gamekit-feature">
+          <div class="gamekit-intro"><p class="eyebrow">GAMEKIT + CODEX OR CLAUDE CODE</p><h3>Turn a one-line idea into a PlayZone game file.</h3><p>GameKit contains the rules for requesting diamonds and packaging a <code>.lemgame</code> file. Open the folder with an agent and describe the game and diamond-spending choices in ordinary language.</p><a class="text-link" href="https://github.com/MeowthologySaga/Language_Miner/tree/main/gamekit">Open the GameKit files and creator rules →</a></div>
+          <ol class="agent-flow"><li><span>01</span><div><b>Get GameKit</b><p>Download the GameKit folder from GitHub and extract it.</p></div></li><li><span>02</span><div><b>Open the folder with an agent</b><p>Let Codex or Claude Code read the included rules.</p></div></li><li><span>03</span><div><b>Describe your game</b><p>For example: “A cat explores a dungeon, and diamonds pay for revives.”</p></div></li><li><span>04</span><div><b>Answer and review</b><p>Choose controls, screens, difficulty, and diamond uses while the agent builds.</p></div></li><li><span>05</span><div><b>Run and share the .lemgame</b><p>Drop it into PlayZone and post a public link in the content hub.</p></div></li></ol>
+          <a class="home-shot-link gamekit-shot" href="../assets/app-images/en/18-playzone-official-library.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size PlayZone library"><img src="../assets/app-images/en/18-playzone-official-library.webp" width="1264" height="781" loading="lazy" alt="PlayZone library where official and community games can be installed and launched"></a>
+          <div class="creator-cta"><div><b>You do not have to create anything.</b><p>Browse games and characters made by other people, then add the file you want to the app.</p></div><a class="button" href="community.html">Open the game & character content hub</a></div>
+        </article>
       </section>
 
-      <section class="section" aria-labelledby="example-title">
-        <div class="section-heading">
-          <div class="section-number">04 · ONE SENTENCE</div>
-          <div>
-            <h2 id="example-title">How one sentence reaches real use</h2>
-            <p class="section-lead">Follow <span>I’m running a little late.</span> through a complete loop.</p>
-          </div>
-        </div>
-        <div class="timeline">
-          <article><h3>Find</h3><p>Select a sentence you want for telling someone you will be late.</p></article>
-          <article><h3>Make a card</h3><p>Start with a reading card in Web Reader. Add listening and speaking cards later from their own Listening and Life Mining screens when they match the problem.</p></article>
-          <article><h3>Review</h3><p>Recognize the English, then produce the sentence yourself from the situation.</p></article>
-          <article><h3>Use</h3><p>Reuse it in a writing prompt or a Character Chat about meeting someone.</p></article>
-        </div>
-      </section>
-
-      <section id="play" class="section" aria-labelledby="play-title">
-        <div class="section-heading">
-          <div class="section-number">05 · PRACTICE WORLDS</div>
-          <div>
-            <h2 id="play-title">Practice expressions in conversation. Spend study rewards in games.</h2>
-            <p class="section-lead">Character Chat lets you practice learned expressions in conversation. PlayZone lets you spend locally earned diamonds on game features, reinforcing motivation to keep studying.</p>
-          </div>
-        </div>
-        <div class="two-column">
-          <article class="panel">
-            <span class="panel-label">Character Chat</span>
-            <h3>Choose a partner and situation</h3>
-            <p>Use learned expressions in meetings, travel, and everyday conversations. With cloud AI, review the character definition and recent context that will be sent before starting.</p>
-          </article>
-          <article class="panel">
-            <span class="panel-label">PlayZone</span>
-            <h3>Validated UGC games that use local study rewards</h3>
-            <p>Spend study-earned diamonds in official games such as Abyss Summoner, Drillheart Defense, and Cat Odyssey, or in validated user-made packs. Packs run in isolation after technical checks, and network access is denied by default.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="start" class="section" aria-labelledby="start-title">
-        <div class="section-heading">
-          <div class="section-number">06 · FIRST START</div>
-          <div>
-            <h2 id="start-title">A ten-minute starting sequence with no AI setup</h2>
-            <p class="section-lead">AI starts disconnected. Experience cards and review first, then connect only what you need.</p>
-          </div>
-        </div>
-        <ol class="steps">
-          <li><div><strong>Open the built-in practice text in Web Reader.</strong><br>Practice a real card save from the fixed sentence without contacting an external website.</div></li>
-          <li><div><strong>Check the reading card's sentence, meaning, and context.</strong><br>Edit them to match the situation you want to remember.</div></li>
-          <li><div><strong>Save and complete the first review.</strong><br>Try retrieval before choosing <span>Show answer</span>.</div></li>
-          <li><div><strong>Retrieve it in a short writing exercise.</strong><br>Produce the English sentence from the same meaning.</div></li>
-          <li><div><strong>Connect AI only if needed.</strong><br>Consider local Ollama first; review data and cost before cloud use.</div></li>
-        </ol>
+      <section id="start" class="section start-story" aria-labelledby="start-title">
+        <a class="home-shot-link" href="../assets/app-images/en/01-onboarding-language.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size first-run language setup"><img src="../assets/app-images/en/01-onboarding-language.webp" width="1224" height="755" loading="lazy" alt="Language Miner first-run language setup"></a>
+        <div><p class="eyebrow">YOUR FIRST 10 MINUTES</p><h2 id="start-title">Complete one loop before connecting AI.</h2><ol class="start-list"><li><b>1 min</b> Choose the app, native, and study languages.</li><li><b>3 min</b> Pick a sentence from the public-domain text in Document Reader.</li><li><b>2 min</b> Check its meaning and context, then save the reading card.</li><li><b>2 min</b> Complete the first review by recalling before revealing.</li><li><b>2 min</b> Look through today’s missions and the content hub.</li></ol><a class="text-link" href="tutorial.html">Follow the complete visual guide →</a></div>
       </section>
 
       <section id="safety" class="section" aria-labelledby="safety-title">
-        <div class="section-heading">
-          <div class="section-number">07 · YOUR BOUNDARY</div>
-          <div>
-            <h2 id="safety-title">Your data, your key, your choice of connection.</h2>
-            <p class="section-lead">The app explains real storage, transfer, and cost boundaries instead of using “local” or “free” as vague promises.</p>
-          </div>
-        </div>
-        <ul class="safety-list">
-          <li><strong>Local storage</strong>Cards and conversations stay on this PC by default. Learning data other than API keys may be plaintext.</li>
-          <li><strong>Disconnected by default</strong>No Gemini or Google AI request happens before consent. Only loopback Ollama is labeled local.</li>
-          <li><strong>BYOK cloud</strong>Use your key and review provider, content, calls, and cost range before the task.</li>
-          <li><strong>Limits of cost guards</strong>The app shows an on-device estimate. Provider quota and budget alerts are still needed.</li>
-          <li><strong>UGC runtime limits</strong>Hashes, permissions, CSP, and archive structure are checked; packs that are not ready cannot run.</li>
-          <li><strong>No central tracking</strong>The project runs no advertising, analytics, or developer telemetry server.</li>
-        </ul>
-        <ul class="link-list" aria-label="Safety documentation">
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/privacy.en.md">Privacy notice</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/ugc-policy.en.md">UGC policy</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/SECURITY.md">Security reporting</a></li>
-        </ul>
+        <div class="section-heading"><div class="section-number">06 · LOCAL BY DEFAULT</div><div><h2 id="safety-title">You decide what connects and what leaves this PC.</h2><p class="section-lead">Cards and study history stay on this PC by default. AI starts disconnected, and you connect only the features you choose.</p></div></div>
+        <div class="safety-list"><article><strong>Local storage</strong><p>Cards and study history stay on this PC by default.</p></article><article><strong>AI starts disconnected</strong><p>Connect local Ollama or your own cloud key only when needed.</p></article><article><strong>Review before sending</strong><p>For cloud AI, check the provider, content, and expected calls first.</p></article><article><strong>Your backups</strong><p>Create a <code>.lembackup</code> and inspect what the restore preview includes.</p></article></div>
+        <ul class="link-list"><li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/privacy.en.md">Privacy notice</a></li><li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/install-windows.en.md">Install, SmartScreen & checksum guide</a></li><li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/SECURITY.md">Security reporting</a></li></ul>
       </section>
 
-      <section class="section" aria-labelledby="download-title">
-        <div class="callout">
-          <div>
-            <p class="eyebrow">08 · DOWNLOAD & COMMUNITY</p>
-            <h2 id="download-title">Choose a build and download it now.</h2>
-            <p>Use the installer on a PC you plan to keep using. Choose portable to try the app without an installation wizard. Both buttons start the official file download directly.</p>
-          </div>
-          <div class="hero-actions">
-            <a class="button" href="https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Setup-0.1.0-beta.1-x64.exe">Download Windows installer</a>
-            <a class="button secondary" href="https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Portable-0.1.0-beta.1-x64.exe">Download portable build</a>
-          </div>
-        </div>
-        <ul class="link-list" aria-label="Documentation">
-          <li><a href="tutorial.html">Visual walkthrough</a></li>
-          <li><a href="community.html">Character & game UGC community</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/install-windows.en.md">Install, SmartScreen & checksum guide</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/complete-user-manual.en.md">Complete user manual</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/user-guide.en.md">Short feature reference</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/creator-guide.en.md">UGC creator guide</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/project-background.en.md">Project background</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/LICENSE">GPL-3.0 license</a></li>
-        </ul>
+      <section id="download" class="section" aria-labelledby="download-title">
+        <div class="callout"><div><p class="eyebrow">DOWNLOAD FOR WINDOWS</p><h2 id="download-title">Skip the GitHub file list and download here.</h2><p>Use the installer on a PC you plan to keep using. Choose portable to try the app without an installation wizard. Both buttons start the official release-file download directly.</p></div><div class="hero-actions"><a class="button" href="https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Setup-0.1.0-beta.1-x64.exe">Download Windows installer</a><a class="button secondary" href="https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Portable-0.1.0-beta.1-x64.exe">Download portable build</a></div></div>
+        <ul class="link-list"><li><a href="tutorial.html">Visual walkthrough</a></li><li><a href="community.html">Game & character content hub</a></li><li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/complete-user-manual.en.md">Complete user manual</a></li><li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/creator-guide.en.md">UGC creator guide</a></li><li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/project-background.en.md">Project background</a></li></ul>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <p>Language Miner · Local-first sentence learning</p>
-        <p>Static GitHub Pages · no server, database, or shared API key</p>
-      </div>
-    </footer>
+    <footer class="site-footer"><div class="footer-inner"><p>Language Miner · AI-assisted sentence flashcards</p><p>Windows 10/11 x64 · 한국어 · English</p></div></footer>
   </body>
 </html>

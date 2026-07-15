@@ -318,7 +318,7 @@ describe("TutorialPage", () => {
     expect(listeningHtml).toContain("listening-loop-page");
     expect(listeningHtml).toContain("listening-subtitle-card");
     expect(listeningHtml).toContain("tutorial-listening-video-player");
-    expect(listeningHtml).toContain("/samples/listening/tutorial-room-check-scene.png");
+    expect(listeningHtml).toContain("./samples/listening/tutorial-room-check-scene.png");
     expect(listeningHtml).not.toContain(".mp4");
     expect(listeningHtml).toContain("형광펜");
     expect(listeningHtml).toContain("문장 저장");
@@ -327,7 +327,7 @@ describe("TutorialPage", () => {
     expect(videoHtml).toContain("video-reader-player-shell");
     expect(videoHtml).toContain("튜토리얼 영상 리더 샘플 영상");
     expect(videoHtml).not.toContain(".mp4");
-    expect(videoHtml).toContain("/samples/listening/tutorial-room-check-scene.png");
+    expect(videoHtml).toContain("./samples/listening/tutorial-room-check-scene.png");
     expect(videoHtml).not.toContain("tutorial-coach-bubble");
     expect(lifeHtml).toContain("life-layout");
     expect(lifeHtml).toContain("life-candidate-panel");
@@ -413,7 +413,7 @@ describe("TutorialPage", () => {
     expect(openHtml).toContain("data-qa=\"tutorial-listening-subtitle-source\"");
     expect(openHtml).toContain("tutorial-listening-video-player");
     expect(openHtml).toContain(ko("tutorial.listening.sampleVideoLabel"));
-    expect(openHtml).toContain("/samples/listening/tutorial-room-check-scene.png");
+    expect(openHtml).toContain("./samples/listening/tutorial-room-check-scene.png");
     expect(openHtml).not.toContain(".mp4");
     expect(openHtml).not.toContain("<video");
     expect(openHtml).toContain("data-tutorial-target-id=\"select-listening-segment\"");
@@ -647,7 +647,7 @@ describe("TutorialPage", () => {
     expect(openHtml).toContain("tutorial-discord-window");
     expect(openHtml).toContain("# boss-run");
     expect(openHtml).toContain("tutorial-coach-mascot");
-    expect(openHtml).toContain("/tutorial/mole-guide-b-transparent.png");
+    expect(openHtml).toContain("./tutorial/mole-guide-b-transparent.png");
     expect(openHtml).toContain("Enter");
     expect(openHtml).toContain("자주 하는 말도 막상 카드로 만들려고 하면");
     expect(capturedHtml).toContain("data-tutorial-target-id=\"send-discord-capture-message\"");

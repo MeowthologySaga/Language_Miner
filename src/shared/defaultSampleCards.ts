@@ -537,7 +537,7 @@ function createFinalListeningCard(
       },
       frameImage: {
         filePath: "public/samples/listening/tutorial-room-check-scene.png",
-        fileUrl: "/samples/listening/tutorial-room-check-scene.png",
+        fileUrl: "./samples/listening/tutorial-room-check-scene.png",
         mimeType: "image/png",
         capturedAt: 0,
         createdAt: now
@@ -600,7 +600,7 @@ function createOnboardingListeningMedia(
   text: string
 ): NonNullable<StudyCard["listeningMedia"]> {
   const assetRoot = `public/samples/listening/${assetName}`;
-  const assetUrl = `/samples/listening/${assetName}`;
+  const assetUrl = `./samples/listening/${assetName}`;
   return {
     runtimeTts: {
       text,

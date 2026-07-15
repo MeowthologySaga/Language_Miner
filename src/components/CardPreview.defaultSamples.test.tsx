@@ -103,7 +103,7 @@ describe("CardPreview finalized default cards", () => {
     expect(card.listeningStudyGuide?.chunks).toHaveLength(3);
     expect(card.sourceSentence).toBe("Could you send it to me when you get a chance?");
     expect(frontHtml).not.toContain(card.sourceSentence);
-    expect(frontHtml).toContain("/samples/listening/onboarding-office-send.png");
+    expect(frontHtml).toContain("./samples/listening/onboarding-office-send.png");
     expect(frontHtml).not.toContain(".wav");
     expect(frontHtml).toContain("input-listening-frame-image");
     expect(frontHtml).toContain("기기 TTS 미리듣기");
@@ -123,9 +123,9 @@ describe("CardPreview finalized default cards", () => {
     );
 
     expect(cards.map((card) => card.listeningMedia?.frameImage?.fileUrl)).toEqual([
-      "/samples/listening/onboarding-office-send.png",
-      "/samples/listening/onboarding-roommate-minute.png",
-      "/samples/listening/onboarding-restaurant-order.png"
+      "./samples/listening/onboarding-office-send.png",
+      "./samples/listening/onboarding-roommate-minute.png",
+      "./samples/listening/onboarding-restaurant-order.png"
     ]);
     expect(cards.every((card) => card.listeningMedia?.audioClip === undefined)).toBe(true);
     expect(

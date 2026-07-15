@@ -123,23 +123,23 @@ The internal address is `lem-practice://reader/getting-started`. It is bundled w
 
 *Figure 3. Select an expression in the real Web Reader and create a reading-card candidate.*
 
-### 4.3 Edit the card body before saving
+### 4.3 Check the Web Reader card before saving
 
-**Path:** Reading-card preview → Edit content → Save card
+**Path:** Web Reader reading-card preview → Save card or Select again
 
 1. Read the sentence, literal meaning, natural meaning, and study note.
-2. Use `Edit` or `Edit content` when generated text does not match your intent.
-3. Choose `Save card` or the save action shown by that screen.
+2. If the selection is wrong or contains information you do not want to keep, return with `Select again`.
+3. If the content is correct, choose `Save card` or the save action shown by that screen.
 
 **Success:** A saved notice appears and the card is visible in Cards or Review.
 
-**If it fails:** Do not trust generated explanations automatically. Fix the selected language, range, and translation first. The current saved-card page focuses on tags and deletion, so settle the body **in the preview before saving**.
+**If it fails:** The Web Reader preview does not edit the card body. If the explanation is wrong or includes unwanted context, do not save it; change the selection or create the candidate again. Use Document Reader when you need the editable card-body flow.
 
 **Privacy and cost:** Card content is stored locally in plaintext in SQLite and related storage. Avoid personal conversations or confidential workplace sentences on a shared PC.
 
-[![Reading-card preview for I’m running a little late with editable content and Save card](site/assets/app-images/en/07-reading-card-preview.webp)](site/assets/app-images/en/07-reading-card-preview.webp)
+[![Reading-card preview for I’m running a little late with the Save card and Select again actions](site/assets/app-images/en/07-reading-card-preview.webp)](site/assets/app-images/en/07-reading-card-preview.webp)
 
-*Figure 4. Review and correct generated content before saving it.*
+*Figure 4. Review the generated content and save it only when it is correct.*
 
 ### 4.4 Complete the first review and writing attempt
 
@@ -278,17 +278,17 @@ Switch between `한국어` and `English` immediately. This changes labels and in
 
 The primary Web Reader sentence-card flow creates a **reading card** first. Do not assume it creates all three types at once; use the dedicated listening and speaking screens for those senses.
 
-### 7.2 Edit generated content in the preview
+### 7.2 Check results and know where editing is available
 
-**Path:** Card result → Edit/Edit content → Save
+**Path:** Document Reader card result → Edit/Edit content → Save
 
 **Why:** Generated explanations can be wrong or too broad, so only save a card that matches your situation.
 
 **Example:** If `I’m running a little late.` is translated literally as running slowly, change it to the meaning “I may arrive a little late.”
 
-**Success:** The preview and saved card show your corrected sentence, meaning, and notes.
+**Success:** The Document Reader preview and saved card show your corrected sentence, meaning, and notes.
 
-**If it fails:** The saved-card page currently emphasizes tag editing. Recreate the candidate from the source screen and correct the body before saving.
+**If it fails:** Web Reader uses a check, save, or select-again flow and does not edit the generated body. Edit before saving in Document Reader, or recreate the candidate from the source screen. The saved-card page currently emphasizes tag editing.
 
 **Privacy and cost:** Regeneration may make another paid call depending on the provider. Plain text editing has no AI cost.
 
@@ -397,7 +397,7 @@ Choose `Bookmark` on the current page. Bookmarks are saved per profile; `Open sa
 1. Use a purpose launcher, the built-in practice article, or the address bar.
 2. Drag over a useful expression.
 3. Choose `Sentence card` to create a reading-card candidate.
-4. When auto-save is off, edit and confirm the result before saving.
+4. When auto-save is off, check the result. If the selection or content is wrong, do not save it; select the source again.
 
 **Success:** The real Cards screen shows a reading card with source information.
 

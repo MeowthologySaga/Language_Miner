@@ -42,6 +42,7 @@ import type {
   StudyCardListeningAnnotation
 } from "../shared/types";
 import { playCardTts, playTextTts } from "../utils/cardTts";
+import { resolveBundledAssetUrl } from "../shared/bundledAssetUrl";
 
 type CardPreviewProps = {
   card: StudyCard;
@@ -456,9 +457,12 @@ function InputListeningCardFront({
   const videoClip = card.listeningMedia?.videoClip;
   const audioClip = card.listeningMedia?.audioClip;
   const frameImage = card.listeningMedia?.frameImage;
+  const videoClipUrl = resolveBundledAssetUrl(videoClip?.fileUrl);
+  const audioClipUrl = resolveBundledAssetUrl(audioClip?.fileUrl);
+  const frameImageUrl = resolveBundledAssetUrl(frameImage?.fileUrl);
   const runtimeTts = card.listeningMedia?.runtimeTts;
-  const hasStoredVideoClip = Boolean(videoClip?.fileUrl && !videoUnavailable);
-  const hasStoredAudioClip = Boolean(audioClip?.fileUrl && !audioUnavailable);
+  const hasStoredVideoClip = Boolean(videoClipUrl && !videoUnavailable);
+  const hasStoredAudioClip = Boolean(audioClipUrl && !audioUnavailable);
   const hasOriginalPlayback = hasStoredVideoClip || hasStoredAudioClip || Boolean(source);
   const hasRuntimeTts = Boolean(runtimeTts?.generatedOnDevice && runtimeTts.text.trim());
   const formatRange = (start: number, end?: number) =>
@@ -563,10 +567,10 @@ function InputListeningCardFront({
             className="input-listening-embed"
             controls
             onError={() => setVideoUnavailable(true)}
-            poster={frameImage?.fileUrl}
+            poster={frameImageUrl || undefined}
             preload="metadata"
             ref={videoRef}
-            src={videoClip.fileUrl}
+            src={videoClipUrl}
           />
           <div className="input-listening-video-meta">
             <span>{t("cardPreview.listening.originalVideo")}</span>
@@ -575,18 +579,18 @@ function InputListeningCardFront({
         </div>
       ) : hasStoredAudioClip && audioClip ? (
         <div className="input-listening-audio-card">
-          {frameImage ? (
+          {frameImageUrl ? (
             <img
               alt={t("cardPreview.listening.sceneAlt")}
               className="input-listening-frame-image"
-              src={frameImage.fileUrl}
+              src={frameImageUrl}
             />
           ) : null}
           <div className="input-listening-audio-panel">
             <Volume2 size={24} />
             <div>
               <strong>
-                {frameImage
+                {frameImageUrl
                   ? t("cardPreview.listening.savedVideoSegment")
                   : t("cardPreview.listening.originalAudio")}
               </strong>
@@ -599,7 +603,7 @@ function InputListeningCardFront({
             onError={() => setAudioUnavailable(true)}
             preload="metadata"
             ref={audioRef}
-            src={audioClip.fileUrl}
+            src={audioClipUrl}
           />
         </div>
       ) : source ? (
@@ -620,11 +624,11 @@ function InputListeningCardFront({
         </div>
       ) : hasRuntimeTts ? (
         <div className="input-listening-audio-card">
-          {frameImage ? (
+          {frameImageUrl ? (
             <img
               alt={t("cardPreview.listening.sceneAlt")}
               className="input-listening-frame-image"
-              src={frameImage.fileUrl}
+              src={frameImageUrl}
             />
           ) : null}
           <div className="input-listening-audio-panel">

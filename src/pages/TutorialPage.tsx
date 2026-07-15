@@ -69,8 +69,8 @@ import {
 import { playStandaloneTts } from "../utils/cardTts";
 import "../styles/tutorial.css";
 
-const tutorialMascotSrc = "/tutorial/mole-guide-b-transparent.png";
-const tutorialListeningPosterSrc = "/samples/listening/tutorial-room-check-scene.png";
+const tutorialMascotSrc = "./tutorial/mole-guide-b-transparent.png";
+const tutorialListeningPosterSrc = "./samples/listening/tutorial-room-check-scene.png";
 const tutorialListeningSampleText = "I am going to check the room, then I will come back.";
 const tutorialVideoReaderSampleText =
   "The guide was going to explain the shortcut, but the player had already started running.";

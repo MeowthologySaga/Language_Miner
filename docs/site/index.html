@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="발견한 영어 문장을 카드로 만들고 읽기·듣기에서 말하기·영작으로 이어 주는 로컬 우선 Windows 학습 앱 Language Miner.">
+    <meta name="description" content="Language Miner는 실제 표현을 읽기·듣기·말하기 카드로 자동 생성하고 복습하는 AI 기반 Windows 문장 플래시카드 앱입니다.">
     <meta name="theme-color" content="#08111f">
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
-    <title>Language Miner — 외운 영어를 내가 쓸 수 있는 문장으로</title>
+    <title>Language Miner — AI 기반 문장 플래시카드 자동 생성·복습 앱</title>
     <link rel="stylesheet" href="assets/site.css">
   </head>
   <body>
@@ -18,11 +18,11 @@
           <span>Language Miner</span>
         </a>
         <nav class="site-nav" aria-label="주요 메뉴">
+          <a href="#cards">카드 3종</a>
+          <a href="#diamonds">다이아와 PlayZone</a>
+          <a href="#create">콘텐츠 만들기</a>
           <a href="tutorial.html">화면 사용법</a>
-          <a href="#loop">학습 루프</a>
-          <a href="#play">PlayZone</a>
-          <a href="community.html">UGC 공유</a>
-          <a href="#safety">개인정보·안전</a>
+          <a href="community.html">콘텐츠 허브</a>
           <a class="language-link" href="en/index.html" lang="en">English</a>
         </nav>
       </div>
@@ -31,184 +31,243 @@
     <main id="main" class="page">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">Windows 공개 베타 · v0.1.0-beta.1</p>
-          <h1 id="hero-title">외운 영어를,<br>내가 쓸 수 있는 문장으로.</h1>
-          <p>책·웹·영상에서 발견한 표현을 문장 카드로 만들고, 읽기와 듣기에서 얻은 영어를 말하기·영작·캐릭터 대화로 다시 꺼내 보세요.</p>
+          <p class="eyebrow">AI-ASSISTED SENTENCE FLASHCARDS · WINDOWS 10/11</p>
+          <h1 id="hero-title">AI로 문장 카드를 만들고,<br>다시 쓸 때까지 복습하세요.</h1>
+          <p><strong>Language Miner는 AI 기반 문장 플래시카드 자동 생성·복습 앱입니다.</strong> 책·웹페이지·영상에서 실제 표현을 고르면 읽기·듣기·말하기 목적에 맞는 카드 초안을 만듭니다.</p>
+          <p>AI는 미연결 상태로 시작하며 직접 입력으로도 사용할 수 있습니다. 문서 리더와 Life Mining에서는 초안을 고쳐 저장하고, 웹 리더에서는 결과를 확인한 뒤 맞지 않으면 문장이나 표현을 다시 선택합니다.</p>
+          <ul class="hero-points" aria-label="핵심 특징">
+            <li>읽기·듣기·말하기 카드</li>
+            <li>AI 미연결로도 시작</li>
+            <li>학습 기록은 내 PC에</li>
+          </ul>
           <div class="hero-actions">
             <a class="button" href="https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Setup-0.1.0-beta.1-x64.exe">Windows 설치판 바로 다운로드</a>
             <a class="button secondary" href="https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Portable-0.1.0-beta.1-x64.exe">포터블판 바로 다운로드</a>
           </div>
-          <p class="release-note">무엇을 받을지 모르겠다면 설치판을 고르세요. 설치 과정 없이 시험하려면 포터블판을 고르면 됩니다. <a href="tutorial.html">화면 사용법 보기</a></p>
+          <p class="release-note"><strong>무엇을 받을지 모르겠다면 설치판을 선택하세요.</strong> 현재 v0.1.0-beta.1 공개 베타입니다. AI를 연결하지 않아도 카드와 복습부터 사용할 수 있습니다. <a href="tutorial.html">설치부터 첫 카드까지 화면으로 보기</a></p>
         </div>
 
         <div class="demo-card" aria-label="한 문장이 학습과 사용으로 이어지는 예시">
-          <div class="demo-topline">
-            <span>오늘의 실제 문장</span>
-            <span>AI 연결 불필요</span>
-          </div>
+          <div class="demo-topline"><span>오늘의 실제 문장</span><span>AI 연결은 선택</span></div>
           <p class="demo-sentence" lang="en">I’m running a little late.</p>
           <p class="demo-meaning">조금 늦을 것 같아요.</p>
           <div class="demo-flow" aria-label="학습 단계">
             <div class="demo-step active"><span>01</span><strong>발견</strong></div>
             <div class="demo-step"><span>02</span><strong>카드</strong></div>
             <div class="demo-step"><span>03</span><strong>복습</strong></div>
-            <div class="demo-step"><span>04</span><strong>대화</strong></div>
+            <div class="demo-step"><span>04</span><strong>사용</strong></div>
           </div>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="problem-title">
+      <section id="loop" class="section" aria-labelledby="why-title">
         <div class="section-heading">
-          <div class="section-number">01 · THE GAP</div>
+          <div class="section-number">01 · WHY SENTENCES</div>
           <div>
-            <h2 id="problem-title">뜻은 아는데, 필요한 순간에는 왜 말이 안 나올까요?</h2>
-            <p class="section-lead">단어를 알아보는 기억과 문장을 직접 꺼내는 기억은 다릅니다. Language Miner는 공부를 “봤다”에서 끝내지 않습니다.</p>
+            <h2 id="why-title">단어를 아는 것과 문장을 꺼내는 것은 다릅니다.</h2>
+            <p class="section-lead">단어만 외우면 어떤 동사·전치사와 어울리는지, 언제 어떤 말투로 쓰는지가 빠지기 쉽습니다. 실제 문장은 어휘·문법·상황을 한 덩어리로 남기고, 답을 보기 전 떠올리는 복습은 필요한 순간에 꺼낼 길을 만듭니다.</p>
           </div>
         </div>
-        <div class="two-column">
-          <article class="panel">
-            <span class="panel-label">단어만 외울 때</span>
-            <h3>의미는 알아도 문장이 흩어집니다</h3>
-            <p>어떤 전치사와 동사가 자연스러운지, 실제 상황에서 어떤 말투를 쓰는지 함께 남지 않습니다.</p>
-          </article>
-          <article class="panel accent-blue">
-            <span class="panel-label">문장으로 외울 때</span>
-            <h3>어휘·문법·상황이 한 덩어리로 남습니다</h3>
-            <p>내가 발견한 실제 문장을 카드로 만들면 다음 대화에서 꺼낼 단위가 생깁니다.</p>
-          </article>
+        <div class="learning-loop-grid">
+          <article><span>01</span><h3>발견</h3><p>내가 실제로 이해하거나 쓰고 싶었던 표현</p></article>
+          <article><span>02</span><h3>카드</h3><p>뜻·맥락·소리를 목적에 맞게 정리</p></article>
+          <article><span>03</span><h3>복습</h3><p>답을 보기 전에 먼저 회상</p></article>
+          <article><span>04</span><h3>사용</h3><p>말하기·영작·캐릭터 대화에서 변형</p></article>
+          <article><span>05</span><h3>동기</h3><p>학습 미션 보상을 PlayZone 진행에 사용</p></article>
         </div>
       </section>
 
-      <section id="loop" class="section" aria-labelledby="balance-title">
+      <section id="cards" class="section card-guide" aria-labelledby="cards-title">
         <div class="section-heading">
-          <div class="section-number">02–03 · BALANCE</div>
+          <div class="section-number">02 · THREE CARD TYPES</div>
           <div>
-            <h2 id="balance-title">인풋으로 발견하고, 아웃풋으로 내 것으로.</h2>
-            <p class="section-lead">많이 읽고 듣는 것과 직접 말하고 쓰는 것을 같은 문장으로 연결합니다.</p>
+            <h2 id="cards-title">같은 문장도, 훈련할 감각에 따라 카드가 달라집니다.</h2>
+            <p class="section-lead">웹 리더가 모든 카드를 한꺼번에 만드는 방식이 아닙니다. 읽기·듣기·말하기 화면에서 필요한 카드만 만듭니다. 아래 이미지는 실제 앱 화면이며, 누르면 원본 크기로 볼 수 있습니다.</p>
           </div>
         </div>
-        <div class="two-column">
-          <article class="panel accent-blue">
-            <span class="panel-label">읽고 듣기 · Input</span>
-            <h3>자연스러운 영어를 알아보는 힘</h3>
-            <p>PDF, 웹, 듣기, 영상에서 내가 정말 쓰고 싶은 표현을 발견합니다. 읽기 카드와 듣기 카드로 형태와 소리에 익숙해집니다.</p>
-          </article>
-          <article class="panel accent-mint">
-            <span class="panel-label">말하고 쓰기 · Output</span>
-            <h3>필요한 순간에 꺼내는 힘</h3>
-            <p>말하기 카드, 영작, 캐릭터챗에서 뜻과 상황만 보고 영어를 만들어 봅니다. 틀린 부분은 다음 복습의 힌트가 됩니다.</p>
-          </article>
+
+        <article class="card-guide-item reading-card">
+          <header class="card-type-heading">
+            <span class="card-type-number">01</span>
+            <div><p class="card-type-label">읽기 카드 · READING</p><h3>영어 문장을 보고 뜻과 쓰임을 알아보는 카드</h3><p>문서 리더나 웹 리더에서 실제 문장을 고르고, 직접 적었거나 AI가 도운 뜻·맥락을 확인해 저장합니다.</p></div>
+          </header>
+          <div class="card-path"><b>찾는 곳</b><span>읽고 듣기 · Input → 문서 리더 / 웹 리더</span></div>
+          <div class="card-screen-list">
+            <figure>
+              <figcaption><b>1. 이상한 나라의 앨리스에서 문장 고르기</b> 공개 도메인 작품을 읽으며 문장을 선택합니다. 문서 리더에서는 카드에 넣을 원문과 뜻을 직접 다듬을 수 있습니다.</figcaption>
+              <a class="home-shot-link" href="assets/app-images/ko/home-document-alice.webp" target="_blank" rel="noopener noreferrer" aria-label="이상한 나라의 앨리스 문서 리더 화면을 원본 크기로 보기"><img src="assets/app-images/ko/home-document-alice.webp" width="1224" height="755" loading="lazy" alt="이상한 나라의 앨리스 공개 도메인 본문에서 문장을 고르는 문서 리더 화면"></a>
+            </figure>
+            <figure>
+              <figcaption><b>2. 실제 웹페이지에서 표현 고르기</b> Project Gutenberg의 인터넷 글을 읽다가 문장 전체와 핵심 표현을 선택하고 문장 카드를 누릅니다.</figcaption>
+              <a class="home-shot-link" href="assets/app-images/ko/home-web-reader-live.webp" target="_blank" rel="noopener noreferrer" aria-label="실제 웹페이지를 연 웹 리더 화면을 원본 크기로 보기"><img src="assets/app-images/ko/home-web-reader-live.webp" width="1224" height="755" loading="lazy" alt="웹 리더에서 Project Gutenberg의 실제 인터넷 글을 읽고 문장과 핵심 표현을 선택한 화면"></a>
+            </figure>
+            <figure>
+              <figcaption><b>3. 읽기 카드 앞면</b> 영어 문장을 먼저 보고 핵심 표현의 뜻과 문장 전체의 쓰임을 떠올립니다.</figcaption>
+              <a class="home-shot-link" href="assets/app-images/ko/home-reading-card-front.webp" target="_blank" rel="noopener noreferrer" aria-label="읽기 카드 앞면을 원본 크기로 보기"><img src="assets/app-images/ko/home-reading-card-front.webp" width="1224" height="755" loading="lazy" alt="영어 문장과 핵심 표현이 보이는 읽기 카드 앞면"></a>
+            </figure>
+            <figure>
+              <figcaption><b>4. 읽기 카드 뒷면</b> 답을 연 뒤 모국어 뜻·문맥·출처를 확인합니다. 웹 리더에서 만든 카드가 맞지 않으면 닫고 문장이나 표현을 다시 선택하세요.</figcaption>
+              <a class="home-shot-link" href="assets/app-images/ko/home-reading-card-back.webp" target="_blank" rel="noopener noreferrer" aria-label="읽기 카드 뒷면을 원본 크기로 보기"><img src="assets/app-images/ko/home-reading-card-back.webp" width="1224" height="755" loading="lazy" alt="모국어 뜻과 문맥과 출처가 보이는 읽기 카드 뒷면"></a>
+            </figure>
+          </div>
+          <dl class="card-format-grid">
+            <div><dt>앞면</dt><dd>영어 문장과 핵심 표현</dd></div>
+            <div><dt>뒷면</dt><dd>모국어 뜻, 문맥, 출처와 필요한 힌트</dd></div>
+            <div><dt>훈련 목표</dt><dd>글에서 문장을 빠르게 알아보고 정확히 이해하기</dd></div>
+            <div><dt>이럴 때</dt><dd>책·PDF·뉴스·블로그에서 간직하고 싶은 문장을 만났을 때</dd></div>
+          </dl>
+        </article>
+
+        <article class="card-guide-item listening-card">
+          <header class="card-type-heading">
+            <span class="card-type-number">02</span>
+            <div><p class="card-type-label">듣기 카드 · LISTENING</p><h3>소리를 먼저 듣고 실제 문장을 알아채는 카드</h3><p>잘 안 들리는 짧은 구간을 듣기 루프나 영상 리더에서 반복한 뒤, 그 소리와 자막을 한 카드에 남깁니다.</p></div>
+          </header>
+          <div class="card-path"><b>찾는 곳</b><span>읽고 듣기 · Input → 듣기 루프 / 영상 리더</span></div>
+          <div class="card-screen-list three-shots">
+            <figure>
+              <figcaption><b>1. 예제 시트콤 장면 반복하기</b> 짧은 장면을 재생하고, 필요한 구간을 되감으며 대사의 소리와 상황을 함께 익힙니다.</figcaption>
+              <a class="home-shot-link" href="assets/app-images/ko/home-video-reader-sitcom.webp" target="_blank" rel="noopener noreferrer" aria-label="예제 시트콤 영상 리더 화면을 원본 크기로 보기"><img src="assets/app-images/ko/home-video-reader-sitcom.webp" width="1224" height="755" loading="lazy" alt="가상의 시트콤 장면과 자막을 재생하는 영상 리더 화면"></a>
+            </figure>
+            <figure>
+              <figcaption><b>2. 듣기 카드 앞면</b> 화면의 문장을 보지 않고 소리를 먼저 재생해, 어떤 문장인지 귀로 떠올립니다.</figcaption>
+              <a class="home-shot-link" href="assets/app-images/ko/home-listening-card-front.webp" target="_blank" rel="noopener noreferrer" aria-label="듣기 카드 앞면을 원본 크기로 보기"><img src="assets/app-images/ko/home-listening-card-front.webp" width="1224" height="755" loading="lazy" alt="문장을 가린 채 소리를 먼저 재생하는 듣기 카드 앞면"></a>
+            </figure>
+            <figure>
+              <figcaption><b>3. 듣기 카드 뒷면</b> 영어 대사와 모국어 뜻을 열어, 놓친 소리와 핵심 표현을 확인합니다.</figcaption>
+              <a class="home-shot-link" href="assets/app-images/ko/home-listening-card-back.webp" target="_blank" rel="noopener noreferrer" aria-label="듣기 카드 뒷면을 원본 크기로 보기"><img src="assets/app-images/ko/home-listening-card-back.webp" width="1224" height="755" loading="lazy" alt="영어 대사와 모국어 뜻을 확인하는 듣기 카드 뒷면"></a>
+            </figure>
+          </div>
+          <dl class="card-format-grid">
+            <div><dt>앞면</dt><dd>원본 소리 또는 선택한 짧은 구간</dd></div>
+            <div><dt>뒷면</dt><dd>영어 자막, 뜻, 놓치기 쉬운 소리와 핵심 표현</dd></div>
+            <div><dt>훈련 목표</dt><dd>아는 문장을 실제 속도와 발음에서도 알아듣기</dd></div>
+            <div><dt>이럴 때</dt><dd>영상·대화의 짧은 문장이 자막 없이는 들리지 않을 때</dd></div>
+          </dl>
+        </article>
+
+        <article class="card-guide-item speaking-card">
+          <header class="card-type-heading">
+            <span class="card-type-number">03</span>
+            <div><p class="card-type-label">말하기 카드 · SPEAKING</p><h3>모국어 뜻과 상황을 보고 영어를 직접 만드는 카드</h3><p>Life Mining에 실제로 하고 싶었던 말을 적고, 자연스러운 영어 초안과 대화 상황을 확인해 말하기 카드로 저장합니다.</p></div>
+          </header>
+          <div class="card-path"><b>찾는 곳</b><span>말하고 쓰기 · Output → Life Mining</span></div>
+          <div class="card-screen-list">
+            <figure>
+              <figcaption><b>1. 하고 싶었던 말 남기기</b> 오늘 말하지 못했거나 다시 쓰고 싶은 문장을 모국어로 기록합니다.</figcaption>
+              <a class="home-shot-link" href="assets/app-images/ko/manual-12a-life-mining-add.webp" target="_blank" rel="noopener noreferrer" aria-label="Life Mining 추가 화면을 원본 크기로 보기"><img src="assets/app-images/ko/manual-12a-life-mining-add.webp" width="1224" height="755" loading="lazy" alt="Life Mining에 실제로 하고 싶었던 말을 추가하는 화면"></a>
+            </figure>
+            <figure>
+              <figcaption><b>2. 상황까지 확인하기</b> 영어 문장과 대화 맥락을 고친 뒤 말하기 카드로 저장합니다.</figcaption>
+              <a class="home-shot-link" href="assets/app-images/ko/manual-12b-life-mining-result.webp" target="_blank" rel="noopener noreferrer" aria-label="말하기 카드 미리보기를 원본 크기로 보기"><img src="assets/app-images/ko/manual-12b-life-mining-result.webp" width="1224" height="755" loading="lazy" alt="모국어 상황과 추천 영어 문장이 들어간 말하기 카드 미리보기"></a>
+            </figure>
+            <figure>
+              <figcaption><b>3. 말하기 카드 앞면</b> 대화 상황과 내가 말할 차례를 보고 영어 문장을 먼저 소리 내어 본 뒤, 오른쪽 녹음 도구로 따라 말할 수 있습니다.</figcaption>
+              <a class="home-shot-link" href="assets/app-images/ko/home-speaking-card-front.webp" target="_blank" rel="noopener noreferrer" aria-label="말하기 카드 앞면을 원본 크기로 보기"><img src="assets/app-images/ko/home-speaking-card-front.webp" width="1224" height="755" loading="lazy" alt="모국어 뜻과 대화 상황이 보이는 말하기 카드 앞면"></a>
+            </figure>
+            <figure>
+              <figcaption><b>4. 말하기 카드 뒷면</b> 추천 영어 문장과 표현 설명을 확인하고, 소리를 듣거나 내 발음을 녹음해 비교합니다.</figcaption>
+              <a class="home-shot-link" href="assets/app-images/ko/home-speaking-card-back.webp" target="_blank" rel="noopener noreferrer" aria-label="말하기 카드 뒷면을 원본 크기로 보기"><img src="assets/app-images/ko/home-speaking-card-back.webp" width="1224" height="755" loading="lazy" alt="추천 영어 문장과 표현 설명과 녹음 도구가 보이는 말하기 카드 뒷면"></a>
+            </figure>
+          </div>
+          <dl class="card-format-grid">
+            <div><dt>앞면</dt><dd>모국어 뜻, 말해야 하는 상황 또는 대화 차례</dd></div>
+            <div><dt>뒷면</dt><dd>추천 영어 문장, 표현 설명, 듣기·녹음 도구</dd></div>
+            <div><dt>훈련 목표</dt><dd>뜻만 보고 영어를 스스로 조립해 말하기</dd></div>
+            <div><dt>이럴 때</dt><dd>“그때 이렇게 말하고 싶었다”는 문장이 생겼을 때</dd></div>
+          </dl>
+        </article>
+      </section>
+
+      <section class="section review-story" aria-labelledby="review-title">
+        <div class="section-heading">
+          <div class="section-number">03 · REVIEW & WRITING</div>
+          <div><h2 id="review-title">정답을 보기 전에 떠올리고, 필요하면 글로 다시 꺼냅니다.</h2><p class="section-lead">세 카드 모두 복습 일정에 따라 다시 나타납니다. 답을 떠올린 뒤 공개하고, 얼마나 어려웠는지 고르면 다음 복습 시점이 정해집니다.</p></div>
+        </div>
+        <div class="review-screen-grid">
+          <figure><figcaption><b>앞면</b> 답 보기를 누르기 전에 문장이나 뜻을 직접 떠올립니다.</figcaption><a class="home-shot-link" href="assets/app-images/ko/09-review-front.webp" target="_blank" rel="noopener noreferrer" aria-label="복습 카드 앞면을 원본 크기로 보기"><img src="assets/app-images/ko/09-review-front.webp" width="1224" height="755" loading="lazy" alt="복습 카드 앞면과 답 보기 버튼"></a></figure>
+          <figure><figcaption><b>뒷면</b> 정답과 힌트를 확인하고 다시·어려움·좋음·쉬움으로 평가합니다.</figcaption><a class="home-shot-link" href="assets/app-images/ko/10-review-answer.webp" target="_blank" rel="noopener noreferrer" aria-label="복습 카드 뒷면을 원본 크기로 보기"><img src="assets/app-images/ko/10-review-answer.webp" width="1224" height="755" loading="lazy" alt="복습 카드 정답과 난이도 선택 버튼"></a></figure>
+        </div>
+        <div class="writing-note">
+          <div><p class="eyebrow">WRITING IS A SEPARATE PRACTICE</p><h3>쓰기 카드를 따로 만들지는 않습니다.</h3><p>긴 글을 직접 쓰는 단계까지 가는 학습자는 비교적 적기 때문에, 쓰기는 네 번째 카드 덱이 아니라 범용적인 별도 연습으로 두었습니다. 배운 문장과 같은 뜻을 짧게 영작하고 로컬 비교 결과를 확인할 수 있습니다.</p></div>
+          <a class="home-shot-link" href="assets/app-images/ko/12-writing-result.webp" target="_blank" rel="noopener noreferrer" aria-label="영작 결과 화면을 원본 크기로 보기"><img src="assets/app-images/ko/12-writing-result.webp" width="1224" height="755" loading="lazy" alt="배운 표현으로 짧게 영작하고 결과를 확인하는 화면"></a>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="example-title">
+      <section id="diamonds" class="section diamond-story" aria-labelledby="diamonds-title">
         <div class="section-heading">
-          <div class="section-number">04 · ONE SENTENCE</div>
-          <div>
-            <h2 id="example-title">한 문장이 실제 사용까지 가는 길</h2>
-            <p class="section-lead"><span lang="en">I’m running a little late.</span> 하나로 학습 루프를 끝까지 돌아봅니다.</p>
-          </div>
+          <div class="section-number">04 · STUDY REWARDS</div>
+          <div><h2 id="diamonds-title">게임에서 더 강해지고 싶다면, 결제 대신 공부가 다음 선택지가 됩니다.</h2><p class="section-lead">다이아는 현금으로 판매하지 않습니다. 읽기 카드 만들기, 듣기, 말하기 카드 처리, 복습과 영작 같은 <strong>학습 미션을 완료하고 직접 받기</strong>를 눌러 얻습니다.</p></div>
         </div>
-        <div class="timeline">
-          <article><h3>발견</h3><p>읽던 글에서 약속에 늦을 때 쓰고 싶은 문장을 선택합니다.</p></article>
-          <article><h3>카드</h3><p>먼저 웹 리더에서 읽기 카드를 만듭니다. 필요하면 듣기 카드와 말하기 카드는 각각 듣기·Life Mining 화면에서 더합니다.</p></article>
-          <article><h3>복습</h3><p>영어를 알아본 뒤, “조금 늦을 것 같아요”를 보고 직접 문장을 말합니다.</p></article>
-          <article><h3>사용</h3><p>영작이나 약속 상황의 캐릭터 대화에서 같은 표현을 다시 씁니다.</p></article>
+        <figure class="diamond-screen"><figcaption><b>오늘의 미션</b> 공부한 기록이 목표를 채우면 보상 버튼이 열립니다.</figcaption><a class="home-shot-link" href="assets/app-images/ko/manual-04-daily-missions.webp" target="_blank" rel="noopener noreferrer" aria-label="오늘의 학습 미션을 원본 크기로 보기"><img src="assets/app-images/ko/manual-04-daily-missions.webp" width="1224" height="755" loading="lazy" alt="읽기 듣기 말하기 복습 미션을 완료하고 다이아를 받는 오늘 화면"></a></figure>
+        <div class="mission-examples" aria-label="다이아 보상 미션 예시">
+          <article><strong>읽기 카드 5장</strong><span>15 다이아</span></article>
+          <article><strong>오늘 들은 문장 30개</strong><span>20 다이아</span></article>
+          <article><strong>Life Mining 카드 5개</strong><span>25 다이아</span></article>
+          <article><strong>카드 덱 복습 완료</strong><span>덱마다 15 다이아</span></article>
+        </div>
+        <div class="playzone-explainer">
+          <div class="playzone-screen-stack">
+            <a class="home-shot-link" href="assets/app-images/ko/21-playzone-gameplay.webp" target="_blank" rel="noopener noreferrer" aria-label="PlayZone 게임 화면을 원본 크기로 보기"><img src="assets/app-images/ko/21-playzone-gameplay.webp" width="1264" height="781" loading="lazy" alt="학습으로 번 다이아를 사용할 수 있는 PlayZone 공식 게임"></a>
+            <a class="home-shot-link" href="assets/app-images/ko/manual-14-diamond-confirm.webp" target="_blank" rel="noopener noreferrer" aria-label="다이아 사용 확인 화면을 원본 크기로 보기"><img src="assets/app-images/ko/manual-14-diamond-confirm.webp" width="1224" height="755" loading="lazy" alt="게임에서 다이아 사용 이유와 금액을 확인하는 화면"></a>
+          </div>
+          <div><p class="eyebrow">PLAYZONE</p><h3>게임에서 영어를 가르치는 방식이 아닙니다.</h3><p>PlayZone은 저장한 표현을 게임 속 문제로 내는 공간이 아닙니다. 다이아를 장비·입장·편의 기능처럼 게임 제작자가 정한 진행 요소에 사용합니다.</p><p>“조금만 결제하면 더 강해질 텐데”라는 마음을 현금 결제가 아니라 학습 행동으로 연결합니다. 재미를 약하게 만든 학습용 게임 대신, 재미있는 게임과 공부의 보상을 연결하려는 설계입니다.</p><a class="button" href="community.html">PlayZone 게임 둘러보기</a></div>
         </div>
       </section>
 
-      <section id="play" class="section" aria-labelledby="play-title">
+      <section id="create" class="section creator-world" aria-labelledby="create-title">
         <div class="section-heading">
-          <div class="section-number">05 · PRACTICE WORLDS</div>
-          <div>
-            <h2 id="play-title">표현은 대화에서, 학습 보상은 게임에서</h2>
-            <p class="section-lead">캐릭터챗은 배운 표현을 대화에서 연습하고, PlayZone은 학습으로 번 다이아를 게임 기능에 쓰게 해 학습 동기를 이어 줍니다.</p>
+          <div class="section-number">05 · EVERYONE CAN CREATE</div>
+          <div><h2 id="create-title">콘텐츠를 즐기는 사람에서, 만드는 사람으로.</h2><p class="section-lead">코딩을 깊이 배우지 않아도 Codex나 Claude Code 같은 파일 작업형 에이전트에게 아이디어를 설명하고 작은 웹게임을 만들 수 있습니다. Language Miner는 그 결과를 실행하고, 공유하고, 학습 보상까지 연결하는 공간을 제공합니다.</p></div>
+        </div>
+
+        <article class="creator-feature">
+          <div class="creator-feature-copy"><p class="eyebrow">CHARACTER CARDS</p><h3>대화하고 싶은 캐릭터를 만들고, 가져오고, 공유합니다.</h3><p>이름·성격·말투·상황과 표정 이미지를 정해 내 캐릭터를 만듭니다. 다른 사람이 공유한 카드를 가져오거나, 내 카드를 파일로 내보내 콘텐츠 허브에서 공유할 수도 있습니다.</p>
+            <ol class="simple-steps"><li><span>1</span><div><b>만들기</b><p>성격과 대화 배경을 적습니다.</p></div></li><li><span>2</span><div><b>대화하기</b><p>내가 선택한 AI 연결로 캐릭터챗을 시작합니다.</p></div></li><li><span>3</span><div><b>공유하기</b><p>캐릭터 카드를 내보내 공개 링크로 나눕니다.</p></div></li></ol>
           </div>
-        </div>
-        <div class="two-column">
-          <article class="panel">
-            <span class="panel-label">Character Chat</span>
-            <h3>대화 상대와 상황을 골라 연습</h3>
-            <p>배운 표현을 캐릭터와의 약속, 여행, 일상 대화 안에서 사용합니다. 클라우드 AI를 연결하면 전송할 캐릭터 설정과 최근 대화 범위를 먼저 확인합니다.</p>
-          </article>
-          <article class="panel">
-            <span class="panel-label">PlayZone</span>
-            <h3>학습으로 번 다이아를 사용하는 검증형 UGC 게임</h3>
-            <p>어비스 서머너, 드릴하트 디펜스, 고양이 오디세이 같은 공식 게임과 사용자 게임팩에서 학습으로 번 다이아를 사용할 수 있습니다. 팩은 기술 검사 후 격리해 실행하고, 실행 가능한 상태만 열며 네트워크는 기본 거부합니다.</p>
-          </article>
-        </div>
+          <div class="creator-screen-stack">
+            <a class="home-shot-link" href="assets/app-images/ko/manual-13a-character-manager.webp" target="_blank" rel="noopener noreferrer" aria-label="캐릭터 관리 화면을 원본 크기로 보기"><img src="assets/app-images/ko/manual-13a-character-manager.webp" width="1224" height="755" loading="lazy" alt="캐릭터 이름 성격 말투와 이미지를 설정하는 화면"></a>
+            <a class="home-shot-link" href="assets/app-images/ko/manual-13c-character-export.webp" target="_blank" rel="noopener noreferrer" aria-label="캐릭터 내보내기 화면을 원본 크기로 보기"><img src="assets/app-images/ko/manual-13c-character-export.webp" width="1224" height="755" loading="lazy" alt="제작자와 라이선스를 적어 캐릭터 카드를 내보내는 화면"></a>
+            <a class="home-shot-link" href="assets/app-images/ko/14-character-chat.webp" target="_blank" rel="noopener noreferrer" aria-label="캐릭터챗 화면을 원본 크기로 보기"><img src="assets/app-images/ko/14-character-chat.webp" width="1224" height="755" loading="lazy" alt="직접 만들거나 가져온 캐릭터와 대화하는 화면"></a>
+          </div>
+        </article>
+
+        <article class="gamekit-feature">
+          <div class="gamekit-intro"><p class="eyebrow">GAMEKIT + CODEX OR CLAUDE CODE</p><h3>한 줄 아이디어를 PlayZone 게임 파일로.</h3><p>GameKit에는 게임이 다이아를 어떻게 요청해야 하는지와 <code>.lemgame</code> 파일을 만드는 규칙이 들어 있습니다. 폴더를 에이전트에 열고 원하는 게임과 다이아 사용 방식을 평범한 말로 설명하세요.</p><a class="text-link" href="https://github.com/MeowthologySaga/Language_Miner/tree/main/gamekit">GameKit 파일과 제작 규칙 보기 →</a></div>
+          <ol class="agent-flow">
+            <li><span>01</span><div><b>GameKit 받기</b><p>GitHub에서 GameKit 폴더를 받아 압축을 풉니다.</p></div></li>
+            <li><span>02</span><div><b>에이전트에 폴더 열기</b><p>Codex 또는 Claude Code가 규칙 파일을 함께 읽게 합니다.</p></div></li>
+            <li><span>03</span><div><b>원하는 게임 말하기</b><p>“고양이가 던전을 탐험하고, 다이아는 부활에 쓰고 싶어”처럼 설명합니다.</p></div></li>
+            <li><span>04</span><div><b>질문에 답하고 확인하기</b><p>조작법·화면·난이도·다이아 사용처를 고르며 다듬습니다.</p></div></li>
+            <li><span>05</span><div><b>.lemgame으로 실행·공유</b><p>완성 파일을 PlayZone에 넣고 콘텐츠 허브에 공개 링크를 올립니다.</p></div></li>
+          </ol>
+          <a class="home-shot-link gamekit-shot" href="assets/app-images/ko/18-playzone-official-library.webp" target="_blank" rel="noopener noreferrer" aria-label="PlayZone 라이브러리를 원본 크기로 보기"><img src="assets/app-images/ko/18-playzone-official-library.webp" width="1264" height="781" loading="lazy" alt="공식 게임과 사용자 게임을 설치하고 실행하는 PlayZone 라이브러리"></a>
+          <div class="creator-cta"><div><b>만들지 않아도 괜찮습니다.</b><p>콘텐츠 허브에서 다른 사용자의 게임과 캐릭터를 보고, 원하는 파일을 앱에 넣으면 됩니다.</p></div><a class="button" href="community.html">게임·캐릭터 콘텐츠 허브 열기</a></div>
+        </article>
       </section>
 
-      <section id="start" class="section" aria-labelledby="start-title">
-        <div class="section-heading">
-          <div class="section-number">06 · FIRST START</div>
-          <div>
-            <h2 id="start-title">AI 설정 없이 따라 하는 10분 시작 순서</h2>
-            <p class="section-lead">새 설치의 기본값은 AI 미연결입니다. 카드와 복습을 먼저 경험하고 필요한 기능만 나중에 연결하세요.</p>
-          </div>
-        </div>
-        <ol class="steps">
-          <li><div><strong>웹 리더의 내장 연습 글을 엽니다.</strong><br>외부 접속 없이 고정 예문으로 실제 카드 저장을 연습합니다.</div></li>
-          <li><div><strong>읽기 카드의 원문·뜻·문맥을 확인합니다.</strong><br>내가 기억할 상황에 맞게 직접 고칩니다.</div></li>
-          <li><div><strong>저장하고 첫 복습을 합니다.</strong><br><span>답 보기</span>를 누르기 전에 먼저 떠올립니다.</div></li>
-          <li><div><strong>짧은 영작에서 다시 꺼냅니다.</strong><br>같은 뜻을 보고 영어 문장을 직접 입력합니다.</div></li>
-          <li><div><strong>필요할 때만 AI를 연결합니다.</strong><br>로컬 Ollama를 먼저 살펴보고, 클라우드는 전송 내용과 비용을 확인합니다.</div></li>
-        </ol>
+      <section id="start" class="section start-story" aria-labelledby="start-title">
+        <a class="home-shot-link" href="assets/app-images/ko/01-onboarding-language.webp" target="_blank" rel="noopener noreferrer" aria-label="첫 실행 언어 선택 화면을 원본 크기로 보기"><img src="assets/app-images/ko/01-onboarding-language.webp" width="1224" height="755" loading="lazy" alt="Language Miner 첫 실행 언어 선택 화면"></a>
+        <div><p class="eyebrow">YOUR FIRST 10 MINUTES</p><h2 id="start-title">AI 연결 없이 먼저 한 바퀴 돌아보세요.</h2><ol class="start-list"><li><b>1분</b> 앱 언어와 모국어·학습 언어를 고릅니다.</li><li><b>3분</b> 문서 리더의 공개 도메인 예문에서 문장을 고릅니다.</li><li><b>2분</b> 뜻과 맥락을 확인해 읽기 카드를 저장합니다.</li><li><b>2분</b> 답을 보기 전에 떠올리며 첫 복습을 합니다.</li><li><b>2분</b> 오늘 미션과 콘텐츠 허브를 둘러봅니다.</li></ol><a class="text-link" href="tutorial.html">스크린샷으로 전체 순서 보기 →</a></div>
       </section>
 
       <section id="safety" class="section" aria-labelledby="safety-title">
-        <div class="section-heading">
-          <div class="section-number">07 · YOUR BOUNDARY</div>
-          <div>
-            <h2 id="safety-title">내 데이터, 내 키, 내가 고르는 연결.</h2>
-            <p class="section-lead">“로컬”과 “무료”를 막연하게 말하지 않고 실제 저장·전송·비용 경계를 보여 줍니다.</p>
-          </div>
+        <div class="section-heading"><div class="section-number">06 · LOCAL BY DEFAULT</div><div><h2 id="safety-title">연결할지, 무엇을 보낼지 사용자가 정합니다.</h2><p class="section-lead">카드와 학습 기록은 기본적으로 내 PC에 저장됩니다. AI는 미연결 상태로 시작하며 필요한 기능만 나중에 선택할 수 있습니다.</p></div></div>
+        <div class="safety-list">
+          <article><strong>로컬 저장</strong><p>카드와 학습 기록은 기본적으로 이 PC에 저장됩니다.</p></article>
+          <article><strong>AI 미연결 기본값</strong><p>필요할 때만 로컬 Ollama 또는 본인의 클라우드 키를 연결합니다.</p></article>
+          <article><strong>전송 전 확인</strong><p>클라우드 AI를 쓸 때 공급자·전송 내용·예상 호출을 먼저 확인합니다.</p></article>
+          <article><strong>직접 백업</strong><p><code>.lembackup</code>을 만들고 복원 미리보기로 포함 범위를 확인합니다.</p></article>
         </div>
-        <ul class="safety-list">
-          <li><strong>로컬 저장</strong>카드와 대화는 기본적으로 이 PC에 저장됩니다. API 키 외 학습 데이터는 평문일 수 있습니다.</li>
-          <li><strong>AI 미연결 기본값</strong>동의 전 Gemini·Google AI 요청은 없습니다. loopback Ollama만 로컬로 표시합니다.</li>
-          <li><strong>BYOK 클라우드</strong>본인의 키를 쓰고, 공급자·전송 내용·호출 수·비용 범위를 작업 전에 확인합니다.</li>
-          <li><strong>비용 가드의 한계</strong>앱 수치는 로컬 예상 사용량 가드입니다. 공급자 청구를 막으려면 quota와 예산 알림이 필요합니다.</li>
-          <li><strong>UGC 실행 제한</strong>해시·권한·CSP·압축 구조를 검사하고 준비 상태가 아닌 팩은 실행하지 않습니다.</li>
-          <li><strong>중앙 추적 없음</strong>개발자 소유 광고, 분석, 텔레메트리 서버를 사용하지 않습니다.</li>
-        </ul>
-        <ul class="link-list" aria-label="안전 문서">
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/privacy.ko.md">개인정보 안내</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/ugc-policy.ko.md">UGC 정책</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/SECURITY.md">보안 신고</a></li>
-        </ul>
+        <ul class="link-list"><li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/privacy.ko.md">개인정보 안내</a></li><li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/install-windows.ko.md">설치·SmartScreen·체크섬 안내</a></li><li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/SECURITY.md">보안 신고</a></li></ul>
       </section>
 
-      <section class="section" aria-labelledby="download-title">
-        <div class="callout">
-          <div>
-            <p class="eyebrow">08 · DOWNLOAD & COMMUNITY</p>
-            <h2 id="download-title">원하는 방식으로 바로 받으세요.</h2>
-            <p>계속 사용할 내 PC에는 설치판을 추천합니다. 설치 과정 없이 먼저 시험하려면 포터블판을 받으세요. 두 버튼 모두 공식 배포 파일 다운로드를 바로 시작합니다.</p>
-          </div>
-          <div class="hero-actions">
-            <a class="button" href="https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Setup-0.1.0-beta.1-x64.exe">Windows 설치판 바로 다운로드</a>
-            <a class="button secondary" href="https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Portable-0.1.0-beta.1-x64.exe">포터블판 바로 다운로드</a>
-          </div>
-        </div>
-        <ul class="link-list" aria-label="전체 문서">
-          <li><a href="tutorial.html">스크린샷 사용법</a></li>
-          <li><a href="community.html">캐릭터·게임 UGC 공유 공간</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/install-windows.ko.md">설치·SmartScreen·체크섬 안내</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/complete-user-manual.ko.md">완전 사용 설명서</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/user-guide.ko.md">짧은 기능 참조</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/creator-guide.ko.md">UGC 제작자 가이드</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/project-background.ko.md">프로젝트 배경</a></li>
-          <li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/LICENSE">GPL-3.0 라이선스</a></li>
-        </ul>
+      <section id="download" class="section" aria-labelledby="download-title">
+        <div class="callout"><div><p class="eyebrow">DOWNLOAD FOR WINDOWS</p><h2 id="download-title">GitHub 파일 목록을 찾지 말고, 여기서 바로 받으세요.</h2><p>계속 사용할 내 PC에는 설치판을 추천합니다. 설치 과정 없이 먼저 시험하려면 포터블판을 고르세요. 두 버튼 모두 공식 배포 파일 다운로드를 바로 시작합니다.</p></div><div class="hero-actions"><a class="button" href="https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Setup-0.1.0-beta.1-x64.exe">Windows 설치판 바로 다운로드</a><a class="button secondary" href="https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Portable-0.1.0-beta.1-x64.exe">포터블판 바로 다운로드</a></div></div>
+        <ul class="link-list"><li><a href="tutorial.html">스크린샷 사용법</a></li><li><a href="community.html">게임·캐릭터 콘텐츠 허브</a></li><li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/complete-user-manual.ko.md">완전 사용 설명서</a></li><li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/creator-guide.ko.md">UGC 제작자 가이드</a></li><li><a href="https://github.com/MeowthologySaga/Language_Miner/blob/main/docs/project-background.ko.md">프로젝트 배경</a></li></ul>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <p>Language Miner · Local-first sentence learning</p>
-        <p>정적 GitHub Pages · 서버·DB·공용 API 키 없음</p>
-      </div>
-    </footer>
+    <footer class="site-footer"><div class="footer-inner"><p>Language Miner · AI-assisted sentence flashcards</p><p>Windows 10/11 x64 · 한국어 · English</p></div></footer>
   </body>
 </html>

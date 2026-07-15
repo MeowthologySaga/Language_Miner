@@ -8,6 +8,7 @@ export function isQaRuntime() {
     process.env.LM_QA_BOOK_MAKER === "1" ||
     process.env.LM_QA_APP_SMOKE === "1" ||
     process.env.LM_QA_DOC_SCREENSHOTS === "1" ||
+    process.env.LM_QA_HOMEPAGE_SCREENSHOTS === "1" ||
     process.env.LM_QA_WEB_READER_POPOVER === "1" ||
     process.env.LM_QA_WEB_READER_LIFE_PROOF === "1"
   );

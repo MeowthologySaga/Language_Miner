@@ -195,8 +195,8 @@ describe("CardPreview input reading back", () => {
 
     expect(html).toContain("원본 영상");
     expect(html).toContain("<video");
-    expect(html).toContain("/samples/listening/alice-chapter1-sample.mp4");
-    expect(html).toContain("poster=\"/samples/listening/alice-chapter1-scene.png\"");
+    expect(html).toContain("./samples/listening/alice-chapter1-sample.mp4");
+    expect(html).toContain("poster=\"./samples/listening/alice-chapter1-scene.png\"");
     expect(html).toContain("0:00 - 1:00");
     expect(html).toContain("구간 다시 보기");
     expect(html).not.toContain("<iframe");
