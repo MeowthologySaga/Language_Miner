@@ -6,6 +6,10 @@ const path = require("node:path");
 const repoRoot = path.resolve(__dirname, "..", "..");
 const siteRoot = path.resolve(repoRoot, process.argv[2] || "docs/site");
 const docsSiteRoot = path.join(repoRoot, "docs", "site");
+const installerUrl = "https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Setup-0.1.0-beta.1-x64.exe";
+const portableUrl = "https://github.com/MeowthologySaga/Language_Miner/releases/download/v0.1.0-beta.1/Language-Miner-Portable-0.1.0-beta.1-x64.exe";
+const directDownloadPages = new Set(["index.html", "en/index.html", "tutorial.html", "en/tutorial.html"]);
+const allowedExeUrls = new Set([installerUrl, portableUrl]);
 const allowedExtensions = new Set([
   ".css", ".gif", ".html", ".ico", ".jpeg", ".jpg", ".js", ".json",
   ".md", ".png", ".svg", ".txt", ".webmanifest", ".webp", ".woff", ".woff2", ".xml"
@@ -50,7 +54,11 @@ for (const filePath of files) {
   for (const [pattern, label] of remoteOrDynamicPatterns) {
     if (pattern.test(text)) findings.push(`${relativePath}: ${label}`);
   }
-  if (extension === ".html") validateLocalReferences(filePath, text, findings);
+  if (extension === ".html") {
+    validateLocalReferences(filePath, text, findings);
+    validateDownloadLinks(relativePath, text, findings);
+    validateScreenshotLinks(relativePath, text, findings);
+  }
 }
 
 if (findings.length > 0) {
@@ -71,6 +79,33 @@ function validateLocalReferences(htmlPath, html, output) {
     } else if (!fs.existsSync(target)) {
       output.push(`${path.relative(siteRoot, htmlPath)}: missing local reference (${reference})`);
     }
+  }
+}
+
+function validateDownloadLinks(relativePath, html, output) {
+  if (directDownloadPages.has(relativePath)) {
+    if (!html.includes(installerUrl)) output.push(`${relativePath}: missing fixed installer download`);
+    if (!html.includes(portableUrl)) output.push(`${relativePath}: missing fixed portable download`);
+  }
+  if (/\/releases\/latest\/download\//i.test(html)) {
+    output.push(`${relativePath}: mutable latest-release download URL`);
+  }
+  const exeLinkRegex = /href=["'](https:\/\/[^"']+\.exe)["']/gi;
+  for (const match of html.matchAll(exeLinkRegex)) {
+    if (!allowedExeUrls.has(match[1])) output.push(`${relativePath}: unexpected EXE download URL (${match[1]})`);
+  }
+}
+
+function validateScreenshotLinks(relativePath, html, output) {
+  const screenshotRegex = /<a\s+class=["']tutorial-shot-link["']\s+href=["']([^"']+)["'][^>]*>\s*<img\s+class=["']tutorial-shot["']\s+src=["']([^"']+)["']/gi;
+  const screenshots = [...html.matchAll(screenshotRegex)];
+  if (!relativePath.endsWith("tutorial.html")) return;
+  if (screenshots.length < 10) {
+    output.push(`${relativePath}: expected at least 10 linked tutorial screenshots`);
+    return;
+  }
+  for (const [, href, src] of screenshots) {
+    if (href !== src) output.push(`${relativePath}: screenshot link does not open its source (${src})`);
   }
 }
 

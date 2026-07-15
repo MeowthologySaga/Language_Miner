@@ -35,6 +35,16 @@ body {
   line-height: 1.65;
 }
 
+html[lang="ko"] h1,
+html[lang="ko"] h2,
+html[lang="ko"] h3,
+html[lang="ko"] p,
+html[lang="ko"] li,
+html[lang="ko"] .button {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
 a {
   color: inherit;
 }
@@ -703,10 +713,15 @@ h3 {
 }
 
 .compare-grid,
-.feature-grid,
-.shot-pair {
+.feature-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.shot-pair {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
@@ -806,8 +821,31 @@ h3 {
 }
 
 .tutorial-shot-link {
+  position: relative;
   display: block;
+  overflow: hidden;
   border-radius: 22px;
+}
+
+.tutorial-shot-link::after {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 8px 11px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(7, 17, 29, 0.9);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.34);
+  font-size: 0.76rem;
+  font-weight: 760;
+}
+
+html[lang="ko"] .tutorial-shot-link::after {
+  content: "클릭해서 크게 보기 ↗";
+}
+
+html[lang="en"] .tutorial-shot-link::after {
+  content: "Open full-size ↗";
 }
 
 .tutorial-shot-link:focus-visible {
@@ -956,6 +994,16 @@ h3 {
 
   .hero {
     padding: 56px 0 60px;
+  }
+
+  .hero-actions {
+    display: grid;
+    width: 100%;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    text-align: center;
   }
 
   h1 {

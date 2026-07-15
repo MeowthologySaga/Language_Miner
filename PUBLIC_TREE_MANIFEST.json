@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "appVersion": "0.1.0-beta.1",
-  "generatedAt": "2026-07-14T16:54:56.055Z",
+  "generatedAt": "2026-07-15T02:50:22.267Z",
   "source": "audited working tree (private Git history excluded)",
   "files": [
     {
@@ -661,28 +661,28 @@
     },
     {
       "path": "docs/site/assets/site.css",
-      "bytes": 17257,
-      "sha256": "fc64b388dfabbcd7da15a2aefe7b1c384c70356bc62c20fc1efbef8a52fd476f"
+      "bytes": 18118,
+      "sha256": "a88637819c2b74bc406e39d69ff63e5af5b5dfb7f9d79ce0f34d282da3ef113b"
     },
     {
       "path": "docs/site/en/index.html",
-      "bytes": 13430,
-      "sha256": "bd579f9c450b576ca96d666e55f950a2aba7041e7cd831d50831b7cf9f499db5"
+      "bytes": 13607,
+      "sha256": "a010389ae944016b853bafa9f0492fafd2b9d87167103d47133512a120efc5e9"
     },
     {
       "path": "docs/site/en/tutorial.html",
-      "bytes": 31889,
-      "sha256": "57310ef688132266afa3d4244bc6db29d25a14401f7217f42ae14ade0df0d5c6"
+      "bytes": 32441,
+      "sha256": "2ea037b45a719aa8e46b3d55edeaa209eab0790a0f52519ef872dc27d6004974"
     },
     {
       "path": "docs/site/index.html",
-      "bytes": 14075,
-      "sha256": "878a7c41b60d29973c4fe8f1dde01f9d50ea038c66f62598dc8bbe113423eaa1"
+      "bytes": 14300,
+      "sha256": "4af683d22774a01b2d9cd5e7cfa9edf5b852703463269c6ecd42e4c8bacad289"
     },
     {
       "path": "docs/site/tutorial.html",
-      "bytes": 34039,
-      "sha256": "f9b3e90429d7c9af31dfa3344b3a4dbe73f9c27258c2c90a35b72a7701db6cf9"
+      "bytes": 34643,
+      "sha256": "75c51b4e4613573071792d00a6c97f5af84ff772cc76838ac5ef373b6ba57b52"
     },
     {
       "path": "docs/ugc-policy.en.md",
@@ -1946,8 +1946,8 @@
     },
     {
       "path": "scripts/release/validate-pages.cjs",
-      "bytes": 4001,
-      "sha256": "0b973d9bfa28a67765887086db3e53256e954976d0f5a1eb002f6eaec25faede"
+      "bytes": 5909,
+      "sha256": "bd692577fda8b82e95a190502d1ab9c8bf7cbf0cf6b15863f859cc07188ded94"
     },
     {
       "path": "scripts/release/verify-release-config.cjs",
